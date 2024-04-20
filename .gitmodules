@@ -1,3 +1,4 @@
 [submodule "themes/abridge"]
 	path = themes/abridge
-	url = https://github.com/jieiku/abridge.git
+	url = git@github.com:samueloph/abridge.git
+	branch = samueloph/personal_site_customizations
