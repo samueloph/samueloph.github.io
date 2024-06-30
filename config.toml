@@ -12,7 +12,7 @@ default_language = "en"
 compile_sass = true
 minify_html = false
 build_search_index = true
-generate_feed = true
+generate_feeds = true
 taxonomies = [
     {name = "categories", feed = true},
     # {name = "tags", feed = true},
