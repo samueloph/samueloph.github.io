@@ -30,3 +30,9 @@ He's a [Debian Developer](https://nm.debian.org/person/samueloph/), contributing
 Samuel maintains a few other key packages on Debian, such as "curl", "rsync" and "nmap", for which he's also responsible for fixing CVEs for all Debian releases.  
 Working as a System Development Engineer in Amazon Linux, Samuel develops Rust and Python-based systems that deals with CVE processing at [AWS](https://aws.amazon.com/).  
 He also helps people learning packaging and starting to contributing to Debian.  
+
+---
+
+## Curriculum
+
+[HERE](https://raw.githubusercontent.com/samueloph/personal_website_files/main/samuel_henrique_samueloph_cv_2024_03.pdf)
