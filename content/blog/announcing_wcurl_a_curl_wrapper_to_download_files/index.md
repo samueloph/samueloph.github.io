@@ -106,7 +106,7 @@ still)
 > "Write the data to the file named in the URL (or in redirects if I'm feeling daring), and
 timestamp the file to the last-modified-date". This is the main reason I'm still using wget.
 
-I can finally feel less bad about faling back to wget due to not remembering the
+I can finally feel less bad about falling back to wget due to not remembering the
 parameters I want.
 
 # Idealization vs. reality
