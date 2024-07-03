@@ -4,7 +4,7 @@ base_url = "https://samueloph.dev"
 # Also set index format = "elasticlunr_javascript", and in [extra] uglyurls = true, integrity = false
 # If you use the npm/node script then all you have to do is set offline = true, and everything else is automatic.
 
-title = "Samuel Henrique &lt;samueloph&gt;"
+title = "Samuel Henrique (samueloph)"
 description = "My personal website"
 theme = "abridge"
 
@@ -112,7 +112,7 @@ footer_credit = true
 ### Uncomment one of the below lines, or neither, depending on which type of logo you want to use:
 #logo = { file="logo.svg", width="32", height="32", alt="Abridge", text="bridge" }
 #textlogo = '<font color="#f90">A</font>bridge'
-textlogo = "Samuel Henrique &lt;samueloph&gt;"
+textlogo = "Samuel Henrique (samueloph)"
 #textlogo = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#f90" viewBox="0 0 96 96" width="28" height="28"><path stroke-width="14" d="M14 99 46 7h4l32 92"/><path stroke-width="9" d="M-3 82c43-26 59-26 102 0"/><path stroke-linecap="round" stroke-width="1.5" d="M94 72v7m-5-9.8v7m-5-9.8v7.1M79 64v7M63 57.7v7m-5-8.2v7m-5-7.8v7m-5-7.2v7m-5-6.7v7m-5-6.3v7m-5-5.8v7M17 64v7m-5-4.6v7m-5-4.2v7M2 72v7"/></svg>bridge'
 
 sitedesc = false # enables or disables the display of the site description below the logo.
@@ -123,7 +123,7 @@ foothr = true # show or hide horizontal rule above footer
 #copyright = false # set to false to disable the copyright.
 #copyright_override = '© 2019-$CURRENT_YEAR $SITE_TITLE'
 #copyright_override = '© $CURRENT_YEAR $SITE_TITLE • Website content is licensed <a rel="noopener" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.'
-copyright_override = '© Samuel Henrique <samueloph>. Unless otherwise noted, the content in this website is available under the <a rel="noopener" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license.'
+copyright_override = '© Samuel Henrique (samueloph). Unless otherwise noted, the content in this website is available under the <a rel="noopener" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license.'
 
 
 ###############################################################################
@@ -134,7 +134,7 @@ copyright_override = '© Samuel Henrique <samueloph>. Unless otherwise noted, th
 
 title_separator = "|"  # Separator between title and title_addition, set as |, -, _, etc
 title_addition = "My personal website" # a default value for title addition
-author = "Samuel Henrique <samueloph>" # Put Your Name here
+author = "Samuel Henrique (samueloph)" # Put Your Name here
 keywords = "samueloph, debian, programming, blog, rust, python, security" # used for the primary site index
 banner = "banner.png" # Used as default image for OpenGraph/Twitter if page specific image is undefined.
 twitter_meta = "samueloph_" # for SEO: twitter:site and twitter:creator
