@@ -23,9 +23,8 @@ Manpage:
 
 ##### Availability (comes installed with the curl package):
 * Debian unstable - Since 2024-07-02
-* Debian testing - Coming up between the second and third week of July 2024.
-* Debian 12/bookworm backports - As soon as the package gets to Debian testing,
-I'll upload it to bookworm.
+* Debian testing - Since 2024-07-18
+* Debian 12/bookworm backports - Expected by the end of August 2024.
 * Debian 12/bookworm - Depends on whether Debian's release team will approve
 it, it could be available in the next point release.
 * Debian derivatives - Rolling releases will get it by the time it's on Debian
@@ -52,23 +51,25 @@ wcurl consists of a simple shell script that provides sane defaults for the curl
 invocation, for when the use case is to just download files.
 
 By default, wcurl will:  
-* Encode whitespaces in URLs;  
-* Download multiple URLs in parallel;
-* Follow redirects;
-* Automatically choose a filename as output;
-* Perform retries;
-* Resume from broken/interrupted downloads.
-* Set the downloaded file timestamp to the value provided by the server, if available;
+> * Encode whitespaces in URLs;
+> * Download multiple URLs in parallel if the installed curl's version is >= 7.66.0;
+> * Follow redirects;
+> * Automatically choose a filename as output;
+> * Avoid overwriting files if the installed curl's version is >= 7.83.0 (--no-clobber);
+> * Perform retries;
+> * Set the downloaded file timestamp to the value provided by the server, if available;
+> * Default to the protocol used as https if the URL doesn't contain any;
+> * Disable curl's URL globbing parser so {} and [] characters in URLs are not treated specially.
 
-Example, to download a single file:
+Example to download a single file:
 ```console
 wcurl example.com/filename.txt
 ```
 
-If you ever need to set a custom flag, you can make use of the `-o/--opts`
+If you ever need to set a custom flag, you can make use of the `--curl-options`
 wcurl option, anything set there will be passed to the curl invocation.
 Just beware that if you need to set any custom flags, it's likely you will be
-better served by calling curl directly. The `-o/--opts` options are there to
+better served by calling curl directly. The `--curl-options` option is there to
 allow for some flexibility in unforeseen circumstances.
 
 # The need for wcurl
@@ -155,7 +156,8 @@ When I started working on it, I was calling the new executable "curld"
 weekly calls in the Debian Brasília community, it was mentioned that this could
 be confused for a daemon.
 
-We then settled for the name "wcurl", which doesn't really stand for anything,
+We then settled for the name "wcurl", suggested by Carlos Henrique Lima
+Melara \<charles>. It doesn't really stand for anything,
 but it's very easy to remember.  
 
 You know... "it's that wget alternative for when you want to use curl instead"
@@ -169,8 +171,6 @@ I'm hosting the code on Github and Debian's GitLab instance, feel free to open a
 
 We also have a Matrix room for the Debian curl maintainers:  
 [https://matrix.to/#/#debian-curl-maintainers:matrix.org](https://matrix.to/#/#debian-curl-maintainers:matrix.org)  
-We have historically spoken Portuguese in the room but we'll switch to
-English in case anyone joins.
 
 # Acknowledgments
 
@@ -193,3 +193,10 @@ Junior \<sergiodj>, Guilherme Puida Moreira \<puida> and Carlos Henrique Lima
 Melara \<charles>. Sergio ended up rewriting the tool to be POSIX-compliant (my
 version was written in bash), so he takes all the credit for the portability.
 
+# Changes since publication
+## 2024-07-18
+* Update date of availability for Debian testing and expected date for bookworm backports.
+* Mention charles as the person who suggested "wcurl" as a name.
+* Update wcurl's -o/--opts options, it's now just --curl-options.
+* Remove mention of language spoken in the Matrix room, we are using English now.
+* Update list of features of wcurl.

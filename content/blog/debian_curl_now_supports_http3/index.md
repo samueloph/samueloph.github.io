@@ -27,8 +27,8 @@ podman run debian:unstable apt install --update -y curl && curl --http3-only htt
 
 ##### Availability
 * Debian unstable - Since 2024-07-02
-* Debian testing - Coming up between the second and third week of July 2024 (estimate if no issues are spotted).
-* Debian 12/bookworm backports - As soon as the package gets to Debian testing, I'll upload it to bookworm.
+* Debian testing - Since 2024-07-18
+* Debian 12/bookworm backports - Expected by the end of August 2024.
 * Debian 12/bookworm - Due to the mechanisms we have in place to make sure
 Debian stable is in fact stable, we will never be able to ship this in the
 regular repository. Users can make use of the
@@ -144,8 +144,6 @@ fair to expect less than a month.
 
 Feel free to join the Matrix room for the Debian curl maintainers:  
 [https://matrix.to/#/#debian-curl-maintainers:matrix.org](https://matrix.to/#/#debian-curl-maintainers:matrix.org)  
-We have historically spoken Portuguese in the room but we'll switch to English
-in case anyone joins.
 
 # Acknowledgements
 
@@ -168,3 +166,7 @@ Also on the Debian side, I've got loads of help and support from the
 co-maintainers of the curl package: Sergio Durigan Junior \<sergiodj> and Carlos
 Henrique Lima Melara \<charles>.
 
+# Changes since publication
+## 2024-07-18
+* Update date of availability for Debian testing and expected date for bookworm backports.
+* We have historically spoken Portuguese in the room but we'll switch to English in case anyone joins.
