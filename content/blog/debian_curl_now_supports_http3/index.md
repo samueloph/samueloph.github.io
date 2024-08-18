@@ -169,4 +169,4 @@ Henrique Lima Melara \<charles>.
 # Changes since publication
 ## 2024-07-18
 * Update date of availability for Debian testing and expected date for bookworm backports.
-* We have historically spoken Portuguese in the room but we'll switch to English in case anyone joins.
+* Remove mention of language spoken in the Matrix room, we are using English now.
