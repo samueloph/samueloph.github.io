@@ -11,6 +11,8 @@ toc = true
 thumbnail = "announcing_wcurl_image.png"
 +++
 
+{{ youtube(id="eM8M5qa4pPM") }}
+
 #### tl;dr
 
 Whenever you need to download files through the terminal and don't feel like using wget:  
@@ -24,7 +26,7 @@ Manpage:
 ##### Availability (comes installed with the curl package):
 * Debian unstable - Since 2024-07-02
 * Debian testing - Since 2024-07-18
-* Debian 12/bookworm backports - Expected by the end of August 2024.
+* Debian 12/bookworm-backports - Since 2024-08-25
 * Debian 12/bookworm - Depends on whether Debian's release team will approve
 it, it could be available in the next point release.
 * Debian derivatives - Rolling releases will get it by the time it's on Debian
@@ -200,3 +202,6 @@ version was written in bash), so he takes all the credit for the portability.
 * Update wcurl's -o/--opts options, it's now just --curl-options.
 * Remove mention of language spoken in the Matrix room, we are using English now.
 * Update list of features of wcurl.
+## 2024-08-28
+* Mention availability in bookworm-backports.
+* Link to wcurl lightning talk from DebConf24.

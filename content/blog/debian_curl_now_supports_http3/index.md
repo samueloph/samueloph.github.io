@@ -28,7 +28,7 @@ podman run debian:unstable apt install --update -y curl && curl --http3-only htt
 ##### Availability
 * Debian unstable - Since 2024-07-02
 * Debian testing - Since 2024-07-18
-* Debian 12/bookworm backports - Expected by the end of August 2024.
+* Debian 12/bookworm-backports - Since 2024-08-25
 * Debian 12/bookworm - Due to the mechanisms we have in place to make sure
 Debian stable is in fact stable, we will never be able to ship this in the
 regular repository. Users can make use of the
@@ -168,5 +168,7 @@ Henrique Lima Melara \<charles>.
 
 # Changes since publication
 ## 2024-07-18
-* Update date of availability for Debian testing and expected date for bookworm backports.
+* Update date of availability for Debian testing and expected date for bookworm-backports.
 * Remove mention of language spoken in the Matrix room, we are using English now.
+## 2024-08-28
+* Mention availability in bookworm-backports.
