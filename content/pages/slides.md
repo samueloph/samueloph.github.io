@@ -23,3 +23,5 @@ toc = true
 # "I use Debian BTW"
 
 [samueloph_slides_2024_08_i_use_debian_btw.pdf](https://raw.githubusercontent.com/samueloph/personal_website_files/main/slides/samueloph_slides_2024_08_i_use_debian_btw.pdf)
+
+{{ youtube(id="tfto3Seokn4") }}
