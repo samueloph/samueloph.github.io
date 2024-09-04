@@ -16,7 +16,7 @@ thumbnail = "announcing_wcurl_image.png"
 #### tl;dr
 
 Whenever you need to download files through the terminal and don't feel like using wget:  
-```console
+```bash
 wcurl example.com/filename.txt
 ```
 
@@ -64,7 +64,7 @@ By default, wcurl will:
 > * Disable curl's URL globbing parser so {} and [] characters in URLs are not treated specially.
 
 Example to download a single file:
-```console
+```bash
 wcurl example.com/filename.txt
 ```
 

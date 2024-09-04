@@ -14,12 +14,12 @@ thumbnail = "debian_curl_http3_image.png"
 #### tl;dr
 
 Starting with **curl 8.0.0-2**, you can now use HTTP3.
-```console
+```bash
 curl --http3-only https://example.com
 ```
 
 Or, if you would like to try it out in a container:
-```console
+```bash
 podman run debian:unstable apt install --update -y curl && curl --http3-only https://example.com
 ```
 *(in case you haven't noticed, apt now has the `--update` option for the
