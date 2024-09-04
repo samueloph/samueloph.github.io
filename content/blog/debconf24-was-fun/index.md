@@ -53,6 +53,7 @@ manpage.
 I then did a little demo to showcase why me (and a lot others) struggle
 with downloading things with curl, and how [wcurl](https://curl.se/wcurl/) solves that.
 
+[https://www.youtube.com/watch?v=eM8M5qa4pPM](https://www.youtube.com/watch?v=eM8M5qa4pPM)
 {{ youtube(id="eM8M5qa4pPM") }}
 
 # Fixing CVEs on Debian: Everything you probably know already
@@ -64,6 +65,7 @@ fixing CVEs for Debian.
 This is an area where we don't get a lot of new contributors, I'm trying to
 change that, and this talk can be used to introduce newcomers to it.
 
+[https://www.youtube.com/watch?v=XzNVVILVyUM](https://www.youtube.com/watch?v=XzNVVILVyUM)
 {{ youtube(id="XzNVVILVyUM") }}
 
 # The secret sauce of Debian
@@ -76,6 +78,7 @@ This talk is an initial step towards making people aware of the cool
 things happening behind the scenes. Ideally we should have it
 well-documented somewhere.
 
+[https://www.youtube.com/watch?v=x_X2IBnpjic](https://www.youtube.com/watch?v=x_X2IBnpjic)
 {{ youtube(id="x_X2IBnpjic") }}
 
 # "I use Debian BTW": fzf, tmux, zoxide and friends
@@ -91,6 +94,7 @@ This talk is a bit of a silly one where I'm just making people aware of the
 existence of a few Golang/Rust CLI tools, and also some dotfiles configurations
 that should probably be the default.
 
+[https://www.youtube.com/watch?v=tfto3Seokn4](https://www.youtube.com/watch?v=tfto3Seokn4)
 {{ youtube(id="tfto3Seokn4") }}
 
 # curl
@@ -129,6 +133,7 @@ also give us the recordings for later.
 And so the "curl maintainers BoF" happened, where we spoke about HTTP3,
 GnutTLS, [wcurl](https://curl.se/wcurl/) and other things.
 
+[https://www.youtube.com/watch?v=fL7hSypUTdM](https://www.youtube.com/watch?v=fL7hSypUTdM)
 {{ youtube(id="fL7hSypUTdM") }}
 
 # wcurl
@@ -189,4 +194,7 @@ that point it becomes easier to consciously avoid them.
 I am collecting a list of things I wish I had done differently on all of those
 talks, so if I end up presenting any one of them again, it will be an improved
 version.
+
+{{ img(src="./debconf24_group_photo.webp" alt="A picture from the top of a
+group of conference attendees, there's about 150 people in the picture") }}
 
