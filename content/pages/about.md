@@ -35,4 +35,4 @@ He also helps people learning packaging and starting to contributing to Debian.
 
 ## Curriculum
 
-[samuel_henrique_samueloph_cv_2024_03.pdf](../personal_website_files/samuel_henrique_samueloph_cv_2024_03.pdf)
+[HERE](https://raw.githubusercontent.com/samueloph/personal_website_files/main/samuel_henrique_samueloph_cv_2024_03.pdf)
