@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Samuel Henrique (samueloph) - hello-world</title>
+    <subtitle>My personal website</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://samueloph.dev/categories/hello-world/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://samueloph.dev"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2024-04-18T00:00:00+00:00</updated>
+    <id>https://samueloph.dev/categories/hello-world/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Hello World</title>
+        <published>2024-04-18T00:00:00+00:00</published>
+        <updated>2024-04-18T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://samueloph.dev/blog/hello-world/"/>
+        <id>https://samueloph.dev/blog/hello-world/</id>
+        
+        <content type="html" xml:base="https://samueloph.dev/blog/hello-world/">&lt;p&gt;This is my very first post, just to make sure everything is working as expected.&lt;&#x2F;p&gt;
+&lt;p&gt;Made with &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.getzola.org&#x2F;&quot;&gt;Zola&lt;&#x2F;a&gt; and the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jieiku&#x2F;abridge&#x2F;&quot;&gt;Abridge theme&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>
