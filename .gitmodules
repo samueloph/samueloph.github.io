@@ -2,9 +2,3 @@
 	path = themes/abridge
 	url = git@github.com:samueloph/abridge.git
 	branch = samueloph/personal_site_customizations
-[submodule "static/personal_website_files"]
-	path = static/personal_website_files
-	url = https://github.com/samueloph/personal_website_files.git
-[submodule "content/static/personal_website_files"]
-	path = content/static/personal_website_files
-	url = https://github.com/samueloph/personal_website_files.git
