@@ -1,5 +1,5 @@
 +++
-title = "DebConf24 was fun!: Security, curl, wcurl, Debian's quality"
+title = "DebConf24 was fun! Security, curl, wcurl, Debian's quality"
 date = 2024-09-04
 draft = false
 
@@ -197,4 +197,5 @@ version.
 
 {{ img(src="./debconf24_group_photo.webp" alt="A picture from the top of a
 group of conference attendees, there's about 150 people in the picture") }}
-
+Photography: Aigars Mahinovs \<aigaruius@debian.org\>  
+License: CC-BYv3+ or GPLv2+
