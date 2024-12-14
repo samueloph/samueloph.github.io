@@ -21,7 +21,7 @@ wcurl example.com/filename.txt
 ```
 
 Manpage:  
-[https://manpages.debian.org/unstable/curl/wcurl.1.en.html](https://manpages.debian.org/unstable/curl/wcurl.1.en.html)
+[https://curl.se/wcurl/manual.html](https://curl.se/wcurl/manual.html)
 
 ##### Availability (comes installed with the curl package):
 * Debian unstable - Since 2024-07-02
@@ -33,9 +33,18 @@ it, it could be available in the next point release.
 testing (e.g.: Kali Linux). Stable derivatives only in their next major release.
 
 If you don't want to wait for the package update to arrive, you can always copy
-the script and place it in your `/usr/bin`, the code is here:  
-[https://github.com/Debian/wcurl/blob/main/wcurl](https://github.com/Debian/wcurl/blob/main/wcurl)  
-[https://salsa.debian.org/debian/wcurl/-/blob/main/wcurl?ref_type=heads](https://salsa.debian.org/debian/wcurl/-/blob/main/wcurl?ref_type=heads)
+the script and place it in your `/usr/bin`:
+```bash
+curl -fLO https://github.com/curl/wcurl/releases/latest/download/wcurl
+chmod +x wcurl
+sudo mv wcurl /usr/bin/wcurl
+```
+
+After this announcement, wcurl has joined the curl organization:  
+[https://daniel.haxx.se/blog/2024/08/08/curl-welcomes-wcurl-to-the-team/](https://daniel.haxx.se/blog/2024/08/08/curl-welcomes-wcurl-to-the-team/)
+
+Project homepage:  
+[https://curl.se/wcurl/](https://curl.se/wcurl/)
 
 # Smoother CLI experience
 
@@ -53,15 +62,17 @@ wcurl consists of a simple shell script that provides sane defaults for the curl
 invocation, for when the use case is to just download files.
 
 By default, wcurl will:  
-> * Encode whitespaces in URLs;
+
+> * Percent-encode whitespaces in URLs;
 > * Download multiple URLs in parallel if the installed curl's version is >= 7.66.0;
 > * Follow redirects;
 > * Automatically choose a filename as output;
 > * Avoid overwriting files if the installed curl's version is >= 7.83.0 (--no-clobber);
 > * Perform retries;
 > * Set the downloaded file timestamp to the value provided by the server, if available;
-> * Default to the protocol used as https if the URL doesn't contain any;
-> * Disable curl's URL globbing parser so {} and [] characters in URLs are not treated specially.
+> * Disable curl's URL globbing parser so {} and [] characters in URLs are not treated specially;
+> * Percent-decode the resulting filename;
+> * Use "index.html" as default filename if there's none in the URL.
 
 Example to download a single file:
 ```bash
@@ -167,9 +178,8 @@ You know... "it's that wget alternative for when you want to use curl instead"
 
 # Feedback
 
-I'm hosting the code on Github and Debian's GitLab instance, feel free to open an issue to provide feedback.  
-[https://salsa.debian.org/debian/wcurl](https://salsa.debian.org/debian/wcurl)  
-[https://github.com/Debian/wcurl](https://github.com/Debian/wcurl)
+The code is hosted in GitHub, feel free to open an issue to provide feedback.  
+[https://github.com/curl/wcurl](https://github.com/curl/wcurl)
 
 We also have a Matrix room for the Debian curl maintainers:  
 [https://matrix.to/#/#debian-curl-maintainers:matrix.org](https://matrix.to/#/#debian-curl-maintainers:matrix.org)  
@@ -196,12 +206,16 @@ Melara \<charles>. Sergio ended up rewriting the tool to be POSIX-compliant (my
 version was written in bash), so he takes all the credit for the portability.
 
 # Changes since publication
+## 2024-12-14
+* Update list of wcurl features.
+* Point out to wcurl homepage and mention that it's now part of curl.
+* Reorder this changelog to have latest changes on top.
+## 2024-08-28
+* Mention availability in bookworm-backports.
+* Link to wcurl lightning talk from DebConf24.
 ## 2024-07-18
 * Update date of availability for Debian testing and expected date for bookworm backports.
 * Mention charles as the person who suggested "wcurl" as a name.
 * Update wcurl's -o/--opts options, it's now just --curl-options.
 * Remove mention of language spoken in the Matrix room, we are using English now.
 * Update list of features of wcurl.
-## 2024-08-28
-* Mention availability in bookworm-backports.
-* Link to wcurl lightning talk from DebConf24.
