@@ -167,8 +167,8 @@ co-maintainers of the curl package: Sergio Durigan Junior \<sergiodj> and Carlos
 Henrique Lima Melara \<charles>.
 
 # Changes since publication
+## 2024-08-28
+* Mention availability in bookworm-backports.
 ## 2024-07-18
 * Update date of availability for Debian testing and expected date for bookworm-backports.
 * Remove mention of language spoken in the Matrix room, we are using English now.
-## 2024-08-28
-* Mention availability in bookworm-backports.
