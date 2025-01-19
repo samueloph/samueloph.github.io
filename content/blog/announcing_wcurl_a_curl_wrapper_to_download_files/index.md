@@ -27,8 +27,10 @@ Manpage:
 * Debian unstable - Since 2024-07-02
 * Debian testing - Since 2024-07-18
 * Debian 12/bookworm-backports - Since 2024-08-25
-* Debian 12/bookworm - Depends on whether Debian's release team will approve
-it, it could be available in the next point release.
+* Debian 12/bookworm - Due to the way changes are planned for Debian Stable,
+wcurl will not be present in bookworm. Users are recommended to either manually
+download wcurl or use the bookworm-backports repository. wcurl will be present
+in Debian 13/trixie.
 * Debian derivatives - Rolling releases will get it by the time it's on Debian
 testing (e.g.: Kali Linux). Stable derivatives only in their next major release.
 
@@ -206,6 +208,9 @@ Melara \<charles>. Sergio ended up rewriting the tool to be POSIX-compliant (my
 version was written in bash), so he takes all the credit for the portability.
 
 # Changes since publication
+## 2025-01-19
+* Mention that wcurl will not be added to Debian 12/bookworm, it will be
+present in Debian 13/trixie.
 ## 2024-12-14
 * Update list of wcurl features.
 * Point out to wcurl homepage and mention that it's now part of curl.
