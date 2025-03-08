@@ -20,7 +20,7 @@ curl --http3-only https://example.com
 
 Or, if you would like to try it out in a container:
 ```bash
-podman run debian:unstable apt install --update -y curl && curl --http3-only https://example.com
+podman run debian:testing /bin/bash -c 'apt install --update -y curl && curl --http3-only https://example.com'
 ```
 *(in case you haven't noticed, apt now has the `--update` option for the
 `upgrade` and `install` commands, although not available on stable yet)*
@@ -167,6 +167,9 @@ co-maintainers of the curl package: Sergio Durigan Junior \<sergiodj> and Carlos
 Henrique Lima Melara \<charles>.
 
 # Changes since publication
+## 2025-03-08
+* Fix podman command, the previous one was not running all commands inside the cotainer.
+* Change the podman command to use Debian testing instead of unstable.
 ## 2024-08-28
 * Mention availability in bookworm-backports.
 ## 2024-07-18
