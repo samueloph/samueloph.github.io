@@ -168,7 +168,7 @@ Henrique Lima Melara \<charles>.
 
 # Changes since publication
 ## 2025-03-08
-* Fix podman command, the previous one was not running all commands inside the cotainer.
+* Fix podman command, the previous one was not running all commands inside the container.
 * Change the podman command to use Debian testing instead of unstable.
 ## 2024-08-28
 * Mention availability in bookworm-backports.
