@@ -25,3 +25,11 @@ toc = true
 [samueloph_slides_2024_08_i_use_debian_btw.pdf](/personal_website_files/slides/samueloph_slides_2024_08_i_use_debian_btw.pdf)
 
 {{ youtube(id="tfto3Seokn4") }}
+
+# wcurl - one year later
+
+[samueloph_slides_2025_05_wcurl_one_year_later.pdf](/personal_website_files/slides/samueloph_slides_2025_05_wcurl_one_year_later.pdf)
+
+# A Segurança do Debian
+
+[samueloph_slides_2025_05_a_seguranca_do_debian.pdf](/personal_website_files/slides/samueloph_slides_2025_05_a_seguranca_do_debian.pdf)
