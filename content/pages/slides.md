@@ -33,3 +33,7 @@ toc = true
 # A Segurança do Debian
 
 [samueloph_slides_2025_05_a_seguranca_do_debian.pdf](/personal_website_files/slides/samueloph_slides_2025_05_a_seguranca_do_debian.pdf)
+
+# The Security of Debian - An Introduction for Advanced Users
+
+[samueloph_slides_2025_07_the_security_of_debian.pdf](/personal_website_files/slides/samueloph_slides_2025_07_the_security_of_debian.pdf)
