@@ -28,7 +28,7 @@ toc = true
 
 # wcurl - one year later
 
-[samueloph_slides_2025_05_wcurl_one_year_later.pdf](/personal_website_files/slides/samueloph_slides_2025_05_wcurl_one_year_later.pdf)
+[samueloph_slides_2025_07_wcurl_one_year_later.pdf](/personal_website_files/slides/samueloph_slides_2025_07_wcurl_one_year_later.pdf)
 
 # A Segurança do Debian
 
