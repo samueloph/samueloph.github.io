@@ -1,6 +1,6 @@
 +++
 title = "Debian 13: My list of exciting new features"
-date = 2025-08-25T17:30:00Z
+date = 2025-08-28T17:30:00Z
 draft = false
 
 [taxonomies]
