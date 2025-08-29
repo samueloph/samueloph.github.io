@@ -2,6 +2,7 @@
 title = "Debian 13: My list of exciting new features"
 date = 2025-08-28T17:30:00Z
 draft = false
+aliases = ["blog/debian-13-my-list-of-exciting-new-things"]
 
 [taxonomies]
 categories = ["debian"]
