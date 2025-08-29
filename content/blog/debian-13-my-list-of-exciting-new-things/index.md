@@ -349,5 +349,5 @@ podman run -it docker.io/debian/eol:bo
 ```
 
 Don't be surprised when noticing that `apt/apt-get` is not available inside the
-container, that's because `apt` first appeared in Debian Slinky (2.1).
+container, that's because `apt` first appeared in Debian Slink (2.1).
 
