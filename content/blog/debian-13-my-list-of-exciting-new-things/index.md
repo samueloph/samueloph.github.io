@@ -117,7 +117,7 @@ release](https://github.com/systemd/systemd/releases/tag/v254)
 Try it out:
 ```bash
 # This will reboot your machine!
-systemd soft-reboot
+systemctl soft-reboot
 ```
 
 ## 4) apt --update
