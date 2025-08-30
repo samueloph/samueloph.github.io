@@ -93,9 +93,10 @@ for HTTP/3. [I've written about this in July
 first enabled it. Note that we first switched the curl CLI to GnuTLS, but then
 ended up releasing the curl CLI linked with OpenSSL (as support arrived later).
 
-Debian was the first Linux distro to enable it in the default build of the curl
-package, but Gentoo enabled it a few weeks earlier in their non-default flavor
-of the package, kudos to them!
+Debian was the first stable Linux distro to enable it, and within
+rolling-release-based distros; Gentoo enabled it first in their non-default
+flavor of the package and Arch Linux did it three months before we pushed it to
+Debian Unstable/Testing/Stable-backports, kudos to them!
 
 HTTP/3 is not used by default by the curl CLI, you have to enable it with
 `--http3` or `--http3-only`.
@@ -352,3 +353,6 @@ podman run -it docker.io/debian/eol:bo
 Don't be surprised when noticing that `apt/apt-get` is not available inside the
 container, that's because `apt` first appeared in Debian Slink (2.1).
 
+# Changes since publication
+## 2025-08-30
+* Mention that Arch also enabled HTTP/3.
