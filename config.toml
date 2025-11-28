@@ -82,7 +82,7 @@ menu = [
     {url = "about", name = "About", slash = true, blank = false, size="s110"},
     # {url = "archive", name = "Posts", slash = true, blank = false, size="s110"},
     {url = "categories", name = "Categories", slash = true, blank = false, size="s110"},
-    {url = "slides", name = "Slides", slash = true, blank = false, size="s110"},
+    {url = "slides", name = "Slides and Presentations", slash = true, blank = false, size="s110"},
     # {url = "tags", name = "Tags", slash = true, blank = false, size="s110"},
 ]
 menu_footer = [
