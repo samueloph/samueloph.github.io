@@ -1,0 +1,298 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://samueloph.dev/js/theme.min.js" integrity="sha384-pb++s6uBRKaQv+iAXpgA/H3IlpLZdO14tTwuCI7uXmz4aaZdByoCcM+6BhynMq/1"></script>
+  <link rel="stylesheet" href="https://samueloph.dev/abridge.css?h=89a765af6aa0a7f55ac6" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base" content="https://samueloph.dev" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://samueloph.dev/manifest.min.json" />
+  <link rel="mask-icon" href="https://samueloph.dev/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="icon" type="image/svg+xml" href="https://samueloph.dev/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://samueloph.dev/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://samueloph.dev/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://samueloph.dev/favicon-16x16.png" />
+  <link rel="alternate" type="application/atom+xml" title="Samuel Henrique (samueloph) Atom Feed" href="https://samueloph.dev/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>DebConf24 was fun! Security, curl, wcurl, Debian's quality | Samuel Henrique (samueloph)</title>
+  <meta name="author" content="Samuel Henrique (samueloph)" />
+  <meta name="copyright" content="Samuel Henrique (samueloph)" />
+  <meta name="description" content="My personal website" />
+  <link rel="canonical" href="https://samueloph.dev/blog/debconf24-was-fun/" />
+  <meta name="keywords" content="samueloph, debian, programming, blog, rust, python, security" />
+  <meta property="og:url" content="https://samueloph.dev/blog/debconf24-was-fun/" />
+  <meta name="twitter:url" content="https://samueloph.dev/blog/debconf24-was-fun/" />
+  <meta property="og:description" content="My personal website" />
+  <meta name="twitter:description" content="My personal website" />
+  <meta property="og:title" content="DebConf24 was fun! Security, curl, wcurl, Debian&#x27;s quality | Samuel Henrique (samueloph)" />
+  <meta name="twitter:title" content="DebConf24 was fun! Security, curl, wcurl, Debian&#x27;s quality | Samuel Henrique (samueloph)" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://samueloph.dev/blog/debconf24-was-fun/debconf24_was_fun.webp" />
+  <meta property="og:image" content="https://samueloph.dev/blog/debconf24-was-fun/debconf24_was_fun.webp" />
+  <meta property="og:site_name" content="Samuel Henrique (samueloph)" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2024-09-04" />
+  <meta name="twitter:site" content="@samueloph_" />
+  <meta name="twitter:creator" content="@samueloph_" />
+  <script defer src="https://samueloph.dev/js/abridge.min.js?h=e0f9a881a665c86cce9c" integrity="sha384-QF67y7RnPkuDrJNQqn3/7nYxqxWkW/qHI7zN0WTES1aXbf+TotoByRBb835fUE6U"></script>
+  <noscript><link rel="stylesheet" href="https://samueloph.dev/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><big><a href="https://samueloph.dev" title="Samuel Henrique (samueloph)">Samuel Henrique (samueloph)</a></big></div>
+      <div>
+
+        <div>
+          <ul><li><a class="s110" href="https://samueloph.dev/blog/"> Blog </a></li><li><a class="s110" href="https://samueloph.dev/about/"> About </a></li><li><a class="s110" href="https://samueloph.dev/categories/"> Categories </a></li><li><a class="s110" href="https://samueloph.dev/slides/"> Slides and Presentations </a></li><li><i type="reset" id="mode" class="js svgs adjust"></i></ul>
+        </div>
+
+        <div>
+          <div>
+            <form autocomplete=off class="js" name="goSearch" id="searchbox">
+              <div class="searchd">
+                <input id="searchinput" type="text" placeholder="Search" title="Search" />
+                <button type="submit" title="Search" class="svgs svgm search"></button>
+              </div>
+              <div class="results"><div id="suggestions"></div></div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h1><a href="https://samueloph.dev/blog/debconf24-was-fun/">DebConf24 was fun! Security, curl, wcurl, Debian's quality</a></h1>
+
+      <span class="s95"> Samuel Henrique (samueloph) <span class="rpad"></span> September 04, 2024 <span class="rpad"></span> [<a href="https://samueloph.dev/categories/debian/">debian</a>, <a href="https://samueloph.dev/categories/curl/">curl</a>, <a href="https://samueloph.dev/categories/security/">security</a>, <a href="https://samueloph.dev/categories/debconf/">debconf</a>]</span>
+
+    
+
+
+ <img src="debconf24_was_fun.webp" alt="A picture of a badger2040w with
+Samuel&#x27;s badge and the curl manpage PCB on the side" width="1200" height="630" loading="lazy" />
+<h4 id="tl-dr">tl;dr</h4>
+<p><a rel="noopener" target="_blank" href="https://debconf24.debconf.org/">DebConf24</a> was fun!</p>
+<p>A playlist of all of my talks, with subtitles (en, pt-br) and chapters is
+available on <a rel="noopener" target="_blank" href="https://youtube.com/playlist?list=PLKGG29PjeLnYeao03jWWH0eaRC5htIg1E&amp;si=3Hwrl5WHFFM2IaSO">YouTube</a>.</p>
+<h1 id="overview">Overview</h1>
+<p>DebConf24 was held in Busan, South Korea, between Sunday July 28th to Sunday August 4th 2024.</p>
+<p>As usual for DebConfs, I had a great time meeting my friends, but also met new
+people and got to learn a bit about the interesting things they're working on.</p>
+<p>I ended up getting too excited during the talk submission stage of the
+conference and as a result I presented 5 different activities (3 talks, 1 BoF
+and 1 lightning talk).</p>
+<p>Since I was too busy with the presentations, I did not have a lot of time to
+actually hang out with folks, or even to go out in the city, I guess I've
+learned my lesson for next time.</p>
+<p>The main purpose of this post is to write about all of the things I presented
+at the conference. I did want to list some of the interesting talks I've
+watched, but that I would not be able to be fair as I'm sure I would miss some.</p>
+<p>You can get the schedule and the recordings of any talks from the conference's website:
+<a rel="noopener" target="_blank" href="https://debconf24.debconf.org/schedule/">https://debconf24.debconf.org/schedule/</a></p>
+<h1 id="wcurl-lightning-talk">wcurl Lightning Talk</h1>
+<p>The most fun of my presentations, during the second-to-last day of the
+conference, I've asked for help from Sergio Durigan Junior &lt;sergiodj&gt; to
+setup an URL containing a whitespace and redirecting that to <a rel="noopener" target="_blank" href="https://curl.se/wcurl/">wcurl</a>'s
+manpage.</p>
+<p>I then did a little demo to showcase why me (and a lot others) struggle
+with downloading things with curl, and how <a rel="noopener" target="_blank" href="https://curl.se/wcurl/">wcurl</a> solves that.</p>
+<p><a rel="noopener" target="_blank" href="https://www.youtube.com/watch?v=eM8M5qa4pPM">https://www.youtube.com/watch?v=eM8M5qa4pPM</a>
+<div class="yv">
+    <iframe src="https://www.youtube-nocookie.com/embed/eM8M5qa4pPM" title="Youtube" class="yvi" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
+</p>
+<h1 id="fixing-cves-on-debian-everything-you-probably-know-already">Fixing CVEs on Debian: Everything you probably know already</h1>
+<p>I've always felt like DebConf was missing security-related talks, so I decided
+to do something about it and presented a few of the things I've learned when
+fixing CVEs for Debian.</p>
+<p>This is an area where we don't get a lot of new contributors, I'm trying to
+change that, and this talk can be used to introduce newcomers to it.</p>
+<p><a rel="noopener" target="_blank" href="https://www.youtube.com/watch?v=XzNVVILVyUM">https://www.youtube.com/watch?v=XzNVVILVyUM</a>
+<div class="yv">
+    <iframe src="https://www.youtube-nocookie.com/embed/XzNVVILVyUM" title="Youtube" class="yvi" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
+</p>
+<h1 id="the-secret-sauce-of-debian">The secret sauce of Debian</h1>
+<p>Debian is not very vocal about all of the nice things it has regarding
+quality-assurance, testing, or CI, even though it's at the state-of-the-art for
+a lot of things.</p>
+<p>This talk is an initial step towards making people aware of the cool
+things happening behind the scenes. Ideally we should have it
+well-documented somewhere.</p>
+<p><a rel="noopener" target="_blank" href="https://www.youtube.com/watch?v=x_X2IBnpjic">https://www.youtube.com/watch?v=x_X2IBnpjic</a>
+<div class="yv">
+    <iframe src="https://www.youtube-nocookie.com/embed/x_X2IBnpjic" title="Youtube" class="yvi" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
+</p>
+<h1 id="i-use-debian-btw-fzf-tmux-zoxide-and-friends">"I use Debian BTW": fzf, tmux, zoxide and friends</h1>
+<p>One of my earliest good memories of Debian was when it started coming with a
+colored PS1 by default, I still remember the feeling of relief whenever I
+jumped into a Debian server and didn't have to deal with a black and white PS1.</p>
+<p>There's still a lot of room for Debian to ship better defaults, and I think
+some of them can actually happen.</p>
+<p>This talk is a bit of a silly one where I'm just making people aware of the
+existence of a few Golang/Rust CLI tools, and also some dotfiles configurations
+that should probably be the default.</p>
+<p><a rel="noopener" target="_blank" href="https://www.youtube.com/watch?v=tfto3Seokn4">https://www.youtube.com/watch?v=tfto3Seokn4</a>
+<div class="yv">
+    <iframe src="https://www.youtube-nocookie.com/embed/tfto3Seokn4" title="Youtube" class="yvi" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
+</p>
+<h1 id="curl">curl</h1>
+<p>The curl project does such a great job with their security advisories that it
+will likely never receive the amount of praise it deserves, but I did my best
+at mentioning it throughout my <a rel="noopener" target="_blank" href="https://www.youtube.com/watch?v=XzNVVILVyUM">CVEs talk</a>.</p>
+<p><strong>Maybe I will write more extensively about this someday, but in case I don't:</strong></p>
+<hr />
+<p>There's no other project which always consistently mentions the exact range of
+commits that are affected by a given CVE.</p>
+<p>Forget about whether the versions are EOL, curl doesn't have LTS releases, yet
+they do such a great job at clearly documenting their CVEs that I would take
+that over having LTS releases anytime (that's for curl at least, I
+acknowledge some types of projects have a different need for LTS
+releases).</p>
+<p>Not only that, but they are also always careful about explaining alternative
+mitigations such as configuration changes, build flags that defuse the
+exploitation, or parameters that you should not use.</p>
+<hr />
+<p>Just like we tend to do every time we meet, me and the other Debian curl
+maintainers spent the first 2 or 3 days of the conference talking about how we
+wanted to eventually meet up to discuss the package.</p>
+<p>It was going to be informal, maybe during the <a rel="noopener" target="_blank" href="https://debconf24.debconf.org/about/cheese-and-wine-party/">Cheese and Wine
+party</a>, but then
+I've realized we should make it part of the official schedule, which would
+also give us the recordings for later.</p>
+<p>And so the "curl maintainers BoF" happened, where we spoke about HTTP3,
+GnutTLS, <a rel="noopener" target="_blank" href="https://curl.se/wcurl/">wcurl</a> and other things.</p>
+<p><a rel="noopener" target="_blank" href="https://www.youtube.com/watch?v=fL7hSypUTdM">https://www.youtube.com/watch?v=fL7hSypUTdM</a>
+<div class="yv">
+    <iframe src="https://www.youtube-nocookie.com/embed/fL7hSypUTdM" title="Youtube" class="yvi" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
+</p>
+<h1 id="wcurl">wcurl</h1>
+<p>Right after that BoF, Daniel Stenberg
+<a rel="noopener" target="_blank" href="https://curl.se/mail/archive-2024-08/0000.html">asked</a> if we were interested
+in having <a rel="noopener" target="_blank" href="https://curl.se/wcurl/">wcurl</a> adopted into curl, which we
+definitely were, so <a rel="noopener" target="_blank" href="https://daniel.haxx.se/blog/2024/08/08/curl-welcomes-wcurl-to-the-team/">wcurl is now part of the curl
+project</a>.</p>
+<p>Daniel was also kind enough to design a logo for the project, which makes me
+especially happy because I can stop with my own approach at a logo (which I had
+to redo every few days):</p>
+ <img src="wcurl_draft_logo.webp" alt="A laptop with a curl and a GoHorse
+sticker, there&#x27;s a &#x27;w&#x27; handwritten with a marker on the right side of the curl
+sticker, making it &#x27;wcurl&#x27;" width="700" height="699" loading="lazy" />
+<p>And here is the new logo:</p>
+ <img src="wcurl_logo.svg" alt="&#x27;wcurl&#x27; written with the same font and
+colors as the curl logo, with the &#x27;w&#x27; being green instead of blue, and a
+download icon at the end" width="998" height="250" loading="lazy" />
+<p>Much better, I would say :)</p>
+<h1 id="curl-swag">curl Swag</h1>
+<p>DebConf24 was my chance at forwarding some curl swag items to the other
+curl maintainers, so both Sergio Durigan Junior &lt;sergiodj&gt; and Carlos
+Henrique Lima Melara &lt;charles&gt; got the <a rel="noopener" target="_blank" href="https://daniel.haxx.se/blog/2024/05/06/i-survived-curl-up-2024">curl-up
+t-shirt</a>
+and the very cool <a rel="noopener" target="_blank" href="https://daniel.haxx.se/blog/2023/11/03/curl-coasters/">curl PCB
+coaster</a>, both gifted
+by Daniel Stenberg.</p>
+<p>Unfortunately I didn't have any of that for DebConf attendees, but I did drop
+loads of curl stickers at the stickers table, they were gone very quickly.</p>
+ <img src="debconf24_curl_stickers.webp" alt="A table full of different
+stickers, curl stickers can be seen over the whole table" width="450" height="800" loading="lazy" />
+<h1 id="for-the-future">For the future</h1>
+<p>I used to think the most humbling experience you could have as someone who presented
+a talk was to have to watch it yourself, you notice a lot of mistakes and
+you instantly think about things that should be done differently.</p>
+<p>It turns out the most humbling thing to do is actually to write subtitles for
+your talks, I noticed every single mistake, often multiple times.</p>
+<p>So after spending more than 30 hours writing the subtitles for both English and
+Brazilian Portuguese for my talks, I feel like it's going to be much easier to
+avoid committing the same mistakes again. After some time you stop feeling shame
+about those mistakes and you're just left with feelings of annoyance, and at
+that point it becomes easier to consciously avoid them.</p>
+<p>I am collecting a list of things I wish I had done differently on all of those
+talks, so if I end up presenting any one of them again, it will be an improved
+version.</p>
+<p> <img src="debconf24_group_photo.webp" alt="A picture from the top of a
+group of conference attendees, there&#x27;s about 150 people in the picture" width="1484" height="1024" loading="lazy" />
+
+Photography: Aigars Mahinovs &lt;aigaruius@debian.org&gt;<br />
+License: CC-BYv3+ or GPLv2+</p>
+
+      <nav>
+        <div>
+          <a href="https://samueloph.dev/blog/debian-13-my-list-of-exciting-new-features/">&#8249; Debian 13: My list of exciting new features</a>
+        </div>
+        <div>
+          <a href="https://samueloph.dev/blog/debian-curl-now-supports-http3/"> Debian's curl now supports HTTP3 &#8250;</a>
+        </div>
+      </nav>
+    </article>
+
+    <div class="sblock">
+      <div class="blockdiv sticky">
+        <a class="b s150" href="#">Index</a>
+        <div>
+          <a href="#tl-dr">tl;dr</a>
+        </div>
+        <div>
+          <a href="#overview">Overview</a>
+        </div>
+        <div>
+          <a href="#wcurl-lightning-talk">wcurl Lightning Talk</a>
+        </div>
+        <div>
+          <a href="#fixing-cves-on-debian-everything-you-probably-know-already">Fixing CVEs on Debian: Everything you probably know already</a>
+        </div>
+        <div>
+          <a href="#the-secret-sauce-of-debian">The secret sauce of Debian</a>
+        </div>
+        <div>
+          <a href="#i-use-debian-btw-fzf-tmux-zoxide-and-friends">&quot;I use Debian BTW&quot;: fzf, tmux, zoxide and friends</a>
+        </div>
+        <div>
+          <a href="#curl">curl</a>
+        </div>
+        <div>
+          <a href="#wcurl">wcurl</a>
+        </div>
+        <div>
+          <a href="#curl-swag">curl Swag</a>
+        </div>
+        <div>
+          <a href="#for-the-future">For the future</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <hr />
+    <div class="c">
+      <nav class="tpad"><div><a type="application/atom+xml" href="https://samueloph.dev/atom.xml" target="_blank" title="Samuel Henrique (samueloph) Atom Feed"><i type="Button" class="svg rss" title="Samuel Henrique (samueloph) Atom Feed"></i></a><a class="js m-protected" href="#c2FtdWVsb3BoQGdtYWlsLmNvbQ==" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a><a href="https://mastodon.social/@samueloph" target="_blank" title="Mastodon" rel="me"><i type="Button" class="svg mastodon" title="Mastodon"></i></a><a href="https://matrix.to&#x2F;#&#x2F;@samueloph:matrix.org/" target="_blank" title="Element"><i type="Button" class="svg element" title="Element"></i></a><a href="https://twitter.com/samueloph_/" target="_blank" title="Twitter"><i type="Button" class="svg twitter" title="Twitter"></i></a><a href="https://www.linkedin.com/in/samueloph/" target="_blank" title="LinkedIn"><i type="Button" class="svg linkedin" title="LinkedIn"></i></a><a href="https://github.com/samueloph/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a><a href="https://salsa.debian.org/samueloph/" target="_blank" title="Debian"><i type="Button" class="svg debian" title="Debian"></i></a>
+      </div></nav>
+      <nav class="vpad">
+        <a class="rpad" href="https://samueloph.dev/about/"> About </a>
+        <a class="rpad" href="https://samueloph.dev/sitemap.xml" target="_blank"> Sitemap </a>
+      </nav>
+          
+      <p class="s90"> © Samuel Henrique (samueloph). Unless otherwise noted, the content in this website is available under the <a rel="noopener" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license.</p>
+      <p class="s90">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> & <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer><span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

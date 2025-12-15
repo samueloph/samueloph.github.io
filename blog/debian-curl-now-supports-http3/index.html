@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://samueloph.dev/js/theme.min.js" integrity="sha384-pb++s6uBRKaQv+iAXpgA/H3IlpLZdO14tTwuCI7uXmz4aaZdByoCcM+6BhynMq/1"></script>
+  <link rel="stylesheet" href="https://samueloph.dev/abridge.css?h=89a765af6aa0a7f55ac6" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base" content="https://samueloph.dev" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://samueloph.dev/manifest.min.json" />
+  <link rel="mask-icon" href="https://samueloph.dev/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="icon" type="image/svg+xml" href="https://samueloph.dev/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://samueloph.dev/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://samueloph.dev/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://samueloph.dev/favicon-16x16.png" />
+  <link rel="alternate" type="application/atom+xml" title="Samuel Henrique (samueloph) Atom Feed" href="https://samueloph.dev/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>Debian's curl now supports HTTP3 | Samuel Henrique (samueloph)</title>
+  <meta name="author" content="Samuel Henrique (samueloph)" />
+  <meta name="copyright" content="Samuel Henrique (samueloph)" />
+  <meta name="description" content="My personal website" />
+  <link rel="canonical" href="https://samueloph.dev/blog/debian-curl-now-supports-http3/" />
+  <meta name="keywords" content="samueloph, debian, programming, blog, rust, python, security" />
+  <meta property="og:url" content="https://samueloph.dev/blog/debian-curl-now-supports-http3/" />
+  <meta name="twitter:url" content="https://samueloph.dev/blog/debian-curl-now-supports-http3/" />
+  <meta property="og:description" content="My personal website" />
+  <meta name="twitter:description" content="My personal website" />
+  <meta property="og:title" content="Debian&#x27;s curl now supports HTTP3 | Samuel Henrique (samueloph)" />
+  <meta name="twitter:title" content="Debian&#x27;s curl now supports HTTP3 | Samuel Henrique (samueloph)" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://samueloph.dev/blog/debian-curl-now-supports-http3/debian_curl_http3_image.png" />
+  <meta property="og:image" content="https://samueloph.dev/blog/debian-curl-now-supports-http3/debian_curl_http3_image.png" />
+  <meta property="og:site_name" content="Samuel Henrique (samueloph)" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2024-07-04" />
+  <meta name="twitter:site" content="@samueloph_" />
+  <meta name="twitter:creator" content="@samueloph_" />
+  <script defer src="https://samueloph.dev/js/abridge.min.js?h=e0f9a881a665c86cce9c" integrity="sha384-QF67y7RnPkuDrJNQqn3/7nYxqxWkW/qHI7zN0WTES1aXbf+TotoByRBb835fUE6U"></script>
+  <noscript><link rel="stylesheet" href="https://samueloph.dev/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><big><a href="https://samueloph.dev" title="Samuel Henrique (samueloph)">Samuel Henrique (samueloph)</a></big></div>
+      <div>
+
+        <div>
+          <ul><li><a class="s110" href="https://samueloph.dev/blog/"> Blog </a></li><li><a class="s110" href="https://samueloph.dev/about/"> About </a></li><li><a class="s110" href="https://samueloph.dev/categories/"> Categories </a></li><li><a class="s110" href="https://samueloph.dev/slides/"> Slides and Presentations </a></li><li><i type="reset" id="mode" class="js svgs adjust"></i></ul>
+        </div>
+
+        <div>
+          <div>
+            <form autocomplete=off class="js" name="goSearch" id="searchbox">
+              <div class="searchd">
+                <input id="searchinput" type="text" placeholder="Search" title="Search" />
+                <button type="submit" title="Search" class="svgs svgm search"></button>
+              </div>
+              <div class="results"><div id="suggestions"></div></div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h1><a href="https://samueloph.dev/blog/debian-curl-now-supports-http3/">Debian's curl now supports HTTP3</a></h1>
+
+      <span class="s95"> Samuel Henrique (samueloph) <span class="rpad"></span> July 04, 2024 <span class="rpad"></span> [<a href="https://samueloph.dev/categories/debian/">debian</a>, <a href="https://samueloph.dev/categories/curl/">curl</a>]</span>
+
+    
+
+
+<h4 id="tl-dr">tl;dr</h4>
+<p>Starting with <strong>curl 8.0.0-2</strong>, you can now use HTTP3.</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">curl</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> --</span>http3-only</span> https://example.com</span>
+</span></code></pre>
+<p>Or, if you would like to try it out in a container:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">podman</span></span><span class="z-meta z-function-call z-arguments z-shell"> run debian:testing /bin/bash<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>c</span> <span class="z-string z-quoted z-single z-shell"><span class="z-punctuation z-definition z-string z-begin z-shell">&#39;</span>apt install --update -y curl &amp;&amp; curl --http3-only https://example.com<span class="z-punctuation z-definition z-string z-end z-shell">&#39;</span></span></span>
+</span></code></pre>
+<p><em>(in case you haven't noticed, apt now has the <code>--update</code> option for the
+<code>upgrade</code> and <code>install</code> commands, although not available on stable yet)</em></p>
+<h5 id="availability">Availability</h5>
+<ul>
+<li>Debian unstable - Since 2024-07-02</li>
+<li>Debian testing - Since 2024-07-18</li>
+<li>Debian 12/bookworm-backports - Since 2024-08-25</li>
+<li>Debian 12/bookworm - Due to the mechanisms we have in place to make sure
+Debian stable is in fact stable, we will never be able to ship this in the
+regular repository. Users can make use of the
+<a rel="noopener" target="_blank" href="https://backports.debian.org/">backports</a> repositories instead.</li>
+<li>Debian derivatives - Rolling releases will get it by the time it's on Debian
+testing (e.g.: Kali Linux). Stable derivatives only in their next major release.</li>
+</ul>
+<h1 id="the-challenge">The challenge</h1>
+<p>HTTP3 is fresh new, well... not really, but at least fresh enough that I'm not
+aware of any other Linux distribution supporting it on curl, the reason is
+likely two-fold:</p>
+<ol>
+<li><h3 id="openssl-is-not-there-yet">OpenSSL is not there yet</h3>
+<p>OpenSSL still doesn't have proper HTTP3 support, and given that OpenSSL is so
+widely used, almost every curl distributor/packager will build curl with it
+and thus changing the TLS backend to something else is risky.</p>
+<p>Unfortunately, proper support for the OpenSSL libcurl is unlikely to come anytime
+before the end of this year, the OpenSSL performance is <a rel="noopener" target="_blank" href="https://curl.se/mail/distros-2024-04/0001.html">not good enough
+yet as of version 3.3</a>.</p>
+<p>Daniel Stenberg has written about the state of this multiple times, most
+recently at <a rel="noopener" target="_blank" href="https://daniel.haxx.se/blog/2024/06/10/http-3-in-curl-mid-2024/">HTTP/3 in curl mid
+2024</a>, if
+you're interested, I suggest reading through his other posts as well.</p>
+<p>Some might have noticed that nginx <a rel="noopener" target="_blank" href="http://nginx.org/en/docs/quic.html">does support HTTP3 through OpenSSL</a>,
+although when you look closely, it's not exactly perfect:</p>
+<blockquote>
+<p>An SSL library that provides QUIC support is recommended to build nginx, such as BoringSSL, LibreSSL, or QuicTLS. Otherwise, the OpenSSL compatibility layer will be used that does not support early data.</p>
+</blockquote>
+<p>As you can see, they don't recommend using OpenSSL, and when doing so, you don't get complete support.</p>
+</li>
+<li><h3 id="http3-support-for-gnutls-nghttp3-ngtcp2-is-recent">HTTP3 support for GnuTLS/nghttp3/ngtcp2 is recent</h3>
+<p>The non-experimental support arrived <a rel="noopener" target="_blank" href="https://github.com/curl/curl/commit/5f78cf503c786a1d48d13528dde038bccfa6c67c">back in October
+2023</a>,
+and so that's when I started seriously planning for this.</p>
+<p>curl has been working on HTTP3 support for years, and so it did support other
+TLS backends before that, but out of them, the one most feasible for a
+distribution to ship would be GnuTLS, which gets HTTP3 support <a rel="noopener" target="_blank" href="https://daniel.haxx.se/blog/2024/06/10/http-3-in-curl-mid-2024/">through ngctp2 and
+nghttp3</a>.</p>
+</li>
+</ol>
+<h1 id="how-it-was-done">How it was done</h1>
+<p>The Debian curl package has historically shipped at least two variants of libcurl, an
+OpenSSL and a GnuTLS one.</p>
+<p>The OpenSSL libcurl can't support HTTP3 for the reasons explained above, but
+the GnuTLS libcurl can (with ngtcp2 and nghtp3).</p>
+<p>Debian packages can choose which version of libcurl to link against (without
+having to modify any upstream source code). Debian's "git" package being a famous
+example of a package that links against the GnuTLS libcurl.</p>
+<p>Enabling HTTP3 on curl was done in three steps:</p>
+<ol>
+<li>Make sure all required dependencies fulfill the minimum requirements.</li>
+<li>Enable HTTP3 for GnuTLS libcurl.</li>
+<li>Change the libcurl used by the curl CLI, from OpenSSL to GnuTLS.</li>
+</ol>
+<p>curl's HTTP3 support requires a somewhat recent version of nghttp3 and
+updating that required a <a rel="noopener" target="_blank" href="https://wiki.debian.org/Teams/ReleaseTeam/Transitions">transition</a> (due to the SONAME bump), while we've also
+had months of freeze for transitions due to the <a rel="noopener" target="_blank" href="https://lists.debian.org/debian-devel-announce/2024/02/msg00000.html">time_t
+transition</a>.</p>
+<p>After the dependencies were in place, enabling HTTP3 for the GnuTLS libcurl was
+<a rel="noopener" target="_blank" href="https://salsa.debian.org/debian/curl/-/commit/51df321b0165e5164a0d898d23a64ca3bbd553c0">straightforward</a>.</p>
+<p>Then, for the last part, we had to switch the TLS backend used by the curl CLI.
+Doing the swap is also <a rel="noopener" target="_blank" href="https://salsa.debian.org/debian/curl/-/commit/37820dad3612d1b13a9fb9550b1726b998c80cfc">quite
+easy</a>
+on the packaging level, but we have to consider the chances of this change
+breaking our users' environments.</p>
+<h1 id="ensuring-there-are-no-breakages">Ensuring there are no breakages</h1>
+<p>The first thing to consider regarding breakages is that this change is not
+going to be pushed directly to the current Debian stable releases, it will be
+present in the next stable release (13/trixie) but the current one will stick to the
+version that's already shipped.</p>
+<p>Secondly, we have to consider the risk of losing the ability to use certain
+parameters from the curl CLI which could be limited to the OpenSSL backend.
+During <a rel="noopener" target="_blank" href="https://daniel.haxx.se/blog/2024/05/06/i-survived-curl-up-2024/">curl-up 2024</a>, the curl developers pointed out the existence of a page
+that lists the <a rel="noopener" target="_blank" href="https://curl.se/libcurl/c/tls-options.html">TLS related options and the backends they work
+with</a>.</p>
+<p>Analysing that page, ignoring all of the options that are suffixed with "BLOB"
+(only pertinent to the library, not the CLI), the only one left which is
+attention worthy is <a rel="noopener" target="_blank" href="https://curl.se/libcurl/c/CURLOPT_ECH.html">CURLOPT_ECH</a>.</p>
+<blockquote>
+<p>This experimental feature requires a special build of OpenSSL, as ECH is not
+yet supported in OpenSSL releases. In contrast ECH is supported by the latest
+BoringSSL and wolfSSL releases.</p>
+</blockquote>
+<p>As it turns out, <code>Encrypted Client Hello</code> is experimental and it's not
+supported by the vanilla OpenSSL.</p>
+<p>This was enough of an investigation for me to go ahead with the change. Noting
+that even in the worst case scenario (we find a horrible regression), we can
+rollback without having affected a single stable release.</p>
+<p>Now that the package is on Debian unstable, the CI tests (autopkgtest) of every
+package that depends on curl is currently running, the results are compared
+against the migration-reference (in this case, the curl CLI with OpenSSL,
+before the change).</p>
+<p>If everything goes right, curl with HTTP3 support will migrate to Debian
+testing in around 5 days. If we spot any issues, we'll have to solve them
+first and it's going to be hard to predict how long it takes, although it's
+fair to expect less than a month.</p>
+<h1 id="feedback">Feedback</h1>
+<p>Feel free to join the Matrix room for the Debian curl maintainers:<br />
+<a rel="noopener" target="_blank" href="https://matrix.to/#/#debian-curl-maintainers:matrix.org">https://matrix.to/#/#debian-curl-maintainers:matrix.org</a></p>
+<h1 id="acknowledgements">Acknowledgements</h1>
+<p>It took us a bit longer than expected to be able to enable HTTP3, nonetheless it's
+still early enough to be excited about.</p>
+<p>A lot of people were crucial to make this happen.</p>
+<p>I should recognize in the first place, obviously, the curl developers and the
+developers of the supporting libraries: GnuTLS, nghttp3, ngtcp2. Participating
+in the <a rel="noopener" target="_blank" href="https://daniel.haxx.se/blog/2024/05/06/i-survived-curl-up-2024/">curl-up
+2024</a>
+conference helped me get motivated to push this through, besides becoming aware
+of the right documentation to research for impact.</p>
+<p>On the Debian side, Sakirnth Nagarasa &lt;sakirnth&gt; was responsible for updating
+and taking care of the transition for nghttp3 and ngtcp2.</p>
+<p>Also on the Debian side, I've got loads of help and support from the
+co-maintainers of the curl package: Sergio Durigan Junior &lt;sergiodj&gt; and Carlos
+Henrique Lima Melara &lt;charles&gt;.</p>
+<h1 id="changes-since-publication">Changes since publication</h1>
+<h2 id="2025-03-08">2025-03-08</h2>
+<ul>
+<li>Fix podman command, the previous one was not running all commands inside the container.</li>
+<li>Change the podman command to use Debian testing instead of unstable.</li>
+</ul>
+<h2 id="2024-08-28">2024-08-28</h2>
+<ul>
+<li>Mention availability in bookworm-backports.</li>
+</ul>
+<h2 id="2024-07-18">2024-07-18</h2>
+<ul>
+<li>Update date of availability for Debian testing and expected date for bookworm-backports.</li>
+<li>Remove mention of language spoken in the Matrix room, we are using English now.</li>
+</ul>
+
+      <nav>
+        <div>
+          <a href="https://samueloph.dev/blog/debconf24-was-fun/">&#8249; DebConf24 was fun! Security, curl, wcurl, Debian's quality</a>
+        </div>
+        <div>
+          <a href="https://samueloph.dev/blog/announcing-wcurl-a-curl-wrapper-to-download-files/"> Announcing wcurl: a curl wrapper to download files &#8250;</a>
+        </div>
+      </nav>
+    </article>
+
+    <div class="sblock">
+      <div class="blockdiv sticky">
+        <a class="b s150" href="#">Index</a>
+        <div>
+          <a href="#tl-dr">tl;dr</a>
+        </div>
+        <div class="hpad">
+          <a href="#availability"><small>- Availability</small></a>
+        </div>
+        <div>
+          <a href="#the-challenge">The challenge</a>
+        </div>
+        <div class="hpad">
+          <a href="#openssl-is-not-there-yet"><small>- OpenSSL is not there yet</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#http3-support-for-gnutls-nghttp3-ngtcp2-is-recent"><small>- HTTP3 support for GnuTLS&#x2F;nghttp3&#x2F;ngtcp2 is recent</small></a>
+        </div>
+        <div>
+          <a href="#how-it-was-done">How it was done</a>
+        </div>
+        <div>
+          <a href="#ensuring-there-are-no-breakages">Ensuring there are no breakages</a>
+        </div>
+        <div>
+          <a href="#feedback">Feedback</a>
+        </div>
+        <div>
+          <a href="#acknowledgements">Acknowledgements</a>
+        </div>
+        <div>
+          <a href="#changes-since-publication">Changes since publication</a>
+        </div>
+        <div class="hpad">
+          <a href="#2025-03-08"><small>- 2025-03-08</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#2024-08-28"><small>- 2024-08-28</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#2024-07-18"><small>- 2024-07-18</small></a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <hr />
+    <div class="c">
+      <nav class="tpad"><div><a type="application/atom+xml" href="https://samueloph.dev/atom.xml" target="_blank" title="Samuel Henrique (samueloph) Atom Feed"><i type="Button" class="svg rss" title="Samuel Henrique (samueloph) Atom Feed"></i></a><a class="js m-protected" href="#c2FtdWVsb3BoQGdtYWlsLmNvbQ==" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a><a href="https://mastodon.social/@samueloph" target="_blank" title="Mastodon" rel="me"><i type="Button" class="svg mastodon" title="Mastodon"></i></a><a href="https://matrix.to&#x2F;#&#x2F;@samueloph:matrix.org/" target="_blank" title="Element"><i type="Button" class="svg element" title="Element"></i></a><a href="https://twitter.com/samueloph_/" target="_blank" title="Twitter"><i type="Button" class="svg twitter" title="Twitter"></i></a><a href="https://www.linkedin.com/in/samueloph/" target="_blank" title="LinkedIn"><i type="Button" class="svg linkedin" title="LinkedIn"></i></a><a href="https://github.com/samueloph/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a><a href="https://salsa.debian.org/samueloph/" target="_blank" title="Debian"><i type="Button" class="svg debian" title="Debian"></i></a>
+      </div></nav>
+      <nav class="vpad">
+        <a class="rpad" href="https://samueloph.dev/about/"> About </a>
+        <a class="rpad" href="https://samueloph.dev/sitemap.xml" target="_blank"> Sitemap </a>
+      </nav>
+          
+      <p class="s90"> © Samuel Henrique (samueloph). Unless otherwise noted, the content in this website is available under the <a rel="noopener" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license.</p>
+      <p class="s90">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> & <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer><span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

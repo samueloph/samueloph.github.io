@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://samueloph.dev/js/theme.min.js" integrity="sha384-pb++s6uBRKaQv+iAXpgA/H3IlpLZdO14tTwuCI7uXmz4aaZdByoCcM+6BhynMq/1"></script>
+  <link rel="stylesheet" href="https://samueloph.dev/abridge.css?h=89a765af6aa0a7f55ac6" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base" content="https://samueloph.dev" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://samueloph.dev/manifest.min.json" />
+  <link rel="mask-icon" href="https://samueloph.dev/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="icon" type="image/svg+xml" href="https://samueloph.dev/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://samueloph.dev/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://samueloph.dev/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://samueloph.dev/favicon-16x16.png" />
+  <link rel="alternate" type="application/atom+xml" title="Samuel Henrique (samueloph) Atom Feed" href="https://samueloph.dev/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>Announcing wcurl: a curl wrapper to download files | Samuel Henrique (samueloph)</title>
+  <meta name="author" content="Samuel Henrique (samueloph)" />
+  <meta name="copyright" content="Samuel Henrique (samueloph)" />
+  <meta name="description" content="My personal website" />
+  <link rel="canonical" href="https://samueloph.dev/blog/announcing-wcurl-a-curl-wrapper-to-download-files/" />
+  <meta name="keywords" content="samueloph, debian, programming, blog, rust, python, security" />
+  <meta property="og:url" content="https://samueloph.dev/blog/announcing-wcurl-a-curl-wrapper-to-download-files/" />
+  <meta name="twitter:url" content="https://samueloph.dev/blog/announcing-wcurl-a-curl-wrapper-to-download-files/" />
+  <meta property="og:description" content="My personal website" />
+  <meta name="twitter:description" content="My personal website" />
+  <meta property="og:title" content="Announcing wcurl: a curl wrapper to download files | Samuel Henrique (samueloph)" />
+  <meta name="twitter:title" content="Announcing wcurl: a curl wrapper to download files | Samuel Henrique (samueloph)" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://samueloph.dev/blog/announcing-wcurl-a-curl-wrapper-to-download-files/announcing_wcurl_image.png" />
+  <meta property="og:image" content="https://samueloph.dev/blog/announcing-wcurl-a-curl-wrapper-to-download-files/announcing_wcurl_image.png" />
+  <meta property="og:site_name" content="Samuel Henrique (samueloph)" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2024-07-03" />
+  <meta name="twitter:site" content="@samueloph_" />
+  <meta name="twitter:creator" content="@samueloph_" />
+  <script defer src="https://samueloph.dev/js/abridge.min.js?h=e0f9a881a665c86cce9c" integrity="sha384-QF67y7RnPkuDrJNQqn3/7nYxqxWkW/qHI7zN0WTES1aXbf+TotoByRBb835fUE6U"></script>
+  <noscript><link rel="stylesheet" href="https://samueloph.dev/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><big><a href="https://samueloph.dev" title="Samuel Henrique (samueloph)">Samuel Henrique (samueloph)</a></big></div>
+      <div>
+
+        <div>
+          <ul><li><a class="s110" href="https://samueloph.dev/blog/"> Blog </a></li><li><a class="s110" href="https://samueloph.dev/about/"> About </a></li><li><a class="s110" href="https://samueloph.dev/categories/"> Categories </a></li><li><a class="s110" href="https://samueloph.dev/slides/"> Slides and Presentations </a></li><li><i type="reset" id="mode" class="js svgs adjust"></i></ul>
+        </div>
+
+        <div>
+          <div>
+            <form autocomplete=off class="js" name="goSearch" id="searchbox">
+              <div class="searchd">
+                <input id="searchinput" type="text" placeholder="Search" title="Search" />
+                <button type="submit" title="Search" class="svgs svgm search"></button>
+              </div>
+              <div class="results"><div id="suggestions"></div></div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h1><a href="https://samueloph.dev/blog/announcing-wcurl-a-curl-wrapper-to-download-files/">Announcing wcurl: a curl wrapper to download files</a></h1>
+
+      <span class="s95"> Samuel Henrique (samueloph) <span class="rpad"></span> July 03, 2024 <span class="rpad"></span> [<a href="https://samueloph.dev/categories/debian/">debian</a>, <a href="https://samueloph.dev/categories/curl/">curl</a>]</span>
+
+    
+
+
+<div class="yv">
+    <iframe src="https://www.youtube-nocookie.com/embed/eM8M5qa4pPM" title="Youtube" class="yvi" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
+<h4 id="tl-dr">tl;dr</h4>
+<p>Whenever you need to download files through the terminal and don't feel like using wget:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">wcurl</span></span><span class="z-meta z-function-call z-arguments z-shell"> example.com/filename.txt</span>
+</span></code></pre>
+<p>Manpage:<br />
+<a rel="noopener" target="_blank" href="https://curl.se/wcurl/manual.html">https://curl.se/wcurl/manual.html</a></p>
+<h5 id="availability-comes-installed-with-the-curl-package">Availability (comes installed with the curl package):</h5>
+<ul>
+<li>Debian unstable - Since 2024-07-02</li>
+<li>Debian testing - Since 2024-07-18</li>
+<li>Debian 12/bookworm-backports - Since 2024-08-25</li>
+<li>Debian 12/bookworm - Due to the way changes are planned for Debian Stable,
+wcurl will not be present in bookworm. Users are recommended to either manually
+download wcurl or use the bookworm-backports repository. wcurl will be present
+in Debian 13/trixie.</li>
+<li>Debian derivatives - Rolling releases will get it by the time it's on Debian
+testing (e.g.: Kali Linux). Stable derivatives only in their next major release.</li>
+</ul>
+<p>If you don't want to wait for the package update to arrive, you can always copy
+the script and place it in your <code>/usr/bin</code>:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">curl</span></span><span class="z-meta z-function-call z-arguments z-shell"><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>fLO</span> https://github.com/curl/wcurl/releases/latest/download/wcurl</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">chmod</span></span><span class="z-meta z-function-call z-arguments z-shell"> +x wcurl</span>
+</span><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">sudo</span></span><span class="z-meta z-function-call z-arguments z-shell"> mv wcurl /usr/bin/wcurl</span>
+</span></code></pre>
+<p>After this announcement, wcurl has joined the curl organization:<br />
+<a rel="noopener" target="_blank" href="https://daniel.haxx.se/blog/2024/08/08/curl-welcomes-wcurl-to-the-team/">https://daniel.haxx.se/blog/2024/08/08/curl-welcomes-wcurl-to-the-team/</a></p>
+<p>Project homepage:<br />
+<a rel="noopener" target="_blank" href="https://curl.se/wcurl/">https://curl.se/wcurl/</a></p>
+<h1 id="smoother-cli-experience">Smoother CLI experience</h1>
+<p>Starting with <strong>curl version 8.8.0-2</strong>, the Debian's curl package now ships a wcurl
+executable.</p>
+<p>wcurl is the solution for those who just need to download files without having
+to remember curl's parameters for things like automatically naming the files.</p>
+<p>Some people, myself included, would fall back to using wget whenever there was a
+need to download a file. Sometimes even installing wget just for that usecase.
+After all, it's easier to remember "apt install wget" rather than "curl -L -O -C - ...".</p>
+<p>wcurl consists of a simple shell script that provides sane defaults for the curl
+invocation, for when the use case is to just download files.</p>
+<p>By default, wcurl will:</p>
+<blockquote>
+<ul>
+<li>Percent-encode whitespaces in URLs;</li>
+<li>Download multiple URLs in parallel if the installed curl's version is &gt;= 7.66.0;</li>
+<li>Follow redirects;</li>
+<li>Automatically choose a filename as output;</li>
+<li>Avoid overwriting files if the installed curl's version is &gt;= 7.83.0 (--no-clobber);</li>
+<li>Perform retries;</li>
+<li>Set the downloaded file timestamp to the value provided by the server, if available;</li>
+<li>Disable curl's URL globbing parser so {} and [] characters in URLs are not treated specially;</li>
+<li>Percent-decode the resulting filename;</li>
+<li>Use "index.html" as default filename if there's none in the URL.</li>
+</ul>
+</blockquote>
+<p>Example to download a single file:</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">wcurl</span></span><span class="z-meta z-function-call z-arguments z-shell"> example.com/filename.txt</span>
+</span></code></pre>
+<p>If you ever need to set a custom flag, you can make use of the <code>--curl-options</code>
+wcurl option, anything set there will be passed to the curl invocation.
+Just beware that if you need to set any custom flags, it's likely you will be
+better served by calling curl directly. The <code>--curl-options</code> option is there to
+allow for some flexibility in unforeseen circumstances.</p>
+<h1 id="the-need-for-wcurl">The need for wcurl</h1>
+<p>I've always felt a bit ashamed of not remembering curl's parameters for
+downloading a file and automatically naming it, having resorted to wget most of
+the times this was needed (even installing wget when it wasn't there, just for
+this). I've spoken to a few other experienced people I know and confirmed what
+could be obvious to others: a lot of people struggle with this.</p>
+<p>Recently, the curl project released the results of <a rel="noopener" target="_blank" href="https://daniel.haxx.se/media/curl-user-survey-2024-analysis.pdf">2024's curl
+survey</a>, which
+also showed this is as a much needed feature, just look at some of the answers:</p>
+<h4 id="q-which-curl-command-line-option-do-you-think-needs-improvement-and-how">Q: Which curl command line option do you think needs improvement and how?</h4>
+<blockquote>
+<p>-O, I really want wget like functionality where I don't have to specify the name</p>
+</blockquote>
+<blockquote>
+<p>Downloading a file (like wget) could be improved - with automatic naming of the file</p>
+</blockquote>
+<blockquote>
+<p>downloading files - wget is much cleaner</p>
+</blockquote>
+<blockquote>
+<p>I wish the default behaviour when GETting a binary was to drop it on disk. That's the only
+reason 'wget foo.tgz" is still ingrained in my muscle memory .</p>
+</blockquote>
+<blockquote>
+<p>Maybe have a way to download without specifying something in -o (the only reason i used wget
+still)</p>
+</blockquote>
+<blockquote>
+<p>--remote-time should be default</p>
+</blockquote>
+<blockquote>
+<p>--remote-name-all could really use a short flag</p>
+</blockquote>
+<h4 id="q-if-you-miss-support-for-something-tell-us-what">Q: If you miss support for something, tell us what!</h4>
+<blockquote>
+<p>"Write the data to the file named in the URL (or in redirects if I'm feeling daring), and
+timestamp the file to the last-modified-date". This is the main reason I'm still using wget.</p>
+</blockquote>
+<p>I can finally feel less bad about falling back to wget due to not remembering the
+parameters I want.</p>
+<h1 id="idealization-vs-reality">Idealization vs. reality</h1>
+<p>I don't believe curl will ever change its default behavior in such a way that
+would accommodate this need, as that would have a side-effect of breaking things
+which expect the current behavior (the blast radius is literally the
+<a rel="noopener" target="_blank" href="https://daniel.haxx.se/blog/2021/12/03/why-curl-is-used-everywhere-even-on-mars/">solar system</a>).</p>
+<p>This means a new executable needs to be shipped side-by-side with curl, an
+opportunity to start fresh and work with a more focused use case (to download
+files).</p>
+<p>Ideally, this new executable would be maintained by the curl project, make use
+of libcurl under-the-hood, and be available everywhere. Nobody wants to worry
+if their systems have the tool or not, it should always be there.</p>
+<p>Given I'm just a Debian Developer, with not as much free time as I wish, I've
+decided to write a simple shell script wrapper calling the curl CLI
+under-the-hood.</p>
+<p>wcurl will come installed with the curl package from now on, and I will check
+with the release team about shipping it on the current Debian stable as well.
+Shipping wcurl in other distros will be up to them (Debian-derivatives should
+pick it up automatically, though).</p>
+<p>We've tried to make it easy for anyone to ship this by using the curl license,
+keeping the script POSIX-compliant, and shipping a <a rel="noopener" target="_blank" href="https://manpages.debian.org/unstable/curl/wcurl.1.en.html">manpage</a>.</p>
+<p>Maybe if there's enough interest across distributions, someone might sign up
+for implementing this in upstream curl and increase its reach. I would be happy
+with the curl project reusing the wcurl name when that happens. It's unlikely
+that wcurl would be shipped by curl upstream as it is, assuming they would
+prefer a solution that uses libcurl direclty (more similar to curl the CLI, to
+maintain).</p>
+<p>In the worst case, wcurl becomes a Debian-specific tool that only a few people
+are aware of, in the best case, it becomes the new go-to CLI tool for simply
+downloading files. I would be happy if at least someone other than me finds
+it useful.</p>
+<h1 id="naming-is-hard">Naming is hard</h1>
+<p>When I started working on it, I was calling the new executable "curld"
+(stands for "curl download"), but then when discussing this in one of our
+weekly calls in the Debian Brasília community, it was mentioned that this could
+be confused for a daemon.</p>
+<p>We then settled for the name "wcurl", suggested by Carlos Henrique Lima
+Melara &lt;charles&gt;. It doesn't really stand for anything,
+but it's very easy to remember.</p>
+<p>You know... "it's that wget alternative for when you want to use curl instead"
+:)</p>
+<h1 id="feedback">Feedback</h1>
+<p>The code is hosted in GitHub, feel free to open an issue to provide feedback.<br />
+<a rel="noopener" target="_blank" href="https://github.com/curl/wcurl">https://github.com/curl/wcurl</a></p>
+<p>We also have a Matrix room for the Debian curl maintainers:<br />
+<a rel="noopener" target="_blank" href="https://matrix.to/#/#debian-curl-maintainers:matrix.org">https://matrix.to/#/#debian-curl-maintainers:matrix.org</a></p>
+<h1 id="acknowledgments">Acknowledgments</h1>
+<p>The idea for wcurl came a few days before the <a rel="noopener" target="_blank" href="https://daniel.haxx.se/blog/2024/05/06/i-survived-curl-up-2024/">curl-up conference
+2024</a>.
+I've been thinking a lot about developer productivity in the terminal lately,
+different tools and better defaults. Before curl-up, I was also thinking about
+packaging improvements for the curl package. I don't remember what exactly
+happened, but I likely had to download something and felt a bit ashamed of
+maintaining curl and not remembering the parameters to download files the way I
+wanted.</p>
+<p>I first discussed this idea in the conference, where I asked the
+participants about it and there were no concerns raised, and some people said I should give it a go.
+Participating in curl-up was a really great experience and I'm thankful for the
+interactions I've had there.</p>
+<p>On the Debian side, I've got reviews of the code and manpage by Sergio Durigan
+Junior &lt;sergiodj&gt;, Guilherme Puida Moreira &lt;puida&gt; and Carlos Henrique Lima
+Melara &lt;charles&gt;. Sergio ended up rewriting the tool to be POSIX-compliant (my
+version was written in bash), so he takes all the credit for the portability.</p>
+<h1 id="changes-since-publication">Changes since publication</h1>
+<h2 id="2025-01-19">2025-01-19</h2>
+<ul>
+<li>Mention that wcurl will not be added to Debian 12/bookworm, it will be
+present in Debian 13/trixie.</li>
+</ul>
+<h2 id="2024-12-14">2024-12-14</h2>
+<ul>
+<li>Update list of wcurl features.</li>
+<li>Point out to wcurl homepage and mention that it's now part of curl.</li>
+<li>Reorder this changelog to have latest changes on top.</li>
+</ul>
+<h2 id="2024-08-28">2024-08-28</h2>
+<ul>
+<li>Mention availability in bookworm-backports.</li>
+<li>Link to wcurl lightning talk from DebConf24.</li>
+</ul>
+<h2 id="2024-07-18">2024-07-18</h2>
+<ul>
+<li>Update date of availability for Debian testing and expected date for bookworm backports.</li>
+<li>Mention charles as the person who suggested "wcurl" as a name.</li>
+<li>Update wcurl's -o/--opts options, it's now just --curl-options.</li>
+<li>Remove mention of language spoken in the Matrix room, we are using English now.</li>
+<li>Update list of features of wcurl.</li>
+</ul>
+
+      <nav>
+        <div>
+          <a href="https://samueloph.dev/blog/debian-curl-now-supports-http3/">&#8249; Debian's curl now supports HTTP3</a>
+        </div>
+        <div>
+          <a href="https://samueloph.dev/blog/hello-world/"> Hello World &#8250;</a>
+        </div>
+      </nav>
+    </article>
+
+    <div class="sblock">
+      <div class="blockdiv sticky">
+        <a class="b s150" href="#">Index</a>
+        <div>
+          <a href="#tl-dr">tl;dr</a>
+        </div>
+        <div class="hpad">
+          <a href="#availability-comes-installed-with-the-curl-package"><small>- Availability (comes installed with the curl package):</small></a>
+        </div>
+        <div>
+          <a href="#smoother-cli-experience">Smoother CLI experience</a>
+        </div>
+        <div>
+          <a href="#the-need-for-wcurl">The need for wcurl</a>
+        </div>
+        <div class="hpad">
+          <a href="#q-which-curl-command-line-option-do-you-think-needs-improvement-and-how"><small>- Q: Which curl command line option do you think needs improvement and how?</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#q-if-you-miss-support-for-something-tell-us-what"><small>- Q: If you miss support for something, tell us what!</small></a>
+        </div>
+        <div>
+          <a href="#idealization-vs-reality">Idealization vs. reality</a>
+        </div>
+        <div>
+          <a href="#naming-is-hard">Naming is hard</a>
+        </div>
+        <div>
+          <a href="#feedback">Feedback</a>
+        </div>
+        <div>
+          <a href="#acknowledgments">Acknowledgments</a>
+        </div>
+        <div>
+          <a href="#changes-since-publication">Changes since publication</a>
+        </div>
+        <div class="hpad">
+          <a href="#2025-01-19"><small>- 2025-01-19</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#2024-12-14"><small>- 2024-12-14</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#2024-08-28"><small>- 2024-08-28</small></a>
+        </div>
+        <div class="hpad">
+          <a href="#2024-07-18"><small>- 2024-07-18</small></a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <hr />
+    <div class="c">
+      <nav class="tpad"><div><a type="application/atom+xml" href="https://samueloph.dev/atom.xml" target="_blank" title="Samuel Henrique (samueloph) Atom Feed"><i type="Button" class="svg rss" title="Samuel Henrique (samueloph) Atom Feed"></i></a><a class="js m-protected" href="#c2FtdWVsb3BoQGdtYWlsLmNvbQ==" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a><a href="https://mastodon.social/@samueloph" target="_blank" title="Mastodon" rel="me"><i type="Button" class="svg mastodon" title="Mastodon"></i></a><a href="https://matrix.to&#x2F;#&#x2F;@samueloph:matrix.org/" target="_blank" title="Element"><i type="Button" class="svg element" title="Element"></i></a><a href="https://twitter.com/samueloph_/" target="_blank" title="Twitter"><i type="Button" class="svg twitter" title="Twitter"></i></a><a href="https://www.linkedin.com/in/samueloph/" target="_blank" title="LinkedIn"><i type="Button" class="svg linkedin" title="LinkedIn"></i></a><a href="https://github.com/samueloph/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a><a href="https://salsa.debian.org/samueloph/" target="_blank" title="Debian"><i type="Button" class="svg debian" title="Debian"></i></a>
+      </div></nav>
+      <nav class="vpad">
+        <a class="rpad" href="https://samueloph.dev/about/"> About </a>
+        <a class="rpad" href="https://samueloph.dev/sitemap.xml" target="_blank"> Sitemap </a>
+      </nav>
+          
+      <p class="s90"> © Samuel Henrique (samueloph). Unless otherwise noted, the content in this website is available under the <a rel="noopener" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license.</p>
+      <p class="s90">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> & <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer><span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

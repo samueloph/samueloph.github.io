@@ -1,0 +1,851 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Samuel Henrique (samueloph)</title>
+    <subtitle>My personal website</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://samueloph.dev/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://samueloph.dev"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-08-28T17:30:00+00:00</updated>
+    <id>https://samueloph.dev/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Debian 13: My list of exciting new features</title>
+        <published>2025-08-28T17:30:00+00:00</published>
+        <updated>2025-08-28T17:30:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://samueloph.dev/blog/debian-13-my-list-of-exciting-new-features/"/>
+        <id>https://samueloph.dev/blog/debian-13-my-list-of-exciting-new-features/</id>
+        
+        <content type="html" xml:base="https://samueloph.dev/blog/debian-13-my-list-of-exciting-new-features/"> &lt;img src=&quot;debian-13-my-list-of-exciting-new-features.webp&quot; alt=&quot;A bunch of
+screenshots overlaid on top of each other showing different tools: lazygit,
+gnome settings, gnome system monitor, powerline-go, and the wcurl logo, the
+text at the top says &amp;#x27;Debian 13: My list of exciting new features&amp;#x27;, and there&amp;#x27;s
+a Debian logo in the middle of image&quot; width=&quot;1200&quot; height=&quot;630&quot; loading=&quot;lazy&quot; &#x2F;&gt;
+&lt;h1 id=&quot;beyond-debian-useful-for-other-distros-too&quot;&gt;Beyond Debian: Useful for other distros too&lt;&#x2F;h1&gt;
+&lt;p&gt;Every two years Debian releases a new major version of its Stable series,
+meaning the differences between consecutive Debian Stable releases represent
+two years of new developments both in Debian as an organization and its native
+packages, but also in all other packages which are also shipped by other
+distributions (which are getting into this new Stable release).&lt;&#x2F;p&gt;
+&lt;p&gt;If you&#x27;re not paying close attention to everything that&#x27;s going on all the time
+in the Linux world, you miss a lot of the nice new features and tools. It&#x27;s
+common for people to only realize there&#x27;s a cool new trick available only years
+after it was first introduced.&lt;&#x2F;p&gt;
+&lt;p&gt;Given these considerations, the tips that I&#x27;m describing will eventually be
+available in whatever other distribution you use, be it because it&#x27;s a Debian
+derivative or because it just got the same feature from the upstream project.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;m not going to list &quot;passive&quot; features (as good as they can be), the focus
+here is on new features that might change how you configure and use your
+machine, with a mix between productivity and performance.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;debian-13-trixie&quot;&gt;Debian 13 - Trixie&lt;&#x2F;h1&gt;
+&lt;p&gt;I have been a Debian Testing user for longer than 10 years now (and I recommend
+it for non-server users), so I&#x27;m not usually keeping track of all the cool
+features arriving in the new Stable releases because I&#x27;m continuously receiving
+them through the Debian Testing rolling release.&lt;&#x2F;p&gt;
+&lt;p&gt;Nonetheless, as a Debian Developer I&#x27;m in a good position to point out the ones
+I can remember. I would also like other Debian Developers to do the same as I&#x27;m
+sure I would learn something new.&lt;&#x2F;p&gt;
+&lt;p&gt;The Debian 13 release notes contain a &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.debian.org&#x2F;releases&#x2F;trixie&#x2F;release-notes&#x2F;whats-new.en.html&quot;&gt;&quot;What&#x27;s new&quot; section
+&lt;&#x2F;a&gt;, which
+lists the first two items here and a few other things, in other words, take my
+list as an addition to the release notes.&lt;&#x2F;p&gt;
+&lt;p&gt;Debian 13 was released on 2025-08-09, and these are nice things you shouldn&#x27;t
+miss in the new release, with a bonus one not tied to the Debian 13 release.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;1-wcurl&quot;&gt;1) wcurl&lt;&#x2F;h2&gt;
+ &lt;img src=&quot;wcurl-logo.svg&quot; alt=&quot;wcurl logo&quot; width=&quot;998&quot; height=&quot;250&quot; loading=&quot;lazy&quot; &#x2F;&gt;
+&lt;p&gt;Have you ever had to download a file from your terminal using curl and didn&#x27;t
+remember the parameters needed? I did.&lt;&#x2F;p&gt;
+&lt;p&gt;Nowadays you can use &lt;code&gt;wcurl&lt;&#x2F;code&gt;; &quot;a command line tool which lets you download URLs
+without having to remember any parameters.&quot;&lt;&#x2F;p&gt;
+&lt;p&gt;Simply call &lt;code&gt;wcurl&lt;&#x2F;code&gt; with one or more URLs as parameters and it will download
+all of them in parallel, performing retries, choosing the correct output file
+name, following redirects, and more.&lt;&#x2F;p&gt;
+&lt;p&gt;Try it out:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;wcurl&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; example.com&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;wcurl&lt;&#x2F;code&gt; comes installed as part of the curl package on Debian 13 and in any other
+distribution you can imagine, starting with curl 8.14.0.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;ve written more about wcurl in its &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;samueloph.dev&#x2F;blog&#x2F;announcing-wcurl-a-curl-wrapper-to-download-files&#x2F;&quot;&gt;release
+announcement&lt;&#x2F;a&gt;
+and I&#x27;ve done a lightning talk presentation in DebConf24, which is linked in
+the release announcement.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;2-http-3-support-in-curl&quot;&gt;2) HTTP&#x2F;3 support in curl&lt;&#x2F;h2&gt;
+&lt;p&gt;Debian has become the first stable Linux distribution to ship curl with support
+for HTTP&#x2F;3. &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;samueloph.dev&#x2F;blog&#x2F;debian-curl-now-supports-http3&#x2F;&quot;&gt;I&#x27;ve written about this in July
+2024&lt;&#x2F;a&gt;, when we
+first enabled it. Note that we first switched the curl CLI to GnuTLS, but then
+ended up releasing the curl CLI linked with OpenSSL (as support arrived later).&lt;&#x2F;p&gt;
+&lt;p&gt;Debian was the first stable Linux distro to enable it, and within
+rolling-release-based distros; Gentoo enabled it first in their non-default
+flavor of the package and Arch Linux did it three months before we pushed it to
+Debian Unstable&#x2F;Testing&#x2F;Stable-backports, kudos to them!&lt;&#x2F;p&gt;
+&lt;p&gt;HTTP&#x2F;3 is not used by default by the curl CLI, you have to enable it with
+&lt;code&gt;--http3&lt;&#x2F;code&gt; or &lt;code&gt;--http3-only&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Try it out:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;curl&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; --&lt;&#x2F;span&gt;http3&lt;&#x2F;span&gt; https:&#x2F;&#x2F;www.example.org&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;curl&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; --&lt;&#x2F;span&gt;http3-only&lt;&#x2F;span&gt; https:&#x2F;&#x2F;www.example.org&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;3-systemd-soft-reboot&quot;&gt;3) systemd soft-reboot&lt;&#x2F;h2&gt;
+&lt;p&gt;Starting with systemd v254, there&#x27;s a new &lt;code&gt;soft-reboot&lt;&#x2F;code&gt; option, it&#x27;s an
+userspace-only reboot, much faster than a full reboot if you don&#x27;t need to
+reboot the kernel.&lt;&#x2F;p&gt;
+&lt;p&gt;You can read the announcement from the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;systemd&#x2F;systemd&#x2F;releases&#x2F;tag&#x2F;v254&quot;&gt;systemd v254 GitHub
+release&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Try it out:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; This will reboot your machine!&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;systemctl&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; soft-reboot&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;4-apt-update&quot;&gt;4) apt --update&lt;&#x2F;h2&gt;
+&lt;p&gt;Are you tired of being required to run &lt;code&gt;sudo apt update&lt;&#x2F;code&gt; just before &lt;code&gt;sudo apt upgrade&lt;&#x2F;code&gt; or &lt;code&gt;sudo apt install $PACKAGE&lt;&#x2F;code&gt;? So am I!&lt;&#x2F;p&gt;
+&lt;p&gt;The new &lt;code&gt;--update&lt;&#x2F;code&gt; option lets you do both things in a single command:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; --&lt;&#x2F;span&gt;update&lt;&#x2F;span&gt; upgrade&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; --&lt;&#x2F;span&gt;update&lt;&#x2F;span&gt; install &lt;span class=&quot;z-meta z-group z-expansion z-parameter z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-shell&quot;&gt;$&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-other z-readwrite z-shell&quot;&gt;PACKAGE&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;I love this, but it&#x27;s still not yet where it should be, fingers crossed for a
+simple &lt;code&gt;apt upgrade&lt;&#x2F;code&gt; to behave like other package managers by updating its
+cache as part of the task, maybe in Debian 14?&lt;&#x2F;p&gt;
+&lt;p&gt;Try it out:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt upgrade&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; --&lt;&#x2F;span&gt;update&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; The order doesn&amp;#39;t matter&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; --&lt;&#x2F;span&gt;update&lt;&#x2F;span&gt; upgrade&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This is especially handy for container usage, where you have to update the apt
+cache before installing anything, for example:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;podman&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; run debian:stable bin&#x2F;bash&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;c&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-single z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-shell&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;apt install --update -y curl&lt;span class=&quot;z-punctuation z-definition z-string z-end z-shell&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;5-powerline-go&quot;&gt;5) powerline-go&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;code&gt;powerline-go&lt;&#x2F;code&gt; is a powerline-style prompt written in Golang, so it&#x27;s much more
+performant than its Python alternative &lt;code&gt;powerline&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;powerline-style prompts are quite useful to show things like the current status
+of the git repo in your working directory, exit code of the previous command,
+presence of jobs in the background, whether or not you&#x27;re in an ssh session,
+and more.&lt;&#x2F;p&gt;
+ &lt;img src=&quot;powerline-go.webp&quot; alt=&quot;A screenshot of a terminal with
+powerline-go enabled, showing how the PS1 changes inside a git repository and
+when the last command fails&quot; width=&quot;1929&quot; height=&quot;618&quot; loading=&quot;lazy&quot; &#x2F;&gt;
+&lt;p&gt;Try it out:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt install powerline-go&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Then add this to your &lt;code&gt;.bashrc&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function z-shell&quot;&gt;&lt;span class=&quot;z-storage z-type z-function z-shell&quot;&gt;function&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-function z-shell&quot;&gt;_update_ps1&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-parens z-begin z-shell&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-parens z-end z-shell&quot;&gt;)&lt;&#x2F;span&gt; &lt;span class=&quot;z-punctuation z-section z-braces z-begin z-shell&quot;&gt;{&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function z-shell&quot;&gt;    &lt;span class=&quot;z-variable z-other z-readwrite z-assignment z-shell&quot;&gt;PS1&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-shell&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-unquoted z-shell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-group z-expansion z-command z-parens z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-shell&quot;&gt;$&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-parens z-begin z-shell&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;&#x2F;usr&#x2F;bin&#x2F;powerline-go&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;error&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-group z-expansion z-parameter z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-shell&quot;&gt;$&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-language z-shell&quot;&gt;?&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;jobs&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-group z-expansion z-command z-parens z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-shell&quot;&gt;$&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-parens z-begin z-shell&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-support z-function z-jobs z-shell&quot;&gt;jobs&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; -p&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-logical z-pipe z-shell&quot;&gt;|&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;wc&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;l&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-parens z-end z-shell&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-parens z-end z-shell&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-end z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function z-shell&quot;&gt;    &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; Uncomment the following line to automatically clear errors after showing&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function z-shell&quot;&gt;    &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; them once. This not only clears the error for powerline-go, but also for&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function z-shell&quot;&gt;    &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; everything else you run in that shell. Don&amp;#39;t enable this if you&amp;#39;re not&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function z-shell&quot;&gt;    &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; sure this is what you want.&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function z-shell&quot;&gt;    &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;set &amp;quot;?&amp;quot;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-braces z-end z-shell&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-keyword z-control z-conditional z-if z-shell&quot;&gt;if&lt;&#x2F;span&gt; &lt;span class=&quot;z-support z-function z-test z-begin z-shell&quot;&gt;[&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; &lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-group z-expansion z-parameter z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-shell&quot;&gt;$&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-other z-readwrite z-shell&quot;&gt;TERM&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-end z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-logical z-shell&quot;&gt;!=&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;linux&lt;span class=&quot;z-punctuation z-definition z-string z-end z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-support z-function z-test z-end z-shell&quot;&gt;]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-operator z-logical z-and z-shell&quot;&gt;&amp;amp;&amp;amp;&lt;&#x2F;span&gt; &lt;span class=&quot;z-support z-function z-test z-begin z-shell&quot;&gt;[&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; &lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt;-&lt;&#x2F;span&gt;f&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&#x2F;usr&#x2F;bin&#x2F;powerline-go&lt;span class=&quot;z-punctuation z-definition z-string z-end z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt; &lt;span class=&quot;z-support z-function z-test z-end z-shell&quot;&gt;]&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-logical z-continue z-shell&quot;&gt;;&lt;&#x2F;span&gt; &lt;span class=&quot;z-keyword z-control z-conditional z-then z-shell&quot;&gt;then&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;    &lt;span class=&quot;z-variable z-other z-readwrite z-assignment z-shell&quot;&gt;PROMPT_COMMAND&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-shell&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-unquoted z-shell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;_update_ps1; &lt;span class=&quot;z-meta z-group z-expansion z-parameter z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-shell&quot;&gt;$&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-other z-readwrite z-shell&quot;&gt;PROMPT_COMMAND&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-end z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-keyword z-control z-conditional z-end z-shell&quot;&gt;fi&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Or this to &lt;code&gt;.zshrc&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function z-shell&quot;&gt;&lt;span class=&quot;z-storage z-type z-function z-shell&quot;&gt;function&lt;&#x2F;span&gt; &lt;span class=&quot;z-entity z-name z-function z-shell&quot;&gt;powerline_precmd&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-parens z-begin z-shell&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-parens z-end z-shell&quot;&gt;)&lt;&#x2F;span&gt; &lt;span class=&quot;z-punctuation z-section z-braces z-begin z-shell&quot;&gt;{&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function z-shell&quot;&gt;    &lt;span class=&quot;z-variable z-other z-readwrite z-assignment z-shell&quot;&gt;PS1&lt;&#x2F;span&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-shell&quot;&gt;=&lt;&#x2F;span&gt;&lt;span class=&quot;z-string z-unquoted z-shell&quot;&gt;&lt;span class=&quot;z-string z-quoted z-double z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-group z-expansion z-command z-parens z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-shell&quot;&gt;$&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-parens z-begin z-shell&quot;&gt;(&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;&#x2F;usr&#x2F;bin&#x2F;powerline-go&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;error&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-group z-expansion z-parameter z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-shell&quot;&gt;$&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-language z-shell&quot;&gt;?&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;jobs&lt;&#x2F;span&gt; &lt;span class=&quot;z-meta z-group z-expansion z-parameter z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-shell&quot;&gt;$&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-expansion z-parameter z-begin z-shell&quot;&gt;{&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-group z-expansion z-parameter z-shell&quot;&gt;&lt;span class=&quot;z-variable z-other z-readwrite z-shell&quot;&gt;&lt;span class=&quot;z-meta z-group z-expansion z-parameter z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-variable z-shell&quot;&gt;$&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-expansion z-parameter z-begin z-shell&quot;&gt;{&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-group z-expansion z-parameter z-shell&quot;&gt;&lt;span class=&quot;z-variable z-other z-readwrite z-shell&quot;&gt;(&lt;span class=&quot;z-keyword z-operator z-expansion z-shell&quot;&gt;%&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-group z-expansion z-parameter z-shell&quot;&gt;):%j&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-group z-expansion z-parameter z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-expansion z-parameter z-end z-shell&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-group z-expansion z-parameter z-shell&quot;&gt;&lt;span class=&quot;z-keyword z-operator z-assignment z-shell&quot;&gt;:-&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-group z-expansion z-parameter z-shell&quot;&gt;0&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-group z-expansion z-parameter z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-expansion z-parameter z-end z-shell&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-section z-parens z-end z-shell&quot;&gt;)&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-end z-shell&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function z-shell&quot;&gt;    &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; Uncomment the following line to automatically clear errors after showing&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function z-shell&quot;&gt;    &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; them once. This not only clears the error for powerline-go, but also for&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function z-shell&quot;&gt;    &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; everything else you run in that shell. Don&amp;#39;t enable this if you&amp;#39;re not&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function z-shell&quot;&gt;    &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt; sure this is what you want.&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function z-shell&quot;&gt;    &lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-comment z-begin z-shell&quot;&gt;#&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;set &amp;quot;?&amp;quot;&lt;&#x2F;span&gt;&lt;span class=&quot;z-comment z-line z-number-sign z-shell&quot;&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-section z-braces z-end z-shell&quot;&gt;}&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;If you&#x27;d like to have your prompt start in a newline, like I have in the
+screenshot above, you just need to set &lt;code&gt;-newline&lt;&#x2F;code&gt; in the powerline-go
+invocation in your &lt;code&gt;.bashrc&lt;&#x2F;code&gt;&#x2F;&lt;code&gt;.zshrc&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;6-gnome-system-monitor-extension&quot;&gt;6) Gnome System Monitor Extension&lt;&#x2F;h2&gt;
+&lt;p&gt;Tips number 6 and 7 are for Gnome users.&lt;&#x2F;p&gt;
+&lt;p&gt;Gnome is now shipping a system monitor extension which lets you get a glance of
+the current load of your machine from the top bar.&lt;&#x2F;p&gt;
+ &lt;img src=&quot;gnome_system_monitor_extension.webp&quot; alt=&quot;Screenshot of the top
+bar of Gnome with the system monitor extension enabled, showing the load of:
+CPU, memory, network and disk&quot; width=&quot;1537&quot; height=&quot;59&quot; loading=&quot;lazy&quot; &#x2F;&gt;
+&lt;p&gt;I&#x27;ve found this quite useful for machines where I&#x27;m required to install
+third-party monitoring software that tends to randomly consume more resources
+than it should. If I feel like my machine is struggling, I can quickly glance
+at its load to verify if it&#x27;s getting overloaded by some process.&lt;&#x2F;p&gt;
+&lt;p&gt;The extension is not as complete as
+&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;extensions.gnome.org&#x2F;extension&#x2F;3010&#x2F;system-monitor-next&#x2F;&quot;&gt;system-monitor-next&lt;&#x2F;a&gt;,
+not showing temperatures or histograms, but at least it&#x27;s officially part of
+Gnome, easy to install and supported by them.&lt;&#x2F;p&gt;
+&lt;p&gt;Try it out:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt install gnome-system-monitor gnome-shell-extension-manager&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;And then enable the extension from the &quot;Extension Manager&quot; application.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;7-gnome-setting-for-battery-charging-profile&quot;&gt;7) Gnome setting for battery charging profile&lt;&#x2F;h2&gt;
+&lt;p&gt;After having to learn more about batteries in order to get into FPV drones,
+I&#x27;ve come to have a bigger appreciation for solutions that minimize the
+inevitable loss of capacity that accrues over time.&lt;&#x2F;p&gt;
+&lt;p&gt;There&#x27;s now a &quot;Battery Charging&quot; setting (under the &quot;Power&quot;) section which lets
+you choose between two different profiles: &quot;Maximize Charge&quot; and &quot;Preserve
+Battery Health&quot;.&lt;&#x2F;p&gt;
+ &lt;img src=&quot;gnome_battery_charging.png&quot; alt=&quot;A screenshot of the Gnome
+settings for Power showing the options for Battery Charging&quot; width=&quot;1648&quot; height=&quot;1104&quot; loading=&quot;lazy&quot; &#x2F;&gt;
+&lt;p&gt;On supported laptops, this setting is an easy way to set thresholds for when
+charging should start and stop, just like you could do it with the &lt;code&gt;tlp&lt;&#x2F;code&gt; package,
+but now from the Gnome settings.&lt;&#x2F;p&gt;
+&lt;p&gt;To increase the longevity of my laptop battery, I always keep it at &quot;Preserve
+Battery Health&quot; unless I&#x27;m traveling.&lt;&#x2F;p&gt;
+&lt;p&gt;What I would like to see next is support for choosing different &quot;Power Modes&quot;
+based on whether the laptop is plugged-in, and based on the battery
+charge percentage.&lt;&#x2F;p&gt;
+&lt;p&gt;There&#x27;s a &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;gitlab.gnome.org&#x2F;GNOME&#x2F;gnome-settings-daemon&#x2F;-&#x2F;issues&#x2F;715&quot;&gt;GNOME
+issue&lt;&#x2F;a&gt;
+tracking this feature, but there&#x27;s some pushback on whether this is the right
+thing to expose to users.&lt;&#x2F;p&gt;
+&lt;p&gt;In the meantime, there are some workarounds mentioned in that issue which
+people who really want this feature can follow.&lt;&#x2F;p&gt;
+&lt;p&gt;If you would like to learn more about batteries; &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;batteryuniversity.com&quot;&gt;Battery
+University&lt;&#x2F;a&gt; is a great starting point, besides
+getting into FPV drones and being forced to handle batteries without a Battery
+Management System (BMS).&lt;&#x2F;p&gt;
+&lt;p&gt;And if by any chance this sparks your interest in FPV drones, Joshua Bardwell&#x27;s
+YouTube channel is a great resource:
+&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;@JoshuaBardwell&quot;&gt;@JoshuaBardwell&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;8-lazygit&quot;&gt;8) Lazygit&lt;&#x2F;h2&gt;
+&lt;p&gt;Emacs users are already familiar with the legendary &lt;code&gt;magit&lt;&#x2F;code&gt;; a terminal-based
+UI for git.&lt;&#x2F;p&gt;
+&lt;p&gt;Lazygit is an alternative for non-emacs users, you can integrate it with neovim
+or just use it directly.&lt;&#x2F;p&gt;
+&lt;p&gt;I&#x27;m still playing with &lt;code&gt;lazygit&lt;&#x2F;code&gt; and haven&#x27;t integrated it into my workflows,
+but so far it has been a pleasant experience.&lt;&#x2F;p&gt;
+ &lt;img src=&quot;lazygit.webp&quot; alt=&quot;Screenshot of lazygit from the Debian curl
+repository, showing a selected commit and its diff, besides the other things
+from the lazygit UI&quot; width=&quot;1000&quot; height=&quot;634&quot; loading=&quot;lazy&quot; &#x2F;&gt;
+&lt;p&gt;You should check out the demos from the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jesseduffield&#x2F;lazygit&quot;&gt;lazygit GitHub
+page&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Try it out:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt install lazygit&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;And then call &lt;code&gt;lazygit&lt;&#x2F;code&gt; from within a git repository.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;9-neovim&quot;&gt;9) neovim&lt;&#x2F;h2&gt;
+&lt;p&gt;neovim has been shipped in Debian since 2016, but upstream has been doing a lot of
+work to improve the experience out-of-the-box in the last couple of years.&lt;&#x2F;p&gt;
+&lt;p&gt;If you&#x27;re a neovim poweruser, you&#x27;re likely not installing it from the official
+repositories, but for those that are, Debian 13 comes with version 0.10.4,
+which brings the following improvements compared to the version in Debian 12:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Treesitter support for C, Lua, Markdown, with the possibility of adding any
+other languages as needed;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Better spellchecking due to treesitter integration (spellsitter);&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Mouse support enabled by default;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;Commenting support out-of-the-box;&lt;&#x2F;p&gt;
+&lt;p&gt;Check &lt;code&gt;:h commenting&lt;&#x2F;code&gt; for details, but the
+tl;dr is that you can use &lt;code&gt;gcc&lt;&#x2F;code&gt; to comment the current line and &lt;code&gt;gc&lt;&#x2F;code&gt; to comment
+the current selection.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;OSC52 support.&lt;&#x2F;p&gt;
+&lt;p&gt;Especially handy for those using neovim over an ssh
+connection, this protocol lets you copy something from within the neovim
+process into the clipboard of the machine you&#x27;re using to connect through ssh.
+In other words, you can copy from neovim running in a host over ssh and paste
+it in the &quot;outside&quot; machine.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;10-bonus-running-old-debian-releases&quot;&gt;10) [Bonus] Running old Debian releases&lt;&#x2F;h2&gt;
+&lt;p&gt;The bonus tip is not specific to the Debian 13 release, but something I&#x27;ve
+recently learned in the &lt;code&gt;#debian-devel&lt;&#x2F;code&gt; IRC channel.&lt;&#x2F;p&gt;
+&lt;p&gt;Did you know there are usable container images for all past Debian releases?
+I&#x27;m not talking &quot;past&quot; as in &quot;some of the older releases&quot;, I&#x27;m talking past as
+in &quot;literally every Debian release, including the very first one&quot;.&lt;&#x2F;p&gt;
+&lt;p&gt;Tianon Gravi &quot;tianon&quot; is the Debian Developer responsible for making this
+happen, kudos to him!&lt;&#x2F;p&gt;
+&lt;p&gt;There&#x27;s a small gotcha that the releases Buzz (1.1) and Rex (1.2) require a
+32-bit host, otherwise you will get the error &lt;code&gt;Out of virtual memory!&lt;&#x2F;code&gt;, but
+starting with Bo (1.3) all should work in amd64&#x2F;arm64.&lt;&#x2F;p&gt;
+&lt;p&gt;Try it out:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; apt install podman&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;podman&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; run&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;it&lt;&#x2F;span&gt; docker.io&#x2F;debian&#x2F;eol:bo&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Don&#x27;t be surprised when noticing that &lt;code&gt;apt&#x2F;apt-get&lt;&#x2F;code&gt; is not available inside the
+container, that&#x27;s because &lt;code&gt;apt&lt;&#x2F;code&gt; first appeared in Debian Slink (2.1).&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;changes-since-publication&quot;&gt;Changes since publication&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;2025-08-30&quot;&gt;2025-08-30&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Mention that Arch also enabled HTTP&#x2F;3.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>DebConf24 was fun! Security, curl, wcurl, Debian&#x27;s quality</title>
+        <published>2024-09-04T00:00:00+00:00</published>
+        <updated>2024-09-04T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://samueloph.dev/blog/debconf24-was-fun/"/>
+        <id>https://samueloph.dev/blog/debconf24-was-fun/</id>
+        
+        <content type="html" xml:base="https://samueloph.dev/blog/debconf24-was-fun/"> &lt;img src=&quot;debconf24_was_fun.webp&quot; alt=&quot;A picture of a badger2040w with
+Samuel&amp;#x27;s badge and the curl manpage PCB on the side&quot; width=&quot;1200&quot; height=&quot;630&quot; loading=&quot;lazy&quot; &#x2F;&gt;
+&lt;h4 id=&quot;tl-dr&quot;&gt;tl;dr&lt;&#x2F;h4&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;debconf24.debconf.org&#x2F;&quot;&gt;DebConf24&lt;&#x2F;a&gt; was fun!&lt;&#x2F;p&gt;
+&lt;p&gt;A playlist of all of my talks, with subtitles (en, pt-br) and chapters is
+available on &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;youtube.com&#x2F;playlist?list=PLKGG29PjeLnYeao03jWWH0eaRC5htIg1E&amp;amp;si=3Hwrl5WHFFM2IaSO&quot;&gt;YouTube&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;overview&quot;&gt;Overview&lt;&#x2F;h1&gt;
+&lt;p&gt;DebConf24 was held in Busan, South Korea, between Sunday July 28th to Sunday August 4th 2024.&lt;&#x2F;p&gt;
+&lt;p&gt;As usual for DebConfs, I had a great time meeting my friends, but also met new
+people and got to learn a bit about the interesting things they&#x27;re working on.&lt;&#x2F;p&gt;
+&lt;p&gt;I ended up getting too excited during the talk submission stage of the
+conference and as a result I presented 5 different activities (3 talks, 1 BoF
+and 1 lightning talk).&lt;&#x2F;p&gt;
+&lt;p&gt;Since I was too busy with the presentations, I did not have a lot of time to
+actually hang out with folks, or even to go out in the city, I guess I&#x27;ve
+learned my lesson for next time.&lt;&#x2F;p&gt;
+&lt;p&gt;The main purpose of this post is to write about all of the things I presented
+at the conference. I did want to list some of the interesting talks I&#x27;ve
+watched, but that I would not be able to be fair as I&#x27;m sure I would miss some.&lt;&#x2F;p&gt;
+&lt;p&gt;You can get the schedule and the recordings of any talks from the conference&#x27;s website:
+&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;debconf24.debconf.org&#x2F;schedule&#x2F;&quot;&gt;https:&#x2F;&#x2F;debconf24.debconf.org&#x2F;schedule&#x2F;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;wcurl-lightning-talk&quot;&gt;wcurl Lightning Talk&lt;&#x2F;h1&gt;
+&lt;p&gt;The most fun of my presentations, during the second-to-last day of the
+conference, I&#x27;ve asked for help from Sergio Durigan Junior &amp;lt;sergiodj&amp;gt; to
+setup an URL containing a whitespace and redirecting that to &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;curl.se&#x2F;wcurl&#x2F;&quot;&gt;wcurl&lt;&#x2F;a&gt;&#x27;s
+manpage.&lt;&#x2F;p&gt;
+&lt;p&gt;I then did a little demo to showcase why me (and a lot others) struggle
+with downloading things with curl, and how &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;curl.se&#x2F;wcurl&#x2F;&quot;&gt;wcurl&lt;&#x2F;a&gt; solves that.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=eM8M5qa4pPM&quot;&gt;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=eM8M5qa4pPM&lt;&#x2F;a&gt;
+&lt;div class=&quot;yv&quot;&gt;
+    &lt;iframe src=&quot;https:&#x2F;&#x2F;www.youtube-nocookie.com&#x2F;embed&#x2F;eM8M5qa4pPM&quot; title=&quot;Youtube&quot; class=&quot;yvi&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;fixing-cves-on-debian-everything-you-probably-know-already&quot;&gt;Fixing CVEs on Debian: Everything you probably know already&lt;&#x2F;h1&gt;
+&lt;p&gt;I&#x27;ve always felt like DebConf was missing security-related talks, so I decided
+to do something about it and presented a few of the things I&#x27;ve learned when
+fixing CVEs for Debian.&lt;&#x2F;p&gt;
+&lt;p&gt;This is an area where we don&#x27;t get a lot of new contributors, I&#x27;m trying to
+change that, and this talk can be used to introduce newcomers to it.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=XzNVVILVyUM&quot;&gt;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=XzNVVILVyUM&lt;&#x2F;a&gt;
+&lt;div class=&quot;yv&quot;&gt;
+    &lt;iframe src=&quot;https:&#x2F;&#x2F;www.youtube-nocookie.com&#x2F;embed&#x2F;XzNVVILVyUM&quot; title=&quot;Youtube&quot; class=&quot;yvi&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;the-secret-sauce-of-debian&quot;&gt;The secret sauce of Debian&lt;&#x2F;h1&gt;
+&lt;p&gt;Debian is not very vocal about all of the nice things it has regarding
+quality-assurance, testing, or CI, even though it&#x27;s at the state-of-the-art for
+a lot of things.&lt;&#x2F;p&gt;
+&lt;p&gt;This talk is an initial step towards making people aware of the cool
+things happening behind the scenes. Ideally we should have it
+well-documented somewhere.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=x_X2IBnpjic&quot;&gt;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=x_X2IBnpjic&lt;&#x2F;a&gt;
+&lt;div class=&quot;yv&quot;&gt;
+    &lt;iframe src=&quot;https:&#x2F;&#x2F;www.youtube-nocookie.com&#x2F;embed&#x2F;x_X2IBnpjic&quot; title=&quot;Youtube&quot; class=&quot;yvi&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;i-use-debian-btw-fzf-tmux-zoxide-and-friends&quot;&gt;&quot;I use Debian BTW&quot;: fzf, tmux, zoxide and friends&lt;&#x2F;h1&gt;
+&lt;p&gt;One of my earliest good memories of Debian was when it started coming with a
+colored PS1 by default, I still remember the feeling of relief whenever I
+jumped into a Debian server and didn&#x27;t have to deal with a black and white PS1.&lt;&#x2F;p&gt;
+&lt;p&gt;There&#x27;s still a lot of room for Debian to ship better defaults, and I think
+some of them can actually happen.&lt;&#x2F;p&gt;
+&lt;p&gt;This talk is a bit of a silly one where I&#x27;m just making people aware of the
+existence of a few Golang&#x2F;Rust CLI tools, and also some dotfiles configurations
+that should probably be the default.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=tfto3Seokn4&quot;&gt;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=tfto3Seokn4&lt;&#x2F;a&gt;
+&lt;div class=&quot;yv&quot;&gt;
+    &lt;iframe src=&quot;https:&#x2F;&#x2F;www.youtube-nocookie.com&#x2F;embed&#x2F;tfto3Seokn4&quot; title=&quot;Youtube&quot; class=&quot;yvi&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;curl&quot;&gt;curl&lt;&#x2F;h1&gt;
+&lt;p&gt;The curl project does such a great job with their security advisories that it
+will likely never receive the amount of praise it deserves, but I did my best
+at mentioning it throughout my &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=XzNVVILVyUM&quot;&gt;CVEs talk&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Maybe I will write more extensively about this someday, but in case I don&#x27;t:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;There&#x27;s no other project which always consistently mentions the exact range of
+commits that are affected by a given CVE.&lt;&#x2F;p&gt;
+&lt;p&gt;Forget about whether the versions are EOL, curl doesn&#x27;t have LTS releases, yet
+they do such a great job at clearly documenting their CVEs that I would take
+that over having LTS releases anytime (that&#x27;s for curl at least, I
+acknowledge some types of projects have a different need for LTS
+releases).&lt;&#x2F;p&gt;
+&lt;p&gt;Not only that, but they are also always careful about explaining alternative
+mitigations such as configuration changes, build flags that defuse the
+exploitation, or parameters that you should not use.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;p&gt;Just like we tend to do every time we meet, me and the other Debian curl
+maintainers spent the first 2 or 3 days of the conference talking about how we
+wanted to eventually meet up to discuss the package.&lt;&#x2F;p&gt;
+&lt;p&gt;It was going to be informal, maybe during the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;debconf24.debconf.org&#x2F;about&#x2F;cheese-and-wine-party&#x2F;&quot;&gt;Cheese and Wine
+party&lt;&#x2F;a&gt;, but then
+I&#x27;ve realized we should make it part of the official schedule, which would
+also give us the recordings for later.&lt;&#x2F;p&gt;
+&lt;p&gt;And so the &quot;curl maintainers BoF&quot; happened, where we spoke about HTTP3,
+GnutTLS, &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;curl.se&#x2F;wcurl&#x2F;&quot;&gt;wcurl&lt;&#x2F;a&gt; and other things.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=fL7hSypUTdM&quot;&gt;https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=fL7hSypUTdM&lt;&#x2F;a&gt;
+&lt;div class=&quot;yv&quot;&gt;
+    &lt;iframe src=&quot;https:&#x2F;&#x2F;www.youtube-nocookie.com&#x2F;embed&#x2F;fL7hSypUTdM&quot; title=&quot;Youtube&quot; class=&quot;yvi&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+&lt;&#x2F;div&gt;
+&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;wcurl&quot;&gt;wcurl&lt;&#x2F;h1&gt;
+&lt;p&gt;Right after that BoF, Daniel Stenberg
+&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;curl.se&#x2F;mail&#x2F;archive-2024-08&#x2F;0000.html&quot;&gt;asked&lt;&#x2F;a&gt; if we were interested
+in having &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;curl.se&#x2F;wcurl&#x2F;&quot;&gt;wcurl&lt;&#x2F;a&gt; adopted into curl, which we
+definitely were, so &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;daniel.haxx.se&#x2F;blog&#x2F;2024&#x2F;08&#x2F;08&#x2F;curl-welcomes-wcurl-to-the-team&#x2F;&quot;&gt;wcurl is now part of the curl
+project&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Daniel was also kind enough to design a logo for the project, which makes me
+especially happy because I can stop with my own approach at a logo (which I had
+to redo every few days):&lt;&#x2F;p&gt;
+ &lt;img src=&quot;wcurl_draft_logo.webp&quot; alt=&quot;A laptop with a curl and a GoHorse
+sticker, there&amp;#x27;s a &amp;#x27;w&amp;#x27; handwritten with a marker on the right side of the curl
+sticker, making it &amp;#x27;wcurl&amp;#x27;&quot; width=&quot;700&quot; height=&quot;699&quot; loading=&quot;lazy&quot; &#x2F;&gt;
+&lt;p&gt;And here is the new logo:&lt;&#x2F;p&gt;
+ &lt;img src=&quot;wcurl_logo.svg&quot; alt=&quot;&amp;#x27;wcurl&amp;#x27; written with the same font and
+colors as the curl logo, with the &amp;#x27;w&amp;#x27; being green instead of blue, and a
+download icon at the end&quot; width=&quot;998&quot; height=&quot;250&quot; loading=&quot;lazy&quot; &#x2F;&gt;
+&lt;p&gt;Much better, I would say :)&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;curl-swag&quot;&gt;curl Swag&lt;&#x2F;h1&gt;
+&lt;p&gt;DebConf24 was my chance at forwarding some curl swag items to the other
+curl maintainers, so both Sergio Durigan Junior &amp;lt;sergiodj&amp;gt; and Carlos
+Henrique Lima Melara &amp;lt;charles&amp;gt; got the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;daniel.haxx.se&#x2F;blog&#x2F;2024&#x2F;05&#x2F;06&#x2F;i-survived-curl-up-2024&quot;&gt;curl-up
+t-shirt&lt;&#x2F;a&gt;
+and the very cool &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;daniel.haxx.se&#x2F;blog&#x2F;2023&#x2F;11&#x2F;03&#x2F;curl-coasters&#x2F;&quot;&gt;curl PCB
+coaster&lt;&#x2F;a&gt;, both gifted
+by Daniel Stenberg.&lt;&#x2F;p&gt;
+&lt;p&gt;Unfortunately I didn&#x27;t have any of that for DebConf attendees, but I did drop
+loads of curl stickers at the stickers table, they were gone very quickly.&lt;&#x2F;p&gt;
+ &lt;img src=&quot;debconf24_curl_stickers.webp&quot; alt=&quot;A table full of different
+stickers, curl stickers can be seen over the whole table&quot; width=&quot;450&quot; height=&quot;800&quot; loading=&quot;lazy&quot; &#x2F;&gt;
+&lt;h1 id=&quot;for-the-future&quot;&gt;For the future&lt;&#x2F;h1&gt;
+&lt;p&gt;I used to think the most humbling experience you could have as someone who presented
+a talk was to have to watch it yourself, you notice a lot of mistakes and
+you instantly think about things that should be done differently.&lt;&#x2F;p&gt;
+&lt;p&gt;It turns out the most humbling thing to do is actually to write subtitles for
+your talks, I noticed every single mistake, often multiple times.&lt;&#x2F;p&gt;
+&lt;p&gt;So after spending more than 30 hours writing the subtitles for both English and
+Brazilian Portuguese for my talks, I feel like it&#x27;s going to be much easier to
+avoid committing the same mistakes again. After some time you stop feeling shame
+about those mistakes and you&#x27;re just left with feelings of annoyance, and at
+that point it becomes easier to consciously avoid them.&lt;&#x2F;p&gt;
+&lt;p&gt;I am collecting a list of things I wish I had done differently on all of those
+talks, so if I end up presenting any one of them again, it will be an improved
+version.&lt;&#x2F;p&gt;
+&lt;p&gt; &lt;img src=&quot;debconf24_group_photo.webp&quot; alt=&quot;A picture from the top of a
+group of conference attendees, there&amp;#x27;s about 150 people in the picture&quot; width=&quot;1484&quot; height=&quot;1024&quot; loading=&quot;lazy&quot; &#x2F;&gt;
+
+Photography: Aigars Mahinovs &amp;lt;aigaruius@debian.org&amp;gt;&lt;br &#x2F;&gt;
+License: CC-BYv3+ or GPLv2+&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Debian&#x27;s curl now supports HTTP3</title>
+        <published>2024-07-04T00:00:00+00:00</published>
+        <updated>2024-07-04T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://samueloph.dev/blog/debian-curl-now-supports-http3/"/>
+        <id>https://samueloph.dev/blog/debian-curl-now-supports-http3/</id>
+        
+        <content type="html" xml:base="https://samueloph.dev/blog/debian-curl-now-supports-http3/">&lt;h4 id=&quot;tl-dr&quot;&gt;tl;dr&lt;&#x2F;h4&gt;
+&lt;p&gt;Starting with &lt;strong&gt;curl 8.0.0-2&lt;&#x2F;strong&gt;, you can now use HTTP3.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;curl&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; --&lt;&#x2F;span&gt;http3-only&lt;&#x2F;span&gt; https:&#x2F;&#x2F;example.com&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Or, if you would like to try it out in a container:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;podman&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; run debian:testing &#x2F;bin&#x2F;bash&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;c&lt;&#x2F;span&gt; &lt;span class=&quot;z-string z-quoted z-single z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-string z-begin z-shell&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;apt install --update -y curl &amp;amp;&amp;amp; curl --http3-only https:&#x2F;&#x2F;example.com&lt;span class=&quot;z-punctuation z-definition z-string z-end z-shell&quot;&gt;&amp;#39;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;em&gt;(in case you haven&#x27;t noticed, apt now has the &lt;code&gt;--update&lt;&#x2F;code&gt; option for the
+&lt;code&gt;upgrade&lt;&#x2F;code&gt; and &lt;code&gt;install&lt;&#x2F;code&gt; commands, although not available on stable yet)&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;h5 id=&quot;availability&quot;&gt;Availability&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;Debian unstable - Since 2024-07-02&lt;&#x2F;li&gt;
+&lt;li&gt;Debian testing - Since 2024-07-18&lt;&#x2F;li&gt;
+&lt;li&gt;Debian 12&#x2F;bookworm-backports - Since 2024-08-25&lt;&#x2F;li&gt;
+&lt;li&gt;Debian 12&#x2F;bookworm - Due to the mechanisms we have in place to make sure
+Debian stable is in fact stable, we will never be able to ship this in the
+regular repository. Users can make use of the
+&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;backports.debian.org&#x2F;&quot;&gt;backports&lt;&#x2F;a&gt; repositories instead.&lt;&#x2F;li&gt;
+&lt;li&gt;Debian derivatives - Rolling releases will get it by the time it&#x27;s on Debian
+testing (e.g.: Kali Linux). Stable derivatives only in their next major release.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;the-challenge&quot;&gt;The challenge&lt;&#x2F;h1&gt;
+&lt;p&gt;HTTP3 is fresh new, well... not really, but at least fresh enough that I&#x27;m not
+aware of any other Linux distribution supporting it on curl, the reason is
+likely two-fold:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;h3 id=&quot;openssl-is-not-there-yet&quot;&gt;OpenSSL is not there yet&lt;&#x2F;h3&gt;
+&lt;p&gt;OpenSSL still doesn&#x27;t have proper HTTP3 support, and given that OpenSSL is so
+widely used, almost every curl distributor&#x2F;packager will build curl with it
+and thus changing the TLS backend to something else is risky.&lt;&#x2F;p&gt;
+&lt;p&gt;Unfortunately, proper support for the OpenSSL libcurl is unlikely to come anytime
+before the end of this year, the OpenSSL performance is &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;curl.se&#x2F;mail&#x2F;distros-2024-04&#x2F;0001.html&quot;&gt;not good enough
+yet as of version 3.3&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Daniel Stenberg has written about the state of this multiple times, most
+recently at &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;daniel.haxx.se&#x2F;blog&#x2F;2024&#x2F;06&#x2F;10&#x2F;http-3-in-curl-mid-2024&#x2F;&quot;&gt;HTTP&#x2F;3 in curl mid
+2024&lt;&#x2F;a&gt;, if
+you&#x27;re interested, I suggest reading through his other posts as well.&lt;&#x2F;p&gt;
+&lt;p&gt;Some might have noticed that nginx &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;nginx.org&#x2F;en&#x2F;docs&#x2F;quic.html&quot;&gt;does support HTTP3 through OpenSSL&lt;&#x2F;a&gt;,
+although when you look closely, it&#x27;s not exactly perfect:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;An SSL library that provides QUIC support is recommended to build nginx, such as BoringSSL, LibreSSL, or QuicTLS. Otherwise, the OpenSSL compatibility layer will be used that does not support early data.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;As you can see, they don&#x27;t recommend using OpenSSL, and when doing so, you don&#x27;t get complete support.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;h3 id=&quot;http3-support-for-gnutls-nghttp3-ngtcp2-is-recent&quot;&gt;HTTP3 support for GnuTLS&#x2F;nghttp3&#x2F;ngtcp2 is recent&lt;&#x2F;h3&gt;
+&lt;p&gt;The non-experimental support arrived &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;curl&#x2F;curl&#x2F;commit&#x2F;5f78cf503c786a1d48d13528dde038bccfa6c67c&quot;&gt;back in October
+2023&lt;&#x2F;a&gt;,
+and so that&#x27;s when I started seriously planning for this.&lt;&#x2F;p&gt;
+&lt;p&gt;curl has been working on HTTP3 support for years, and so it did support other
+TLS backends before that, but out of them, the one most feasible for a
+distribution to ship would be GnuTLS, which gets HTTP3 support &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;daniel.haxx.se&#x2F;blog&#x2F;2024&#x2F;06&#x2F;10&#x2F;http-3-in-curl-mid-2024&#x2F;&quot;&gt;through ngctp2 and
+nghttp3&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h1 id=&quot;how-it-was-done&quot;&gt;How it was done&lt;&#x2F;h1&gt;
+&lt;p&gt;The Debian curl package has historically shipped at least two variants of libcurl, an
+OpenSSL and a GnuTLS one.&lt;&#x2F;p&gt;
+&lt;p&gt;The OpenSSL libcurl can&#x27;t support HTTP3 for the reasons explained above, but
+the GnuTLS libcurl can (with ngtcp2 and nghtp3).&lt;&#x2F;p&gt;
+&lt;p&gt;Debian packages can choose which version of libcurl to link against (without
+having to modify any upstream source code). Debian&#x27;s &quot;git&quot; package being a famous
+example of a package that links against the GnuTLS libcurl.&lt;&#x2F;p&gt;
+&lt;p&gt;Enabling HTTP3 on curl was done in three steps:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Make sure all required dependencies fulfill the minimum requirements.&lt;&#x2F;li&gt;
+&lt;li&gt;Enable HTTP3 for GnuTLS libcurl.&lt;&#x2F;li&gt;
+&lt;li&gt;Change the libcurl used by the curl CLI, from OpenSSL to GnuTLS.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;curl&#x27;s HTTP3 support requires a somewhat recent version of nghttp3 and
+updating that required a &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;wiki.debian.org&#x2F;Teams&#x2F;ReleaseTeam&#x2F;Transitions&quot;&gt;transition&lt;&#x2F;a&gt; (due to the SONAME bump), while we&#x27;ve also
+had months of freeze for transitions due to the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;lists.debian.org&#x2F;debian-devel-announce&#x2F;2024&#x2F;02&#x2F;msg00000.html&quot;&gt;time_t
+transition&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;After the dependencies were in place, enabling HTTP3 for the GnuTLS libcurl was
+&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;salsa.debian.org&#x2F;debian&#x2F;curl&#x2F;-&#x2F;commit&#x2F;51df321b0165e5164a0d898d23a64ca3bbd553c0&quot;&gt;straightforward&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Then, for the last part, we had to switch the TLS backend used by the curl CLI.
+Doing the swap is also &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;salsa.debian.org&#x2F;debian&#x2F;curl&#x2F;-&#x2F;commit&#x2F;37820dad3612d1b13a9fb9550b1726b998c80cfc&quot;&gt;quite
+easy&lt;&#x2F;a&gt;
+on the packaging level, but we have to consider the chances of this change
+breaking our users&#x27; environments.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;ensuring-there-are-no-breakages&quot;&gt;Ensuring there are no breakages&lt;&#x2F;h1&gt;
+&lt;p&gt;The first thing to consider regarding breakages is that this change is not
+going to be pushed directly to the current Debian stable releases, it will be
+present in the next stable release (13&#x2F;trixie) but the current one will stick to the
+version that&#x27;s already shipped.&lt;&#x2F;p&gt;
+&lt;p&gt;Secondly, we have to consider the risk of losing the ability to use certain
+parameters from the curl CLI which could be limited to the OpenSSL backend.
+During &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;daniel.haxx.se&#x2F;blog&#x2F;2024&#x2F;05&#x2F;06&#x2F;i-survived-curl-up-2024&#x2F;&quot;&gt;curl-up 2024&lt;&#x2F;a&gt;, the curl developers pointed out the existence of a page
+that lists the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;curl.se&#x2F;libcurl&#x2F;c&#x2F;tls-options.html&quot;&gt;TLS related options and the backends they work
+with&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Analysing that page, ignoring all of the options that are suffixed with &quot;BLOB&quot;
+(only pertinent to the library, not the CLI), the only one left which is
+attention worthy is &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;curl.se&#x2F;libcurl&#x2F;c&#x2F;CURLOPT_ECH.html&quot;&gt;CURLOPT_ECH&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This experimental feature requires a special build of OpenSSL, as ECH is not
+yet supported in OpenSSL releases. In contrast ECH is supported by the latest
+BoringSSL and wolfSSL releases.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;As it turns out, &lt;code&gt;Encrypted Client Hello&lt;&#x2F;code&gt; is experimental and it&#x27;s not
+supported by the vanilla OpenSSL.&lt;&#x2F;p&gt;
+&lt;p&gt;This was enough of an investigation for me to go ahead with the change. Noting
+that even in the worst case scenario (we find a horrible regression), we can
+rollback without having affected a single stable release.&lt;&#x2F;p&gt;
+&lt;p&gt;Now that the package is on Debian unstable, the CI tests (autopkgtest) of every
+package that depends on curl is currently running, the results are compared
+against the migration-reference (in this case, the curl CLI with OpenSSL,
+before the change).&lt;&#x2F;p&gt;
+&lt;p&gt;If everything goes right, curl with HTTP3 support will migrate to Debian
+testing in around 5 days. If we spot any issues, we&#x27;ll have to solve them
+first and it&#x27;s going to be hard to predict how long it takes, although it&#x27;s
+fair to expect less than a month.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;feedback&quot;&gt;Feedback&lt;&#x2F;h1&gt;
+&lt;p&gt;Feel free to join the Matrix room for the Debian curl maintainers:&lt;br &#x2F;&gt;
+&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;matrix.to&#x2F;#&#x2F;#debian-curl-maintainers:matrix.org&quot;&gt;https:&#x2F;&#x2F;matrix.to&#x2F;#&#x2F;#debian-curl-maintainers:matrix.org&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;acknowledgements&quot;&gt;Acknowledgements&lt;&#x2F;h1&gt;
+&lt;p&gt;It took us a bit longer than expected to be able to enable HTTP3, nonetheless it&#x27;s
+still early enough to be excited about.&lt;&#x2F;p&gt;
+&lt;p&gt;A lot of people were crucial to make this happen.&lt;&#x2F;p&gt;
+&lt;p&gt;I should recognize in the first place, obviously, the curl developers and the
+developers of the supporting libraries: GnuTLS, nghttp3, ngtcp2. Participating
+in the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;daniel.haxx.se&#x2F;blog&#x2F;2024&#x2F;05&#x2F;06&#x2F;i-survived-curl-up-2024&#x2F;&quot;&gt;curl-up
+2024&lt;&#x2F;a&gt;
+conference helped me get motivated to push this through, besides becoming aware
+of the right documentation to research for impact.&lt;&#x2F;p&gt;
+&lt;p&gt;On the Debian side, Sakirnth Nagarasa &amp;lt;sakirnth&amp;gt; was responsible for updating
+and taking care of the transition for nghttp3 and ngtcp2.&lt;&#x2F;p&gt;
+&lt;p&gt;Also on the Debian side, I&#x27;ve got loads of help and support from the
+co-maintainers of the curl package: Sergio Durigan Junior &amp;lt;sergiodj&amp;gt; and Carlos
+Henrique Lima Melara &amp;lt;charles&amp;gt;.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;changes-since-publication&quot;&gt;Changes since publication&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;2025-03-08&quot;&gt;2025-03-08&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Fix podman command, the previous one was not running all commands inside the container.&lt;&#x2F;li&gt;
+&lt;li&gt;Change the podman command to use Debian testing instead of unstable.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;2024-08-28&quot;&gt;2024-08-28&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Mention availability in bookworm-backports.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;2024-07-18&quot;&gt;2024-07-18&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Update date of availability for Debian testing and expected date for bookworm-backports.&lt;&#x2F;li&gt;
+&lt;li&gt;Remove mention of language spoken in the Matrix room, we are using English now.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Announcing wcurl: a curl wrapper to download files</title>
+        <published>2024-07-03T00:00:00+00:00</published>
+        <updated>2024-07-03T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://samueloph.dev/blog/announcing-wcurl-a-curl-wrapper-to-download-files/"/>
+        <id>https://samueloph.dev/blog/announcing-wcurl-a-curl-wrapper-to-download-files/</id>
+        
+        <content type="html" xml:base="https://samueloph.dev/blog/announcing-wcurl-a-curl-wrapper-to-download-files/">&lt;div class=&quot;yv&quot;&gt;
+    &lt;iframe src=&quot;https:&#x2F;&#x2F;www.youtube-nocookie.com&#x2F;embed&#x2F;eM8M5qa4pPM&quot; title=&quot;Youtube&quot; class=&quot;yvi&quot; webkitallowfullscreen mozallowfullscreen allowfullscreen&gt;&lt;&#x2F;iframe&gt;
+&lt;&#x2F;div&gt;
+&lt;h4 id=&quot;tl-dr&quot;&gt;tl;dr&lt;&#x2F;h4&gt;
+&lt;p&gt;Whenever you need to download files through the terminal and don&#x27;t feel like using wget:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;wcurl&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; example.com&#x2F;filename.txt&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Manpage:&lt;br &#x2F;&gt;
+&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;curl.se&#x2F;wcurl&#x2F;manual.html&quot;&gt;https:&#x2F;&#x2F;curl.se&#x2F;wcurl&#x2F;manual.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h5 id=&quot;availability-comes-installed-with-the-curl-package&quot;&gt;Availability (comes installed with the curl package):&lt;&#x2F;h5&gt;
+&lt;ul&gt;
+&lt;li&gt;Debian unstable - Since 2024-07-02&lt;&#x2F;li&gt;
+&lt;li&gt;Debian testing - Since 2024-07-18&lt;&#x2F;li&gt;
+&lt;li&gt;Debian 12&#x2F;bookworm-backports - Since 2024-08-25&lt;&#x2F;li&gt;
+&lt;li&gt;Debian 12&#x2F;bookworm - Due to the way changes are planned for Debian Stable,
+wcurl will not be present in bookworm. Users are recommended to either manually
+download wcurl or use the bookworm-backports repository. wcurl will be present
+in Debian 13&#x2F;trixie.&lt;&#x2F;li&gt;
+&lt;li&gt;Debian derivatives - Rolling releases will get it by the time it&#x27;s on Debian
+testing (e.g.: Kali Linux). Stable derivatives only in their next major release.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;If you don&#x27;t want to wait for the package update to arrive, you can always copy
+the script and place it in your &lt;code&gt;&#x2F;usr&#x2F;bin&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;curl&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt;&lt;span class=&quot;z-variable z-parameter z-option z-shell&quot;&gt;&lt;span class=&quot;z-punctuation z-definition z-parameter z-shell&quot;&gt; -&lt;&#x2F;span&gt;fLO&lt;&#x2F;span&gt; https:&#x2F;&#x2F;github.com&#x2F;curl&#x2F;wcurl&#x2F;releases&#x2F;latest&#x2F;download&#x2F;wcurl&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;chmod&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; +x wcurl&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; mv wcurl &#x2F;usr&#x2F;bin&#x2F;wcurl&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;After this announcement, wcurl has joined the curl organization:&lt;br &#x2F;&gt;
+&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;daniel.haxx.se&#x2F;blog&#x2F;2024&#x2F;08&#x2F;08&#x2F;curl-welcomes-wcurl-to-the-team&#x2F;&quot;&gt;https:&#x2F;&#x2F;daniel.haxx.se&#x2F;blog&#x2F;2024&#x2F;08&#x2F;08&#x2F;curl-welcomes-wcurl-to-the-team&#x2F;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Project homepage:&lt;br &#x2F;&gt;
+&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;curl.se&#x2F;wcurl&#x2F;&quot;&gt;https:&#x2F;&#x2F;curl.se&#x2F;wcurl&#x2F;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;smoother-cli-experience&quot;&gt;Smoother CLI experience&lt;&#x2F;h1&gt;
+&lt;p&gt;Starting with &lt;strong&gt;curl version 8.8.0-2&lt;&#x2F;strong&gt;, the Debian&#x27;s curl package now ships a wcurl
+executable.&lt;&#x2F;p&gt;
+&lt;p&gt;wcurl is the solution for those who just need to download files without having
+to remember curl&#x27;s parameters for things like automatically naming the files.&lt;&#x2F;p&gt;
+&lt;p&gt;Some people, myself included, would fall back to using wget whenever there was a
+need to download a file. Sometimes even installing wget just for that usecase.
+After all, it&#x27;s easier to remember &quot;apt install wget&quot; rather than &quot;curl -L -O -C - ...&quot;.&lt;&#x2F;p&gt;
+&lt;p&gt;wcurl consists of a simple shell script that provides sane defaults for the curl
+invocation, for when the use case is to just download files.&lt;&#x2F;p&gt;
+&lt;p&gt;By default, wcurl will:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Percent-encode whitespaces in URLs;&lt;&#x2F;li&gt;
+&lt;li&gt;Download multiple URLs in parallel if the installed curl&#x27;s version is &amp;gt;= 7.66.0;&lt;&#x2F;li&gt;
+&lt;li&gt;Follow redirects;&lt;&#x2F;li&gt;
+&lt;li&gt;Automatically choose a filename as output;&lt;&#x2F;li&gt;
+&lt;li&gt;Avoid overwriting files if the installed curl&#x27;s version is &amp;gt;= 7.83.0 (--no-clobber);&lt;&#x2F;li&gt;
+&lt;li&gt;Perform retries;&lt;&#x2F;li&gt;
+&lt;li&gt;Set the downloaded file timestamp to the value provided by the server, if available;&lt;&#x2F;li&gt;
+&lt;li&gt;Disable curl&#x27;s URL globbing parser so {} and [] characters in URLs are not treated specially;&lt;&#x2F;li&gt;
+&lt;li&gt;Percent-decode the resulting filename;&lt;&#x2F;li&gt;
+&lt;li&gt;Use &quot;index.html&quot; as default filename if there&#x27;s none in the URL.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Example to download a single file:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; class=&quot;language-bash z-code&quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;z-source z-shell z-bash&quot;&gt;&lt;span class=&quot;z-meta z-function-call z-shell&quot;&gt;&lt;span class=&quot;z-variable z-function z-shell&quot;&gt;wcurl&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;z-meta z-function-call z-arguments z-shell&quot;&gt; example.com&#x2F;filename.txt&lt;&#x2F;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;If you ever need to set a custom flag, you can make use of the &lt;code&gt;--curl-options&lt;&#x2F;code&gt;
+wcurl option, anything set there will be passed to the curl invocation.
+Just beware that if you need to set any custom flags, it&#x27;s likely you will be
+better served by calling curl directly. The &lt;code&gt;--curl-options&lt;&#x2F;code&gt; option is there to
+allow for some flexibility in unforeseen circumstances.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;the-need-for-wcurl&quot;&gt;The need for wcurl&lt;&#x2F;h1&gt;
+&lt;p&gt;I&#x27;ve always felt a bit ashamed of not remembering curl&#x27;s parameters for
+downloading a file and automatically naming it, having resorted to wget most of
+the times this was needed (even installing wget when it wasn&#x27;t there, just for
+this). I&#x27;ve spoken to a few other experienced people I know and confirmed what
+could be obvious to others: a lot of people struggle with this.&lt;&#x2F;p&gt;
+&lt;p&gt;Recently, the curl project released the results of &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;daniel.haxx.se&#x2F;media&#x2F;curl-user-survey-2024-analysis.pdf&quot;&gt;2024&#x27;s curl
+survey&lt;&#x2F;a&gt;, which
+also showed this is as a much needed feature, just look at some of the answers:&lt;&#x2F;p&gt;
+&lt;h4 id=&quot;q-which-curl-command-line-option-do-you-think-needs-improvement-and-how&quot;&gt;Q: Which curl command line option do you think needs improvement and how?&lt;&#x2F;h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;-O, I really want wget like functionality where I don&#x27;t have to specify the name&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Downloading a file (like wget) could be improved - with automatic naming of the file&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;downloading files - wget is much cleaner&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I wish the default behaviour when GETting a binary was to drop it on disk. That&#x27;s the only
+reason &#x27;wget foo.tgz&quot; is still ingrained in my muscle memory .&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Maybe have a way to download without specifying something in -o (the only reason i used wget
+still)&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;--remote-time should be default&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;--remote-name-all could really use a short flag&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;h4 id=&quot;q-if-you-miss-support-for-something-tell-us-what&quot;&gt;Q: If you miss support for something, tell us what!&lt;&#x2F;h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&quot;Write the data to the file named in the URL (or in redirects if I&#x27;m feeling daring), and
+timestamp the file to the last-modified-date&quot;. This is the main reason I&#x27;m still using wget.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;I can finally feel less bad about falling back to wget due to not remembering the
+parameters I want.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;idealization-vs-reality&quot;&gt;Idealization vs. reality&lt;&#x2F;h1&gt;
+&lt;p&gt;I don&#x27;t believe curl will ever change its default behavior in such a way that
+would accommodate this need, as that would have a side-effect of breaking things
+which expect the current behavior (the blast radius is literally the
+&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;daniel.haxx.se&#x2F;blog&#x2F;2021&#x2F;12&#x2F;03&#x2F;why-curl-is-used-everywhere-even-on-mars&#x2F;&quot;&gt;solar system&lt;&#x2F;a&gt;).&lt;&#x2F;p&gt;
+&lt;p&gt;This means a new executable needs to be shipped side-by-side with curl, an
+opportunity to start fresh and work with a more focused use case (to download
+files).&lt;&#x2F;p&gt;
+&lt;p&gt;Ideally, this new executable would be maintained by the curl project, make use
+of libcurl under-the-hood, and be available everywhere. Nobody wants to worry
+if their systems have the tool or not, it should always be there.&lt;&#x2F;p&gt;
+&lt;p&gt;Given I&#x27;m just a Debian Developer, with not as much free time as I wish, I&#x27;ve
+decided to write a simple shell script wrapper calling the curl CLI
+under-the-hood.&lt;&#x2F;p&gt;
+&lt;p&gt;wcurl will come installed with the curl package from now on, and I will check
+with the release team about shipping it on the current Debian stable as well.
+Shipping wcurl in other distros will be up to them (Debian-derivatives should
+pick it up automatically, though).&lt;&#x2F;p&gt;
+&lt;p&gt;We&#x27;ve tried to make it easy for anyone to ship this by using the curl license,
+keeping the script POSIX-compliant, and shipping a &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;manpages.debian.org&#x2F;unstable&#x2F;curl&#x2F;wcurl.1.en.html&quot;&gt;manpage&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Maybe if there&#x27;s enough interest across distributions, someone might sign up
+for implementing this in upstream curl and increase its reach. I would be happy
+with the curl project reusing the wcurl name when that happens. It&#x27;s unlikely
+that wcurl would be shipped by curl upstream as it is, assuming they would
+prefer a solution that uses libcurl direclty (more similar to curl the CLI, to
+maintain).&lt;&#x2F;p&gt;
+&lt;p&gt;In the worst case, wcurl becomes a Debian-specific tool that only a few people
+are aware of, in the best case, it becomes the new go-to CLI tool for simply
+downloading files. I would be happy if at least someone other than me finds
+it useful.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;naming-is-hard&quot;&gt;Naming is hard&lt;&#x2F;h1&gt;
+&lt;p&gt;When I started working on it, I was calling the new executable &quot;curld&quot;
+(stands for &quot;curl download&quot;), but then when discussing this in one of our
+weekly calls in the Debian Brasília community, it was mentioned that this could
+be confused for a daemon.&lt;&#x2F;p&gt;
+&lt;p&gt;We then settled for the name &quot;wcurl&quot;, suggested by Carlos Henrique Lima
+Melara &amp;lt;charles&amp;gt;. It doesn&#x27;t really stand for anything,
+but it&#x27;s very easy to remember.&lt;&#x2F;p&gt;
+&lt;p&gt;You know... &quot;it&#x27;s that wget alternative for when you want to use curl instead&quot;
+:)&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;feedback&quot;&gt;Feedback&lt;&#x2F;h1&gt;
+&lt;p&gt;The code is hosted in GitHub, feel free to open an issue to provide feedback.&lt;br &#x2F;&gt;
+&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;curl&#x2F;wcurl&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;curl&#x2F;wcurl&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;We also have a Matrix room for the Debian curl maintainers:&lt;br &#x2F;&gt;
+&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;matrix.to&#x2F;#&#x2F;#debian-curl-maintainers:matrix.org&quot;&gt;https:&#x2F;&#x2F;matrix.to&#x2F;#&#x2F;#debian-curl-maintainers:matrix.org&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;acknowledgments&quot;&gt;Acknowledgments&lt;&#x2F;h1&gt;
+&lt;p&gt;The idea for wcurl came a few days before the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;daniel.haxx.se&#x2F;blog&#x2F;2024&#x2F;05&#x2F;06&#x2F;i-survived-curl-up-2024&#x2F;&quot;&gt;curl-up conference
+2024&lt;&#x2F;a&gt;.
+I&#x27;ve been thinking a lot about developer productivity in the terminal lately,
+different tools and better defaults. Before curl-up, I was also thinking about
+packaging improvements for the curl package. I don&#x27;t remember what exactly
+happened, but I likely had to download something and felt a bit ashamed of
+maintaining curl and not remembering the parameters to download files the way I
+wanted.&lt;&#x2F;p&gt;
+&lt;p&gt;I first discussed this idea in the conference, where I asked the
+participants about it and there were no concerns raised, and some people said I should give it a go.
+Participating in curl-up was a really great experience and I&#x27;m thankful for the
+interactions I&#x27;ve had there.&lt;&#x2F;p&gt;
+&lt;p&gt;On the Debian side, I&#x27;ve got reviews of the code and manpage by Sergio Durigan
+Junior &amp;lt;sergiodj&amp;gt;, Guilherme Puida Moreira &amp;lt;puida&amp;gt; and Carlos Henrique Lima
+Melara &amp;lt;charles&amp;gt;. Sergio ended up rewriting the tool to be POSIX-compliant (my
+version was written in bash), so he takes all the credit for the portability.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;changes-since-publication&quot;&gt;Changes since publication&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;2025-01-19&quot;&gt;2025-01-19&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Mention that wcurl will not be added to Debian 12&#x2F;bookworm, it will be
+present in Debian 13&#x2F;trixie.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;2024-12-14&quot;&gt;2024-12-14&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Update list of wcurl features.&lt;&#x2F;li&gt;
+&lt;li&gt;Point out to wcurl homepage and mention that it&#x27;s now part of curl.&lt;&#x2F;li&gt;
+&lt;li&gt;Reorder this changelog to have latest changes on top.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;2024-08-28&quot;&gt;2024-08-28&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Mention availability in bookworm-backports.&lt;&#x2F;li&gt;
+&lt;li&gt;Link to wcurl lightning talk from DebConf24.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;2024-07-18&quot;&gt;2024-07-18&lt;&#x2F;h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Update date of availability for Debian testing and expected date for bookworm backports.&lt;&#x2F;li&gt;
+&lt;li&gt;Mention charles as the person who suggested &quot;wcurl&quot; as a name.&lt;&#x2F;li&gt;
+&lt;li&gt;Update wcurl&#x27;s -o&#x2F;--opts options, it&#x27;s now just --curl-options.&lt;&#x2F;li&gt;
+&lt;li&gt;Remove mention of language spoken in the Matrix room, we are using English now.&lt;&#x2F;li&gt;
+&lt;li&gt;Update list of features of wcurl.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Hello World</title>
+        <published>2024-04-18T00:00:00+00:00</published>
+        <updated>2024-04-18T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://samueloph.dev/blog/hello-world/"/>
+        <id>https://samueloph.dev/blog/hello-world/</id>
+        
+        <content type="html" xml:base="https://samueloph.dev/blog/hello-world/">&lt;p&gt;This is my very first post, just to make sure everything is working as expected.&lt;&#x2F;p&gt;
+&lt;p&gt;Made with &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.getzola.org&#x2F;&quot;&gt;Zola&lt;&#x2F;a&gt; and the &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jieiku&#x2F;abridge&#x2F;&quot;&gt;Abridge theme&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>
