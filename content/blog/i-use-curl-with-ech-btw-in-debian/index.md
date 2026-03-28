@@ -20,7 +20,7 @@ ECH, with HTTPS-RR and DoH for maximum privacy.
 
 curl 8.19.0-3+exp2 is quite fresh at the time of writing, bear in mind that your
 repository might not have synced the package yet, all mirrors should have it by
-March 27th 15:00 UTC.
+March 27th 14:00 UTC.
 
 ```bash
 # defo.ie is a test server that confirms whether ECH was successfully used
@@ -32,7 +32,7 @@ curl -v --ech hard --doh-url https://1.1.1.1/dns-query https://defo.ie/ech-check
 
 Or, if you would like to try it out in a container:
 ```bash
-podman run debian:experimental /bin/bash -c 'apt install --update -y curl && curl -v --ech hard --doh-url https://1.1.1.1/dns-query https://defo.ie/ech-check.php'
+podman run debian:experimental /bin/bash -c 'apt install --update -t experimental -y curl && curl -v --ech hard --doh-url https://1.1.1.1/dns-query https://defo.ie/ech-check.php'
 ```
 *(in case you haven't noticed, apt now has the `--update` option for the
 `upgrade` and `install` commands)*
