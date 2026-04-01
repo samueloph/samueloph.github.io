@@ -1,5 +1,5 @@
 +++
-title = "Debian's curl now supports HTTP3"
+title = "Debian's curl now supports HTTP/3"
 date = 2024-07-04
 draft = false
 
@@ -13,7 +13,7 @@ thumbnail = "debian_curl_http3_image.png"
 
 #### tl;dr
 
-Starting with **curl 8.0.0-2**, you can now use HTTP3.
+Starting with **curl 8.0.0-2**, you can now use HTTP/3.
 ```bash
 curl --http3-only https://example.com
 ```
@@ -23,11 +23,12 @@ Or, if you would like to try it out in a container:
 podman run debian:testing /bin/bash -c 'apt install --update -y curl && curl --http3-only https://example.com'
 ```
 *(in case you haven't noticed, apt now has the `--update` option for the
-`upgrade` and `install` commands, although not available on stable yet)*
+`upgrade` and `install` commands)*
 
 ##### Availability
 * Debian unstable - Since 2024-07-02
 * Debian testing - Since 2024-07-18
+* Debian 13 - Since its initial release.
 * Debian 12/bookworm-backports - Since 2024-08-25
 * Debian 12/bookworm - Due to the mechanisms we have in place to make sure
 Debian stable is in fact stable, we will never be able to ship this in the
@@ -37,12 +38,12 @@ regular repository. Users can make use of the
 testing (e.g.: Kali Linux). Stable derivatives only in their next major release.
 
 # The challenge
-HTTP3 is fresh new, well... not really, but at least fresh enough that I'm not
+HTTP/3 is fresh new, well... not really, but at least fresh enough that I'm not
 aware of any other Linux distribution supporting it on curl, the reason is
 likely two-fold: 
 
 1) ### OpenSSL is not there yet  
-    OpenSSL still doesn't have proper HTTP3 support, and given that OpenSSL is so
+    OpenSSL still doesn't have proper HTTP/3 support, and given that OpenSSL is so
     widely used, almost every curl distributor/packager will build curl with it
     and thus changing the TLS backend to something else is risky.
 
@@ -55,20 +56,24 @@ yet as of version 3.3](https://curl.se/mail/distros-2024-04/0001.html).
     2024](https://daniel.haxx.se/blog/2024/06/10/http-3-in-curl-mid-2024/), if
     you're interested, I suggest reading through his other posts as well.
 
-    Some might have noticed that nginx [does support HTTP3 through OpenSSL](http://nginx.org/en/docs/quic.html),
+    Some might have noticed that nginx [does support HTTP/3 through OpenSSL](http://nginx.org/en/docs/quic.html),
     although when you look closely, it's not exactly perfect:  
     > An SSL library that provides QUIC support is recommended to build nginx, such as BoringSSL, LibreSSL, or QuicTLS. Otherwise, the OpenSSL compatibility layer will be used that does not support early data.
 
     As you can see, they don't recommend using OpenSSL, and when doing so, you don't get complete support.
 
-2) ### HTTP3 support for GnuTLS/nghttp3/ngtcp2 is recent  
+    Update (October 2025): OpenSSL's HTTP/3 support has since matured enough
+    that curl 8.16.0-2 switched the Debian curl CLI back to the OpenSSL backend,
+    before the Debian 13/trixie freeze.
+
+2) ### HTTP/3 support for GnuTLS/nghttp3/ngtcp2 is recent
     The non-experimental support arrived [back in October
 2023](https://github.com/curl/curl/commit/5f78cf503c786a1d48d13528dde038bccfa6c67c),
 and so that's when I started seriously planning for this.
 
-    curl has been working on HTTP3 support for years, and so it did support other
+    curl has been working on HTTP/3 support for years, and so it did support other
 TLS backends before that, but out of them, the one most feasible for a
-distribution to ship would be GnuTLS, which gets HTTP3 support [through ngctp2 and
+distribution to ship would be GnuTLS, which gets HTTP/3 support [through ngctp2 and
 nghttp3](https://daniel.haxx.se/blog/2024/06/10/http-3-in-curl-mid-2024/).
 
 # How it was done
@@ -76,24 +81,24 @@ nghttp3](https://daniel.haxx.se/blog/2024/06/10/http-3-in-curl-mid-2024/).
 The Debian curl package has historically shipped at least two variants of libcurl, an
 OpenSSL and a GnuTLS one.
 
-The OpenSSL libcurl can't support HTTP3 for the reasons explained above, but
-the GnuTLS libcurl can (with ngtcp2 and nghtp3).
+The OpenSSL libcurl couldn't support HTTP/3 at the time for the reasons
+explained above, but the GnuTLS libcurl can (with ngtcp2 and nghttp3).
 
 Debian packages can choose which version of libcurl to link against (without
 having to modify any upstream source code). Debian's "git" package being a famous
 example of a package that links against the GnuTLS libcurl.
 
-Enabling HTTP3 on curl was done in three steps:
+Enabling HTTP/3 on curl was done in three steps:
 1) Make sure all required dependencies fulfill the minimum requirements.
-2) Enable HTTP3 for GnuTLS libcurl.
+2) Enable HTTP/3 for GnuTLS libcurl.
 3) Change the libcurl used by the curl CLI, from OpenSSL to GnuTLS.
 
-curl's HTTP3 support requires a somewhat recent version of nghttp3 and
+curl's HTTP/3 support requires a somewhat recent version of nghttp3 and
 updating that required a [transition](https://wiki.debian.org/Teams/ReleaseTeam/Transitions) (due to the SONAME bump), while we've also
 had months of freeze for transitions due to the [time_t
 transition](https://lists.debian.org/debian-devel-announce/2024/02/msg00000.html).
 
-After the dependencies were in place, enabling HTTP3 for the GnuTLS libcurl was
+After the dependencies were in place, enabling HTTP/3 for the GnuTLS libcurl was
 [straightforward](https://salsa.debian.org/debian/curl/-/commit/51df321b0165e5164a0d898d23a64ca3bbd553c0).
 
 Then, for the last part, we had to switch the TLS backend used by the curl CLI.
@@ -101,6 +106,16 @@ Doing the swap is also [quite
 easy](https://salsa.debian.org/debian/curl/-/commit/37820dad3612d1b13a9fb9550b1726b998c80cfc)
 on the packaging level, but we have to consider the chances of this change
 breaking our users' environments.
+
+#### Update (October 2025): Switching back to OpenSSL
+
+Once OpenSSL's HTTP/3 support was stable and performant enough, the temporary
+arrangement with the GnuTLS backend had served its purpose. In October 2025,
+before the freeze for Debian 13/trixie, curl 8.16.0-2 switched the curl CLI
+back to the OpenSSL backend, now built with HTTP/3 support enabled directly.
+
+The GnuTLS libcurl continues to be shipped and supports HTTP/3 as before; this
+change only affects which backend the curl CLI binary itself links against.
 
 # Ensuring there are no breakages
 
@@ -135,10 +150,13 @@ package that depends on curl is currently running, the results are compared
 against the migration-reference (in this case, the curl CLI with OpenSSL,
 before the change). 
 
-If everything goes right, curl with HTTP3 support will migrate to Debian
+If everything goes right, curl with HTTP/3 support will migrate to Debian
 testing in around 5 days. If we spot any issues, we'll have to solve them
 first and it's going to be hard to predict how long it takes, although it's
 fair to expect less than a month.
+
+Update (October 2025): Debian 13/trixie ultimately shipped with the OpenSSL
+backend instead, following the switch in curl 8.16.0-2 before the freeze.
 
 # Feedback
 
@@ -147,7 +165,7 @@ Feel free to join the Matrix room for the Debian curl maintainers:
 
 # Acknowledgements
 
-It took us a bit longer than expected to be able to enable HTTP3, nonetheless it's
+It took us a bit longer than expected to be able to enable HTTP/3, nonetheless it's
 still early enough to be excited about.
 
 A lot of people were crucial to make this happen.
@@ -167,6 +185,13 @@ co-maintainers of the curl package: Sergio Durigan Junior \<sergiodj> and Carlos
 Henrique Lima Melara \<charles>.
 
 # Changes since publication
+## 2026-04-02
+* Correct spelling of HTTP/3.
+* Add note to explain that curl is back to using OpenSSL: OpenSSL's HTTP/3
+  support matured sufficiently by October 2025, and curl 8.16.0-2 switched
+  the Debian curl CLI back to the OpenSSL backend before the Trixie freeze.
+  Updated the OpenSSL challenge section, the "How it was done" section, and
+  the breakages section to reflect this.
 ## 2025-03-08
 * Fix podman command, the previous one was not running all commands inside the container.
 * Change the podman command to use Debian testing instead of unstable.
