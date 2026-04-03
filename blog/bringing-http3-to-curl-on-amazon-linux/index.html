@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://samueloph.dev/js/theme.min.js" integrity="sha384-pb++s6uBRKaQv+iAXpgA/H3IlpLZdO14tTwuCI7uXmz4aaZdByoCcM+6BhynMq/1"></script>
+  <link rel="stylesheet" href="https://samueloph.dev/abridge.css?h=432f21a785a546b914d3" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base" content="https://samueloph.dev" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://samueloph.dev/manifest.min.json" />
+  <link rel="mask-icon" href="https://samueloph.dev/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="icon" type="image/svg+xml" href="https://samueloph.dev/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://samueloph.dev/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://samueloph.dev/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://samueloph.dev/favicon-16x16.png" />
+  <link rel="alternate" type="application/atom+xml" title="Samuel Henrique (samueloph) Atom Feed" href="https://samueloph.dev/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>Bringing HTTP/3 to curl on Amazon Linux | Samuel Henrique (samueloph)</title>
+  <meta name="author" content="Samuel Henrique (samueloph)" />
+  <meta name="copyright" content="Samuel Henrique (samueloph)" />
+  <meta name="description" content="My personal website" />
+  <link rel="canonical" href="https://samueloph.dev/blog/bringing-http3-to-curl-on-amazon-linux/" />
+  <meta name="keywords" content="samueloph, debian, programming, blog, rust, python, security" />
+  <meta property="og:url" content="https://samueloph.dev/blog/bringing-http3-to-curl-on-amazon-linux/" />
+  <meta name="twitter:url" content="https://samueloph.dev/blog/bringing-http3-to-curl-on-amazon-linux/" />
+  <meta property="og:description" content="My personal website" />
+  <meta name="twitter:description" content="My personal website" />
+  <meta property="og:title" content="Bringing HTTP&#x2F;3 to curl on Amazon Linux | Samuel Henrique (samueloph)" />
+  <meta name="twitter:title" content="Bringing HTTP&#x2F;3 to curl on Amazon Linux | Samuel Henrique (samueloph)" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://samueloph.dev/blog/bringing-http3-to-curl-on-amazon-linux/bringing-http3-to-curl-on-amazon-linux.webp" />
+  <meta property="og:image" content="https://samueloph.dev/blog/bringing-http3-to-curl-on-amazon-linux/bringing-http3-to-curl-on-amazon-linux.webp" />
+  <meta property="og:site_name" content="Samuel Henrique (samueloph)" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2026-04-02" />
+  <meta name="twitter:site" content="@samueloph_" />
+  <meta name="twitter:creator" content="@samueloph_" />
+  <script defer src="https://samueloph.dev/js/abridge.min.js?h=e0f9a881a665c86cce9c" integrity="sha384-QF67y7RnPkuDrJNQqn3/7nYxqxWkW/qHI7zN0WTES1aXbf+TotoByRBb835fUE6U"></script>
+  <noscript><link rel="stylesheet" href="https://samueloph.dev/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><big><a href="https://samueloph.dev" title="Samuel Henrique (samueloph)">Samuel Henrique (samueloph)</a></big></div>
+      <div>
+
+        <div>
+          <ul><li><a class="s110" href="https://samueloph.dev/blog/"> Blog </a></li><li><a class="s110" href="https://samueloph.dev/about/"> About </a></li><li><a class="s110" href="https://samueloph.dev/categories/"> Categories </a></li><li><a class="s110" href="https://samueloph.dev/slides/"> Slides and Presentations </a></li><li><i type="reset" id="mode" class="js svgs adjust"></i></ul>
+        </div>
+
+        <div>
+          <div>
+            <form autocomplete=off class="js" name="goSearch" id="searchbox">
+              <div class="searchd">
+                <input id="searchinput" type="text" placeholder="Search" title="Search" />
+                <button type="submit" title="Search" class="svgs svgm search"></button>
+              </div>
+              <div class="results"><div id="suggestions"></div></div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h1><a href="https://samueloph.dev/blog/bringing-http3-to-curl-on-amazon-linux/">Bringing HTTP/3 to curl on Amazon Linux</a></h1>
+
+      <span class="s95"> Samuel Henrique (samueloph) <span class="rpad"></span> April 02, 2026 <span class="rpad"></span> [<a href="https://samueloph.dev/categories/amazonlinux/">amazonlinux</a>, <a href="https://samueloph.dev/categories/curl/">curl</a>]</span>
+
+    
+
+
+ <img src="bringing-http3-to-curl-on-amazon-linux.webp" alt="Screenshot of
+the top entry of the curl package&#x27;s changelog, showing the following:
+Changelogs for curl-8.17.0-1.amzn2023.0.2.x86_64
+* Mon Mar 16 00:00:00 2026 Samuel Henrique (samueloph) &lt;samhn@amazon.com&gt; - 8.17.0-1.amzn2023.0.2
+- Enable HTTP&#x2F;3 support in the full build using ngtcp2 and nghttp3
+- HTTP&#x2F;3 is explicitly disabled in the minimal build
+- Add runtime dependencies on libnghttp3 and libngtcp2 with minimum version pinning
+- Run tests in parallel via upstream make test-nonflaky, with serial fallback for race-prone tests" width="1596" height="226" loading="lazy" />
+<h4 id="tl-dr">tl;dr</h4>
+<p>Starting with <strong>curl 8.17.0-1.amzn2023.0.2</strong> in Amazon Linux 2023, you can now use HTTP/3.</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #282828;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FABD2F;">dnf</span><span style="color: #B8BB26;"> swap</span><span style="color: #D3869B;"> -y</span><span style="color: #B8BB26;"> libcurl-minimal libcurl-full</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">dnf</span><span style="color: #B8BB26;"> swap</span><span style="color: #D3869B;"> -y</span><span style="color: #B8BB26;"> curl-minimal curl-full</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">curl</span><span style="color: #D3869B;"> --http3-only</span><span style="color: #B8BB26;"> https://example.com</span></span></code></pre>
+<p><em>(HTTP/3 is only enabled in the curl -full builds)</em></p>
+<p>Or, if you would like to try it out in a container:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #282828;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FABD2F;">podman</span><span style="color: #B8BB26;"> run amazonlinux:2023 /bin/sh</span><span style="color: #D3869B;"> -c</span><span style="color: #A89984;"> &#39;</span><span style="color: #B8BB26;">dnf upgrade -y --releasever=latest &amp;&amp; dnf swap -y libcurl-minimal libcurl-full &amp;&amp; dnf swap -y curl-minimal curl-full &amp;&amp; curl --http3-only https://example.com</span><span style="color: #A89984;">&#39;</span></span></code></pre>
+<p>For a list of test endpoints, you can refer to
+<a rel="noopener external" target="_blank" href="https://bagder.github.io/HTTP3-test/">https://bagder.github.io/HTTP3-test/</a></p>
+<h1 id="the-upgrade-i-didn-t-have-to-make">The Upgrade I Didn't Have to Make</h1>
+<p>My teammate Steve Zarkos, who previously worked on upgrading OpenSSL in Amazon
+Linux from 3.0 to 3.2, spent the last few months on the complex task of bumping
+OpenSSL again, this time to 3.5. A bump like this only happens after extensive
+code analysis and testing, something that I didn't foresee happening when
+AL2023 was released but that was a notable request from users.</p>
+<p>Having <a rel="noopener external" target="_blank" href="https://samueloph.dev/blog/debian-curl-now-supports-http3/">enabled HTTP/3 on
+Debian</a>, I was
+always keeping an eye on when I would get to do the same for Amazon Linux (mind
+you, I work at AWS, in the Amazon Linux org). The bump to OpenSSL 3.5 was the
+perfect opportunity to do that, for the first time Amazon Linux is shipping an
+OpenSSL version that is supported by ngtcp2 for HTTP/3 support.</p>
+<h1 id="non-intrusive-change">Non-Intrusive Change</h1>
+<p>In order to avoid any intrusive changes to existing users of AL2023, I've only
+enabled HTTP/3 in the full build of curl, not in the minimal one, this means
+there is no change for the minimal images.</p>
+<p>The way curl handles HTTP/3 today also does not lead to any behavior changes
+for those who have the full variants of curl installed, this is due to the fact
+that HTTP/3 is only used if the user explicitly asks for it with the flags
+<code>--http3</code> or <code>--http3-only</code>.</p>
+<h1 id="side-quests">Side Quests</h1>
+<p>Supporting HTTP/3 on curl also requires building it with ngtcp2 and nghttp3,
+two packages which were not shipped in Amazon Linux, besides, my team doesn't
+even own the curl package, we are a security team so our packages are the
+security related stuff such as OpenSSL and GnuTLS. Our main focus is the
+services behind Amazon Linux's vulnerability handling, not package maintenance.</p>
+<p>I worked with the owners of the curl package and got approvals on a plan to
+introduce the two new dependencies under their ownership and to enable the
+feature on curl, I appreciate their responsiveness.</p>
+<p>Amazon Linux 2023 is forked from Fedora, so while introducing ngtcp2, I also
+sent a couple of Pull Requests upstream to keep things in sync:</p>
+<p><a rel="noopener external" target="_blank" href="https://src.fedoraproject.org/rpms/ngtcp2/pull-request/9">[ngtcp2] package latest release 1.21.0</a></p>
+<p><a rel="noopener external" target="_blank" href="https://src.fedoraproject.org/rpms/ngtcp2/pull-request/8">[ngtcp2] do not skip tests</a></p>
+<p>While building the curl package in Amazon Linux, I've noticed the build was
+taking 1 hour from start to end, and the culprit was something well known to
+me; tests.</p>
+<p>The curl test suite is quite extensive, with more than 1600 tests, all of that
+running without parallelization, running two times for each build of the
+package; once for the minimal build and again for the full build.</p>
+<p>I had previously enabled parallel tests in Debian back in 2024 but never got
+around to submit the same improvements to Amazon Linux or Fedora, this is now
+fixed. The build times for Amazon Linux came down to 10 minutes under the same
+host (previously 1 hour), and Fedora promptly merged my PR to do the same
+there:</p>
+<p><a rel="noopener external" target="_blank" href="https://src.fedoraproject.org/rpms/curl/pull-request/80">[curl] run tests in parallel</a></p>
+<p>All of this uncovered a test which is timing-dependent, meaning it's not
+supposed to be run with high levels of parallelism, so there goes another PR,
+this time to curl:</p>
+<p><a rel="noopener external" target="_blank" href="https://github.com/curl/curl/pull/21155">Flag test 766 as timing-dependent#21155</a></p>
+<p>What started as enabling a single feature turned into improvements that landed
+in curl, Fedora, and Amazon Linux alike. I did this in a mix of work and
+volunteer time, mostly during work hours (work email address used when this was
+the case), but I'm glad I put in the extra time for the sake of improving curl
+for everyone.</p>
+<h1 id="release-notes">Release Notes</h1>
+<p><a rel="noopener external" target="_blank" href="https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.10.20260330.html">Amazon Linux 2023 release notes for 2023.10.20260330</a></p>
+
+      <nav>
+        <div>
+        </div>
+        <div>
+          <a href="https://samueloph.dev/blog/latest-nvidia-drivers-for-debian-packaged-with-ai/"> Latest NVIDIA Drivers for Debian (Packaged with AI) &#8250;</a>
+        </div>
+      </nav>
+    </article>
+
+    <div class="sblock">
+      <div class="blockdiv sticky">
+        <a class="b s150" href="#">Index</a>
+        <div>
+          <a href="#tl-dr">tl;dr</a>
+        </div>
+        <div>
+          <a href="#the-upgrade-i-didn-t-have-to-make">The Upgrade I Didn&#x27;t Have to Make</a>
+        </div>
+        <div>
+          <a href="#non-intrusive-change">Non-Intrusive Change</a>
+        </div>
+        <div>
+          <a href="#side-quests">Side Quests</a>
+        </div>
+        <div>
+          <a href="#release-notes">Release Notes</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <hr />
+    <div class="c">
+      <nav class="tpad"><div><a type="application/atom+xml" href="https://samueloph.dev/atom.xml" target="_blank" title="Samuel Henrique (samueloph) Atom Feed"><i type="Button" class="svg rss" title="Samuel Henrique (samueloph) Atom Feed"></i></a><a class="js m-protected" href="#c2FtdWVsb3BoQGdtYWlsLmNvbQ==" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a><a href="https://mastodon.social/@samueloph" target="_blank" title="Mastodon" rel="me"><i type="Button" class="svg mastodon" title="Mastodon"></i></a><a href="https://matrix.to&#x2F;#&#x2F;@samueloph:matrix.org/" target="_blank" title="Element"><i type="Button" class="svg element" title="Element"></i></a><a href="https://twitter.com/samueloph_/" target="_blank" title="Twitter"><i type="Button" class="svg twitter" title="Twitter"></i></a><a href="https://www.linkedin.com/in/samueloph/" target="_blank" title="LinkedIn"><i type="Button" class="svg linkedin" title="LinkedIn"></i></a><a href="https://github.com/samueloph/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a><a href="https://www.youtube.com/SamuelOPH" target="_blank" title="YouTube"><i type="Button" class="svg youtube" title="YouTube"></i></a><a href="https://salsa.debian.org/samueloph/" target="_blank" title="Debian"><i type="Button" class="svg debian" title="Debian"></i></a>
+      </div></nav>
+      <nav class="vpad">
+        <a class="rpad" href="https://samueloph.dev/about/"> About </a>
+        <a class="rpad" href="https://samueloph.dev/sitemap.xml" target="_blank"> Sitemap </a>
+      </nav>
+          
+      <p class="s90"> © Samuel Henrique (samueloph). Unless otherwise noted, the content in this website is available under the <a rel="noopener" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license.</p>
+      <p class="s90">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> & <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer><span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>

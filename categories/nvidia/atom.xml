@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Samuel Henrique (samueloph) - nvidia</title>
+    <subtitle>My personal website</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://samueloph.dev/categories/nvidia/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://samueloph.dev"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-03-29T00:00:00+00:00</updated>
+    <id>https://samueloph.dev/categories/nvidia/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Latest NVIDIA Drivers for Debian (Packaged with AI)</title>
+        <published>2026-03-29T00:00:00+00:00</published>
+        <updated>2026-03-29T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://samueloph.dev/blog/latest-nvidia-drivers-for-debian-packaged-with-ai/"/>
+        <id>https://samueloph.dev/blog/latest-nvidia-drivers-for-debian-packaged-with-ai/</id>
+        
+        <content type="html" xml:base="https://samueloph.dev/blog/latest-nvidia-drivers-for-debian-packaged-with-ai/"> &lt;img src=&quot;latest-nvidia-drivers-for-debian-packaged-with-ai.webp&quot; alt=&quot;Two
+terminal windows side-by-side, on the left there&amp;#x27;s the Debian logo in ASCII
+art, and on the right it&amp;#x27;s the output of nvidia-smi, showing the driver version
+595.58.03 running on a machine that has an NVIDIA RTS 5080&quot; width=&quot;1200&quot; height=&quot;483&quot; loading=&quot;lazy&quot; &#x2F;&gt;
+&lt;h4 id=&quot;tl-dr&quot;&gt;tl;dr&lt;&#x2F;h4&gt;
+&lt;p&gt;This is not an official package, it&#x27;s good enough for me and it might be good
+enough for you, confirmed as working in Debian Testing but I don&#x27;t have a
+Stable machine to test there.&lt;&#x2F;p&gt;
+&lt;p&gt;You can use my custom repo to install the latest NVIDIA drivers on Debian
+Stable, Testing or Unstable (install from Sid repository):&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;deb.debusine.debian.net&#x2F;debian&#x2F;r-samueloph-nvidia-ai&#x2F;&quot;&gt;https:&#x2F;&#x2F;deb.debusine.debian.net&#x2F;debian&#x2F;r-samueloph-nvidia-ai&#x2F;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;The page above contains the APT sources you need, just add the one for your
+release to &lt;code&gt;&#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;r-samueloph-nvidia-ai.sources&lt;&#x2F;code&gt;, run &lt;code&gt;sudo apt update&lt;&#x2F;code&gt; and install the packages, you might need to disable Secure Boot.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;this-is-not-about-ai&quot;&gt;This is not about AI&lt;&#x2F;h1&gt;
+&lt;p&gt;Discussions about AI are quite divisive in the Free Software communities, and
+there&#x27;s so much to be said about it that I&#x27;m not willing to go into in this
+blog post. This is rather just me telling people that if they need up-to-date
+NVIDIA packages for Debian, they could check if my custom repository gets the
+job done.&lt;&#x2F;p&gt;
+&lt;p&gt;The AI part is a means to an end, I&#x27;ve been careful to note in the repository
+names that the packages were produced with AI to respect people who do not want
+to run it for any reason.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;rtx-5000-series-support&quot;&gt;RTX 5000 series support&lt;&#x2F;h1&gt;
+&lt;p&gt;Back in May 2025 I &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;bugs.debian.org&#x2F;cgi-bin&#x2F;bugreport.cgi?bug=1101072&quot;&gt;opened a bug
+report&lt;&#x2F;a&gt; asking for
+the NVIDIA drivers on Debian to be updated to support the RTX 5000 series. The
+Nouveau drivers might be good enough for some people, but I need the NVIDIA
+drivers because I want to play games and do experiments with open weight
+models.&lt;&#x2F;p&gt;
+&lt;p&gt;Opening a bug report doesn&#x27;t guarantee anything, at the end of the day Debian
+Developers are volunteers, so if I really wanted the newer drivers, I would
+have to do something about it, ideally submitting a merge request.&lt;&#x2F;p&gt;
+&lt;p&gt;I briefly looked into the NVIDIA packaging, which involves 3 source packages
+(and one extra git repo for tarballs), unfortunately this was going to take
+more time and effort than what I was willing to spend.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;what-i-did&quot;&gt;What I Did&lt;&#x2F;h1&gt;
+&lt;p&gt;After a few weeks of lamenting that I wasn&#x27;t running the NVIDIA drivers, I
+figured I was willing to put in more effort than I originally thought, just
+enough to instruct the Claude Code agent to package the latest releases. I&#x27;m
+skilled enough with agentic tools that I knew how to use it to save time;
+providing a clear instruction on how to build the package and explaining the
+packaging layout, then letting the agent iterate until it gets a working build.
+The agent was running inside a VM that didn&#x27;t have any of my credentials.&lt;&#x2F;p&gt;
+&lt;p&gt;After a little bit of back and forth, where I was reviewing the changes guiding
+the agent into how to fix certain issues, I ended up with a working set of
+packages.&lt;&#x2F;p&gt;
+&lt;p&gt;Once I installed it on my machine and confirmed they worked, I set up a
+&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;debusine.debian.net&#x2F;&quot;&gt;debusine&lt;&#x2F;a&gt; repository to make it easier to
+install future updates, and let others test it out.&lt;&#x2F;p&gt;
+&lt;p&gt;Debusine is analogous to Ubuntu&#x27;s famous PPA, or Fedora&#x27;s EPEL, it&#x27;s a
+relatively new project but it has been working fine for this.&lt;&#x2F;p&gt;
+&lt;p&gt;Matheus Polkorny helped me test the packages and did spot a few issues which
+are fixed now. The Debusine developers were also always quick to respond to my
+questions and &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;salsa.debian.org&#x2F;freexian-team&#x2F;debusine&#x2F;-&#x2F;issues?sort=created_date&amp;amp;state=opened&amp;amp;author_username=samueloph&amp;amp;first_page_size=20&quot;&gt;bug
+reports&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;how-good-is-it&quot;&gt;How Good Is It?&lt;&#x2F;h1&gt;
+&lt;p&gt;&lt;strong&gt;Short answer: good enough for daily use, but not a substitute for an official Debian package.&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;The whole point of doing this is because I don&#x27;t have enough free time to
+maintain the package myself. All of this work was done as a volunteer, on my
+personal time.&lt;&#x2F;p&gt;
+&lt;p&gt;This means I&#x27;m trusting the agent to some degree; I review its commits but I
+don&#x27;t go too deep into it, the quality will be dictated by the fact that I&#x27;m
+a Debian Developer and so by how easily I can spot issues without double checking
+everything.&lt;&#x2F;p&gt;
+&lt;p&gt;I only have a single machine with an NVIDIA GPU, this machine runs Debian
+Testing and so I don&#x27;t have a way to test the Stable packages. I can do my best
+to address problems but at this point there is a risk that new updates break
+something.&lt;&#x2F;p&gt;
+&lt;p&gt;Installing NVIDIA drivers has always been a bit risky regardless, if you&#x27;re
+comfortable with reverting updates and handling a system without a graphical
+interface (in case you end up in a tty), you will be fine.&lt;&#x2F;p&gt;
+&lt;p&gt;You will likely need to disable Secure Boot in order to use them, or set up your
+BIOS so that a MOK can be used to sign the DKMS modules.&lt;&#x2F;p&gt;
+&lt;p&gt;When choosing the version strings for the packages, I was careful enough to
+pick something that would sort lower than an official Debian package, meaning
+that whenever that same version is packaged in Debian, your system will see it
+as an upgrade.&lt;&#x2F;p&gt;
+&lt;p&gt;If you have any other methods of installing the NVIDIA drivers on your Debian
+system that is working for you, you should likely stick to that.&lt;&#x2F;p&gt;
+&lt;p&gt;I have a strong preference for installing them through .deb packages, making
+the package sort out configuration changes and dependency updates, besides
+handling the DKMS modules.&lt;&#x2F;p&gt;
+&lt;p&gt;Ultimately I&#x27;m not happy with the amount of difficulty that Debian users have in
+installing up-to-date NVIDIA drivers, and I hope this makes it easier for some.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;how-to-install&quot;&gt;How To Install&lt;&#x2F;h1&gt;
+&lt;p&gt;Head over to the Debusine page that contains both repos for Trixie (Debian
+Stable) and Sid (for Debian Testing and Unstable):&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;deb.debusine.debian.net&#x2F;debian&#x2F;r-samueloph-nvidia-ai&#x2F;&quot;&gt;https:&#x2F;&#x2F;deb.debusine.debian.net&#x2F;debian&#x2F;r-samueloph-nvidia-ai&#x2F;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;If you are running Debian Testing, then pick the Sid repository.&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;That page contains the contents of the apt &lt;code&gt;.sources&lt;&#x2F;code&gt; file you need, create the
+file &lt;code&gt;&#x2F;etc&#x2F;apt&#x2F;sources.list.d&#x2F;r-samueloph-nvidia-ai.sources&lt;&#x2F;code&gt; with the sources for your release.&lt;&#x2F;p&gt;
+&lt;p&gt;Run &lt;code&gt;sudo apt update&lt;&#x2F;code&gt; and install the packages you need, if you already have a
+previous version installed, &lt;code&gt;sudo apt upgrade --update&lt;&#x2F;code&gt; would update them.&lt;&#x2F;p&gt;
+&lt;p&gt;If there are no upgrades, meaning you don&#x27;t have a previous version installed,
+then you need to explicitly install them.&lt;&#x2F;p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #EBDBB2; background-color: #282828;&quot;&gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;sudo&lt;&#x2F;span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; apt install nvidia-open-kernel-dkms nvidia-driver&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;If you run into issues in Debian Stable, consider using the Linux kernel package
+from the backports repository, if you need an up-to-date NVIDIA driver, you
+likely should also be running the backports kernel package (if you can&#x27;t
+upgrade to Debian Testing).&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;future-plans&quot;&gt;Future Plans&lt;&#x2F;h1&gt;
+&lt;p&gt;I currently have no means of measuring how many people are using the debusine
+repositories, so if you do end up using it feel free to let me know somehow.&lt;&#x2F;p&gt;
+&lt;p&gt;I don&#x27;t know for how long I will keep managing this repository, and how much
+effort I will spend, but my machine needs it and for now I will keep it
+up-to-date with the latest production-grade NVIDIA drivers.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;sources&quot;&gt;Sources&lt;&#x2F;h1&gt;
+&lt;p&gt;The sources of the packages are available under a namespace in Salsa (Debian&#x27;s
+GitLab instance):&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;salsa.debian.org&#x2F;samueloph-forks-team&#x2F;nvidia-drivers-forks-with-ai&quot;&gt;https:&#x2F;&#x2F;salsa.debian.org&#x2F;samueloph-forks-team&#x2F;nvidia-drivers-forks-with-ai&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;You can also get the exact sources used in the repositories from debusine:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;debusine.debian.net&#x2F;debian&#x2F;r-samueloph-nvidia-ai&#x2F;collection&#x2F;debian:suite&#x2F;sid-nvidia-ai&#x2F;search&#x2F;?category=debian:source-package&quot;&gt;https:&#x2F;&#x2F;debusine.debian.net&#x2F;debian&#x2F;r-samueloph-nvidia-ai&#x2F;collection&#x2F;debian:suite&#x2F;sid-nvidia-ai&#x2F;search&#x2F;?category=debian:source-package&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;debusine.debian.net&#x2F;debian&#x2F;r-samueloph-nvidia-ai&#x2F;collection&#x2F;debian:suite&#x2F;trixie-nvidia-ai&#x2F;search&#x2F;?category=debian:source-package&quot;&gt;https:&#x2F;&#x2F;debusine.debian.net&#x2F;debian&#x2F;r-samueloph-nvidia-ai&#x2F;collection&#x2F;debian:suite&#x2F;trixie-nvidia-ai&#x2F;search&#x2F;?category=debian:source-package&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>

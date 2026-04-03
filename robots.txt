@@ -1,0 +1,5 @@
+
+Sitemap: https://samueloph.dev/sitemap.xml
+User-Agent: *
+Allow: /
+Host: https://samueloph.dev

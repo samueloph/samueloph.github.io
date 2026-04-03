@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://samueloph.dev/js/theme.min.js" integrity="sha384-pb++s6uBRKaQv+iAXpgA/H3IlpLZdO14tTwuCI7uXmz4aaZdByoCcM+6BhynMq/1"></script>
+  <link rel="stylesheet" href="https://samueloph.dev/abridge.css?h=432f21a785a546b914d3" />
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="base" content="https://samueloph.dev" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="theme-color" content="#333333" />
+  <meta name="msapplication-TileColor" content="#333333" />
+  <link rel="manifest" href="https://samueloph.dev/manifest.min.json" />
+  <link rel="mask-icon" href="https://samueloph.dev/safari-pinned-tab.svg" color="#ff9900" />
+  <link rel="icon" type="image/svg+xml" href="https://samueloph.dev/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://samueloph.dev/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://samueloph.dev/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://samueloph.dev/favicon-16x16.png" />
+  <link rel="alternate" type="application/atom+xml" title="Samuel Henrique (samueloph) Atom Feed" href="https://samueloph.dev/atom.xml" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <title>I use curl with ECH btw (in Debian) | Samuel Henrique (samueloph)</title>
+  <meta name="author" content="Samuel Henrique (samueloph)" />
+  <meta name="copyright" content="Samuel Henrique (samueloph)" />
+  <meta name="description" content="My personal website" />
+  <link rel="canonical" href="https://samueloph.dev/blog/i-use-curl-with-ech-btw-in-debian/" />
+  <meta name="keywords" content="samueloph, debian, programming, blog, rust, python, security" />
+  <meta property="og:url" content="https://samueloph.dev/blog/i-use-curl-with-ech-btw-in-debian/" />
+  <meta name="twitter:url" content="https://samueloph.dev/blog/i-use-curl-with-ech-btw-in-debian/" />
+  <meta property="og:description" content="My personal website" />
+  <meta name="twitter:description" content="My personal website" />
+  <meta property="og:title" content="I use curl with ECH btw (in Debian) | Samuel Henrique (samueloph)" />
+  <meta name="twitter:title" content="I use curl with ECH btw (in Debian) | Samuel Henrique (samueloph)" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://samueloph.dev/banner.png" />
+  <meta property="og:image" content="https://samueloph.dev/banner.png" />
+  <meta property="og:site_name" content="Samuel Henrique (samueloph)" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content="website" />
+  <meta property="og:updated_time" content="2026-03-27" />
+  <meta name="twitter:site" content="@samueloph_" />
+  <meta name="twitter:creator" content="@samueloph_" />
+  <script defer src="https://samueloph.dev/js/abridge.min.js?h=e0f9a881a665c86cce9c" integrity="sha384-QF67y7RnPkuDrJNQqn3/7nYxqxWkW/qHI7zN0WTES1aXbf+TotoByRBb835fUE6U"></script>
+  <noscript><link rel="stylesheet" href="https://samueloph.dev/nojs.css" /></noscript>
+</head>
+<body>
+  <header>
+    <nav>
+      <div><big><a href="https://samueloph.dev" title="Samuel Henrique (samueloph)">Samuel Henrique (samueloph)</a></big></div>
+      <div>
+
+        <div>
+          <ul><li><a class="s110" href="https://samueloph.dev/blog/"> Blog </a></li><li><a class="s110" href="https://samueloph.dev/about/"> About </a></li><li><a class="s110" href="https://samueloph.dev/categories/"> Categories </a></li><li><a class="s110" href="https://samueloph.dev/slides/"> Slides and Presentations </a></li><li><i type="reset" id="mode" class="js svgs adjust"></i></ul>
+        </div>
+
+        <div>
+          <div>
+            <form autocomplete=off class="js" name="goSearch" id="searchbox">
+              <div class="searchd">
+                <input id="searchinput" type="text" placeholder="Search" title="Search" />
+                <button type="submit" title="Search" class="svgs svgm search"></button>
+              </div>
+              <div class="results"><div id="suggestions"></div></div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h1><a href="https://samueloph.dev/blog/i-use-curl-with-ech-btw-in-debian/">I use curl with ECH btw (in Debian)</a></h1>
+
+      <span class="s95"> Samuel Henrique (samueloph) <span class="rpad"></span> March 27, 2026 <span class="rpad"></span> [<a href="https://samueloph.dev/categories/debian/">debian</a>, <a href="https://samueloph.dev/categories/curl/">curl</a>, <a href="https://samueloph.dev/categories/security/">security</a>]</span>
+
+    
+
+
+<h4 id="tl-dr">tl;dr</h4>
+<p>This is an experimental feature that, for the first time, brings full ECH
+support to curl on Debian using OpenSSL.</p>
+<p>Starting with <strong>curl 8.19.0-3+exp2</strong> (Debian Experimental), you can now use
+ECH, with HTTPS-RR and DoH for maximum privacy.</p>
+<p>curl 8.19.0-3+exp2 is quite fresh at the time of writing, bear in mind that your
+repository might not have synced the package yet, all mirrors should have it by
+March 27th 14:00 UTC.</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #282828;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #928374;font-style: italic;"># defo.ie is a test server that confirms whether ECH was successfully used</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">curl</span><span style="color: #D3869B;"> -v --ech</span><span style="color: #B8BB26;"> hard https://defo.ie/ech-check.php</span></span>
+<span class="giallo-l"><span style="color: #928374;font-style: italic;"># For Encrypted Client Hello (ECH) + DNS over HTTPS (DoH)</span></span>
+<span class="giallo-l"><span style="color: #FABD2F;">curl</span><span style="color: #D3869B;"> -v --ech</span><span style="color: #B8BB26;"> hard</span><span style="color: #D3869B;"> --doh-url</span><span style="color: #B8BB26;"> https://1.1.1.1/dns-query https://defo.ie/ech-check.php</span></span></code></pre>
+<p><em>"--ech hard" tells curl to refuse the connection entirely if ECH cannot be negotiated.</em></p>
+<p>Or, if you would like to try it out in a container:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #282828;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FABD2F;">podman</span><span style="color: #B8BB26;"> run debian:experimental /bin/bash</span><span style="color: #D3869B;"> -c</span><span style="color: #A89984;"> &#39;</span><span style="color: #B8BB26;">apt install --update -t experimental -y curl &amp;&amp; curl -v --ech hard --doh-url https://1.1.1.1/dns-query https://defo.ie/ech-check.php</span><span style="color: #A89984;">&#39;</span></span></code></pre>
+<p><em>(in case you haven't noticed, apt now has the <code>--update</code> option for the
+<code>upgrade</code> and <code>install</code> commands)</em></p>
+<h1 id="for-privacy">For Privacy</h1>
+<p>CloudFlare calls it "the last puzzle piece to privacy" in their must-read
+announcement: <a rel="noopener external" target="_blank" href="https://blog.cloudflare.com/announcing-encrypted-client-hello/">https://blog.cloudflare.com/announcing-encrypted-client-hello/</a>.</p>
+<p><a rel="noopener external" target="_blank" href="https://www.rfc-editor.org/rfc/rfc9849">Encrypted Client Hello (rfc9849)</a> encrypts the
+"which website are you connecting to?" part of the TLS handshake that was
+previously visible in plaintext.</p>
+<p><a rel="noopener external" target="_blank" href="https://www.rfc-editor.org/rfc/rfc9460">HTTPS-RR (rfc9460)</a> is a DNS record type that
+publishes connection parameters for a service, including the public key clients
+need to perform ECH.</p>
+<p><a rel="noopener external" target="_blank" href="https://www.rfc-editor.org/rfc/rfc8484">DNS Over HTTPS (rfc8484)</a> encrypts DNS queries
+by tunneling them over HTTPS, hiding what domains you're looking up from
+network observers.</p>
+<p>When all three operate together over a CDN with shared IP space, the target
+domain name is hidden from passive observers; the HTTPS-RR record is queried
+over DoH in order to <a rel="noopener external" target="_blank" href="https://www.rfc-editor.org/rfc/rfc9848">retrieve the ECH key
+(rfc9848)</a> for the TLS handshake.</p>
+<p>Seems like quite an important feature, and in fact the major browsers have it
+enabled for some time now, the trick is that they do not use OpenSSL (Chrome
+uses BoringSSL and Firefox uses NSS).</p>
+<p>For everyone else, the only option is to patch OpenSSL or wait until 4.0.0 is
+released, and so part of the reason Debian is the first distro to enable it
+(curl + OpenSSL + ECH) is that the OpenSSL maintainer (Sebastian Andrzej
+Siewior) packaged the alpha release just 3 days after it was published.</p>
+<p>Do not forget that ECH support is experimental and currently relies on the
+alpha release of OpenSSL.</p>
+<h1 id="wcurl-gets-it-too">wcurl Gets It Too</h1>
+<p>Considering <a rel="noopener external" target="_blank" href="https://curl.se/wcurl/">wcurl</a> is just a wrapper on curl, it gets
+the feature for free:</p>
+<pre class="giallo" style="color: #EBDBB2; background-color: #282828;"><code data-lang="shellscript"><span class="giallo-l"><span style="color: #FABD2F;">wcurl</span><span style="color: #D3869B;"> --curl-options=</span><span style="color: #A89984;">&quot;</span><span style="color: #B8BB26;">--ech hard --doh-url https://1.1.1.1/dns-query</span><span style="color: #A89984;">&quot;</span><span style="color: #83A598;"> $URL</span></span></code></pre>
+<p>If you're using wcurl, you don't want to have to set parameters, this is just
+to show that the feature is there and if you have a <code>.curlrc</code> file, it can
+enable the feature seamlessly.</p>
+<h1 id="other-debian-releases">Other Debian Releases</h1>
+<p>Given the ECH feature requires OpenSSL &gt;= 4, it will not make it to Debian 13,
+having a small chance of going to Debian 13 Backports (emphasis on small).</p>
+<p><strong>It should get to Debian Unstable and Debian Testing within the next couple of
+months</strong> as the OpenSSL GA release happens and gets packaged, but you should be
+able to install the package from Experimental in your Unstable and Testing
+systems without issues. It will also be in Debian 14 once it becomes the new Stable.</p>
+<h1 id="shoulders-of-giants">Shoulders of Giants</h1>
+<p>Stephen Farrell's presentation from OpenSSL Conference 2025 has a lot of
+background on the work involved:</p>
+<p><a rel="noopener external" target="_blank" href="https://www.youtube.com/watch?v=wYQq8ozP3uE">Encrypted Client Hello – Lessons learned from trying to do something that was
+probably too complicated</a></p>
+<p>They have been working on implementing ECH in open-source projects for years,
+something as big as this doesn't happen without lots of people dedicating both
+their paid and free times over it.</p>
+<p>I ended up being the person who enabled it on Debian, which was pretty much the
+least amount of work between everyone involved, but hey it's fun flipping the
+switch and telling you about it.</p>
+<h1 id="background">Background</h1>
+<p>Since 2025, the curl developers started organizing an yearly meeting with all
+maintainers of curl in Operating Systems. The 2026 edition happened in March
+26th:
+<a rel="noopener external" target="_blank" href="https://github.com/curl/curl/wiki/curl-distro-discussion-2026">https://github.com/curl/curl/wiki/curl-distro-discussion-2026</a>.</p>
+<p>Attendance was really good, and as you can imagine one of the topics of
+discussion was ECH, in which it was pointed out that having OpenSSL 4 was
+the main requirement but besides it nothing unusual was needed.</p>
+<p>In Debian Experimental, we have been enabling HTTPS-RR since March 2025, and
+OpenSSL 4.0.0 alpha was packaged just recently (2026-03-13) by Sebastian
+Andrzej Siewior, it's time for the next step.</p>
+<p>The curl distro meeting was just the motivation I needed to go ahead and
+enable it in Debian Experimental, so as part of our Debian Brasil Weekly
+Meetings I've prepared and uploaded the changes, while Carlos Henrique Lima
+Melara worked on addressing a recent test regression for Debian Unstable.
+Unfortunately sergiodj couldn't join and I'm sure he's jealous of the hacking
+session now.</p>
+<h1 id="appendix">Appendix</h1>
+<p>While writing this, I've noticed one of the authors of the CloudFlare blogpost
+is the previous curl maintainer on Debian; Alessandro Ghedini let me take over
+the maintenance back in 2021 and today curl is maintained by a team of 4
+people, it's nice to see Alessandro's involvement.</p>
+
+      <nav>
+        <div>
+          <a href="https://samueloph.dev/blog/latest-nvidia-drivers-for-debian-packaged-with-ai/">&#8249; Latest NVIDIA Drivers for Debian (Packaged with AI)</a>
+        </div>
+        <div>
+          <a href="https://samueloph.dev/blog/debian-13-my-list-of-exciting-new-features/"> Debian 13: My list of exciting new features &#8250;</a>
+        </div>
+      </nav>
+    </article>
+
+    <div class="sblock">
+      <div class="blockdiv sticky">
+        <a class="b s150" href="#">Index</a>
+        <div>
+          <a href="#tl-dr">tl;dr</a>
+        </div>
+        <div>
+          <a href="#for-privacy">For Privacy</a>
+        </div>
+        <div>
+          <a href="#wcurl-gets-it-too">wcurl Gets It Too</a>
+        </div>
+        <div>
+          <a href="#other-debian-releases">Other Debian Releases</a>
+        </div>
+        <div>
+          <a href="#shoulders-of-giants">Shoulders of Giants</a>
+        </div>
+        <div>
+          <a href="#background">Background</a>
+        </div>
+        <div>
+          <a href="#appendix">Appendix</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <hr />
+    <div class="c">
+      <nav class="tpad"><div><a type="application/atom+xml" href="https://samueloph.dev/atom.xml" target="_blank" title="Samuel Henrique (samueloph) Atom Feed"><i type="Button" class="svg rss" title="Samuel Henrique (samueloph) Atom Feed"></i></a><a class="js m-protected" href="#c2FtdWVsb3BoQGdtYWlsLmNvbQ==" target="_blank" title="Mail"><i type="Button" class="svg mail" title="Mail"></i></a><a href="https://mastodon.social/@samueloph" target="_blank" title="Mastodon" rel="me"><i type="Button" class="svg mastodon" title="Mastodon"></i></a><a href="https://matrix.to&#x2F;#&#x2F;@samueloph:matrix.org/" target="_blank" title="Element"><i type="Button" class="svg element" title="Element"></i></a><a href="https://twitter.com/samueloph_/" target="_blank" title="Twitter"><i type="Button" class="svg twitter" title="Twitter"></i></a><a href="https://www.linkedin.com/in/samueloph/" target="_blank" title="LinkedIn"><i type="Button" class="svg linkedin" title="LinkedIn"></i></a><a href="https://github.com/samueloph/" target="_blank" title="Github"><i type="Button" class="svg github" title="Github"></i></a><a href="https://www.youtube.com/SamuelOPH" target="_blank" title="YouTube"><i type="Button" class="svg youtube" title="YouTube"></i></a><a href="https://salsa.debian.org/samueloph/" target="_blank" title="Debian"><i type="Button" class="svg debian" title="Debian"></i></a>
+      </div></nav>
+      <nav class="vpad">
+        <a class="rpad" href="https://samueloph.dev/about/"> About </a>
+        <a class="rpad" href="https://samueloph.dev/sitemap.xml" target="_blank"> Sitemap </a>
+      </nav>
+          
+      <p class="s90"> © Samuel Henrique (samueloph). Unless otherwise noted, the content in this website is available under the <a rel="noopener" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> license.</p>
+      <p class="s90">Powered by <a href="https://www.getzola.org/" target="_blank">Zola</a> & <a href="https://github.com/jieiku/abridge/" target="_blank">Abridge</a></p>
+    </div>
+  </footer><span class="topout">
+<span class="topleft"> </span><a href="#" class="top" title="Back to Top"><i class="svgs svgh angu"></i></a>
+</span>
+</body>
+</html>
