@@ -11,7 +11,7 @@ toc = true
 thumbnail = "announcing_wcurl_image.png"
 +++
 
-{{ youtube(id="eM8M5qa4pPM") }}
+{{<youtube id="eM8M5qa4pPM" />}}
 
 #### tl;dr
 

@@ -12,11 +12,11 @@ toc = true
 thumbnail = "debian-13-my-list-of-exciting-new-features.webp"
 +++
 
-{{ img(src="./debian-13-my-list-of-exciting-new-features.webp" alt="A bunch of
+{{<img src="./debian-13-my-list-of-exciting-new-features.webp" alt="A bunch of
 screenshots overlaid on top of each other showing different tools: lazygit,
 gnome settings, gnome system monitor, powerline-go, and the wcurl logo, the
 text at the top says 'Debian 13: My list of exciting new features', and there's
-a Debian logo in the middle of image") }}
+a Debian logo in the middle of image" />}}
 
 # Beyond Debian: Useful for other distros too
 
@@ -60,7 +60,7 @@ miss in the new release, with a bonus one not tied to the Debian 13 release.
 
 ## 1) wcurl
 
-{{ img(src="./wcurl-logo.svg" alt="wcurl logo") }}
+{{<img src="./wcurl-logo.svg" alt="wcurl logo" />}}
 
 Have you ever had to download a file from your terminal using curl and didn't
 remember the parameters needed? I did.
@@ -160,9 +160,9 @@ of the git repo in your working directory, exit code of the previous command,
 presence of jobs in the background, whether or not you're in an ssh session,
 and more.
 
-{{ img(src="./powerline-go.webp" alt="A screenshot of a terminal with
+{{<img src="./powerline-go.webp" alt="A screenshot of a terminal with
 powerline-go enabled, showing how the PS1 changes inside a git repository and
-when the last command fails") }}
+when the last command fails" />}}
 
 Try it out:
 ```bash
@@ -212,9 +212,9 @@ Tips number 6 and 7 are for Gnome users.
 Gnome is now shipping a system monitor extension which lets you get a glance of
 the current load of your machine from the top bar.
 
-{{ img(src="./gnome_system_monitor_extension.webp" alt="Screenshot of the top
+{{<img src="./gnome_system_monitor_extension.webp" alt="Screenshot of the top
 bar of Gnome with the system monitor extension enabled, showing the load of:
-CPU, memory, network and disk") }}
+CPU, memory, network and disk" />}}
 
 I've found this quite useful for machines where I'm required to install
 third-party monitoring software that tends to randomly consume more resources
@@ -242,8 +242,8 @@ There's now a "Battery Charging" setting (under the "Power") section which lets
 you choose between two different profiles: "Maximize Charge" and "Preserve
 Battery Health".
 
-{{ img(src="./gnome_battery_charging.png" alt="A screenshot of the Gnome
-settings for Power showing the options for Battery Charging") }}
+{{<img src="./gnome_battery_charging.png" alt="A screenshot of the Gnome
+settings for Power showing the options for Battery Charging" />}}
 
 On supported laptops, this setting is an easy way to set thresholds for when
 charging should start and stop, just like you could do it with the `tlp` package,
@@ -284,9 +284,9 @@ or just use it directly.
 I'm still playing with `lazygit` and haven't integrated it into my workflows,
 but so far it has been a pleasant experience.
 
-{{ img(src="./lazygit.webp" alt="Screenshot of lazygit from the Debian curl
+{{<img src="./lazygit.webp" alt="Screenshot of lazygit from the Debian curl
 repository, showing a selected commit and its diff, besides the other things
-from the lazygit UI") }}
+from the lazygit UI" />}}
 
 You should check out the demos from the [lazygit GitHub
 page](https://github.com/jesseduffield/lazygit).

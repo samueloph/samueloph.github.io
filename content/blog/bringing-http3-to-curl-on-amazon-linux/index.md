@@ -11,14 +11,7 @@ toc = true
 thumbnail = "bringing-http3-to-curl-on-amazon-linux.webp"
 +++
 
-{{ img(src="./bringing-http3-to-curl-on-amazon-linux.webp" alt="Screenshot of
-the top entry of the curl package's changelog, showing the following:
-Changelogs for curl-8.17.0-1.amzn2023.0.2.x86_64
-* Mon Mar 16 00:00:00 2026 Samuel Henrique (samueloph) <samhn@amazon.com> - 8.17.0-1.amzn2023.0.2
-- Enable HTTP/3 support in the full build using ngtcp2 and nghttp3
-- HTTP/3 is explicitly disabled in the minimal build
-- Add runtime dependencies on libnghttp3 and libngtcp2 with minimum version pinning
-- Run tests in parallel via upstream make test-nonflaky, with serial fallback for race-prone tests") }}
+{{<img src="./bringing-http3-to-curl-on-amazon-linux.webp" alt="Screenshot of the top entry of the curl package's changelog, showing the following: Changelogs for curl-8.17.0-1.amzn2023.0.2.x86_64 * Mon Mar 16 00:00:00 2026 Samuel Henrique (samueloph) <samhn@amazon.com> - 8.17.0-1.amzn2023.0.2 - Enable HTTP/3 support in the full build using ngtcp2 and nghttp3 - HTTP/3 is explicitly disabled in the minimal build - Add runtime dependencies on libnghttp3 and libngtcp2 with minimum version pinning - Run tests in parallel via upstream make test-nonflaky, with serial fallback for race-prone tests" />}}
 
 #### tl;dr
 

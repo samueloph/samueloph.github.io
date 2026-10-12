@@ -11,8 +11,8 @@ toc = true
 thumbnail = "debconf24_was_fun.webp"
 +++
 
-{{ img(src="./debconf24_was_fun.webp" alt="A picture of a badger2040w with
-Samuel's badge and the curl manpage PCB on the side") }}
+{{<img src="./debconf24_was_fun.webp" alt="A picture of a badger2040w with
+Samuel's badge and the curl manpage PCB on the side" />}}
 
 #### tl;dr
 
@@ -54,7 +54,7 @@ I then did a little demo to showcase why me (and a lot others) struggle
 with downloading things with curl, and how [wcurl](https://curl.se/wcurl/) solves that.
 
 [https://www.youtube.com/watch?v=eM8M5qa4pPM](https://www.youtube.com/watch?v=eM8M5qa4pPM)
-{{ youtube(id="eM8M5qa4pPM") }}
+{{<youtube id="eM8M5qa4pPM" />}}
 
 # Fixing CVEs on Debian: Everything you probably know already
 
@@ -66,7 +66,7 @@ This is an area where we don't get a lot of new contributors, I'm trying to
 change that, and this talk can be used to introduce newcomers to it.
 
 [https://www.youtube.com/watch?v=XzNVVILVyUM](https://www.youtube.com/watch?v=XzNVVILVyUM)
-{{ youtube(id="XzNVVILVyUM") }}
+{{<youtube id="XzNVVILVyUM" />}}
 
 # The secret sauce of Debian
 
@@ -79,7 +79,7 @@ things happening behind the scenes. Ideally we should have it
 well-documented somewhere.
 
 [https://www.youtube.com/watch?v=x_X2IBnpjic](https://www.youtube.com/watch?v=x_X2IBnpjic)
-{{ youtube(id="x_X2IBnpjic") }}
+{{<youtube id="x_X2IBnpjic" />}}
 
 # "I use Debian BTW": fzf, tmux, zoxide and friends
 
@@ -95,7 +95,7 @@ existence of a few Golang/Rust CLI tools, and also some dotfiles configurations
 that should probably be the default.
 
 [https://www.youtube.com/watch?v=tfto3Seokn4](https://www.youtube.com/watch?v=tfto3Seokn4)
-{{ youtube(id="tfto3Seokn4") }}
+{{<youtube id="tfto3Seokn4" />}}
 
 # curl
 
@@ -134,7 +134,7 @@ And so the "curl maintainers BoF" happened, where we spoke about HTTP3,
 GnutTLS, [wcurl](https://curl.se/wcurl/) and other things.
 
 [https://www.youtube.com/watch?v=fL7hSypUTdM](https://www.youtube.com/watch?v=fL7hSypUTdM)
-{{ youtube(id="fL7hSypUTdM") }}
+{{<youtube id="fL7hSypUTdM" />}}
 
 # wcurl
 
@@ -148,15 +148,15 @@ Daniel was also kind enough to design a logo for the project, which makes me
 especially happy because I can stop with my own approach at a logo (which I had
 to redo every few days):
 
-{{ img(src="./wcurl_draft_logo.webp" alt="A laptop with a curl and a GoHorse
+{{<img src="./wcurl_draft_logo.webp" alt="A laptop with a curl and a GoHorse
 sticker, there's a 'w' handwritten with a marker on the right side of the curl
-sticker, making it 'wcurl'") }}
+sticker, making it 'wcurl'" />}}
 
 And here is the new logo:
 
-{{ img(src="./wcurl_logo.svg" alt="'wcurl' written with the same font and
+{{<img src="./wcurl_logo.svg" alt="'wcurl' written with the same font and
 colors as the curl logo, with the 'w' being green instead of blue, and a
-download icon at the end") }}
+download icon at the end" />}}
 
 Much better, I would say :)
 
@@ -173,8 +173,8 @@ by Daniel Stenberg.
 Unfortunately I didn't have any of that for DebConf attendees, but I did drop
 loads of curl stickers at the stickers table, they were gone very quickly.
 
-{{ img(src="./debconf24_curl_stickers.webp" alt="A table full of different
-stickers, curl stickers can be seen over the whole table") }}
+{{<img src="./debconf24_curl_stickers.webp" alt="A table full of different
+stickers, curl stickers can be seen over the whole table" />}}
 
 # For the future
 
@@ -195,7 +195,7 @@ I am collecting a list of things I wish I had done differently on all of those
 talks, so if I end up presenting any one of them again, it will be an improved
 version.
 
-{{ img(src="./debconf24_group_photo.webp" alt="A picture from the top of a
-group of conference attendees, there's about 150 people in the picture") }}
+{{<img src="./debconf24_group_photo.webp" alt="A picture from the top of a
+group of conference attendees, there's about 150 people in the picture" />}}
 Photography: Aigars Mahinovs \<aigaruius@debian.org\>  
 License: CC-BYv3+ or GPLv2+

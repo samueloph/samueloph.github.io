@@ -11,10 +11,10 @@ toc = true
 thumbnail = "latest-nvidia-drivers-for-debian-packaged-with-ai.webp"
 +++
 
-{{ img(src="./latest-nvidia-drivers-for-debian-packaged-with-ai.webp" alt="Two
+{{<img src="./latest-nvidia-drivers-for-debian-packaged-with-ai.webp" alt="Two
 terminal windows side-by-side, on the left there's the Debian logo in ASCII
 art, and on the right it's the output of nvidia-smi, showing the driver version
-595.58.03 running on a machine that has an NVIDIA RTS 5080") }}
+595.58.03 running on a machine that has an NVIDIA RTS 5080" />}}
 
 #### tl;dr
 

@@ -236,26 +236,26 @@ webmanifest = "manifest.min.json" # Required for PWAs
 ###############################################################################
 
 pwa = true # true to load the service worker
-pwa_VER = '3.11.0' # Service Worker cache version. (increment if you need to force a new cache)
+pwa_VER = '3.12.6' # Service Worker cache version. (increment if you need to force a new cache)
 
 ### 3600=1hour, 28800=8hours, 86400=1day, 604800=1week, 1209600=2weeks
 pwa_NORM_TTL = 0 #  86400 is reasonable. html, json, xml, anything else undefined
 pwa_LONG_TTL = 0 # 604800 is reasonable.
 
 ### list of files that overrides TTL_LONG/TTL_EXEMPT to be a NORM TTL.
-pwa_TTL_NORM = '"sw.min.js", "sw_load.min.js"'
+pwa_TTL_NORM = ["sw.min.js", "sw_load.min.js"]
 
 ### TTL_LONG file extensions will be cached for the LONG_TTL duration.
-pwa_TTL_LONG = '"jpg", "jpeg", "png", "gif", "webp", "avif", "ico", "svg", "xsl", "txt"'
+pwa_TTL_LONG = ["jpg", "jpeg", "png", "gif", "webp", "avif", "ico", "svg", "xsl", "txt"]
 
 ### TTL_EXEMPT file extensions will be cached indefinitely unless sw_load version is incremented, which would invalidate any existing cache. (and a new cache would be started)
-pwa_TTL_EXEMPT = '"js", "css", "otf", "eot", "ttf", "woff", "woff2", "mp4", "webm", "mp3", "ogg"'
+pwa_TTL_EXEMPT = ["js", "css", "otf", "eot", "ttf", "woff", "woff2", "mp4", "webm", "mp3", "ogg"]
 
 ### If set to true then the entire site is cached. (useful for making an entire site usable while offline)
 pwa_cache_all = true
 
 ### List of Files for the PWA to initially Cache, used if pwa_cache_all = false
-pwa_BASE_CACHE_FILES = "'/js/theme.min.js','/js/theme_light.min.js','/abridge.css','/js/abridge.min.js','/','/404.html','/offline/','/manifest.min.json'"
+pwa_BASE_CACHE_FILES = ["/js/theme.min.js", "/js/theme_light.min.js", "/abridge.css", "/js/abridge.min.js", "/", "/404.html", "/offline/", "/manifest.min.json"]
 
 ###############################################################################
 ### Favicons, comment out a line to disable loading some or all of these if needed.
