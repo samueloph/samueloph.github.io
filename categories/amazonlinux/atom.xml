@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Samuel Henrique (samueloph) - amazonlinux</title>
+    <subtitle>My personal website</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://samueloph.dev/categories/amazonlinux/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://samueloph.dev"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-04-02T00:00:00+00:00</updated>
+    <id>https://samueloph.dev/categories/amazonlinux/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Bringing HTTP/3 to curl on Amazon Linux</title>
+        <published>2026-04-02T00:00:00+00:00</published>
+        <updated>2026-04-02T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Unknown</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://samueloph.dev/blog/bringing-http3-to-curl-on-amazon-linux/"/>
+        <id>https://samueloph.dev/blog/bringing-http3-to-curl-on-amazon-linux/</id>
+        
+        <content type="html" xml:base="https://samueloph.dev/blog/bringing-http3-to-curl-on-amazon-linux/"> &lt;img src=&quot;bringing-http3-to-curl-on-amazon-linux.webp&quot; alt=&quot;Screenshot of the top entry of the curl package&#39;s changelog, showing the following: Changelogs for curl-8.17.0-1.amzn2023.0.2.x86_64 * Mon Mar 16 00:00:00 2026 Samuel Henrique (samueloph) &lt;samhn@amazon.com&gt; - 8.17.0-1.amzn2023.0.2 - Enable HTTP/3 support in the full build using ngtcp2 and nghttp3 - HTTP/3 is explicitly disabled in the minimal build - Add runtime dependencies on libnghttp3 and libngtcp2 with minimum version pinning - Run tests in parallel via upstream make test-nonflaky, with serial fallback for race-prone tests&quot; width=&quot;1596&quot; height=&quot;226&quot; loading=&quot;lazy&quot; /&gt;
+&lt;h4 id=&quot;tl-dr&quot;&gt;tl;dr&lt;/h4&gt;
+&lt;p&gt;Starting with &lt;strong&gt;curl 8.17.0-1.amzn2023.0.2&lt;/strong&gt; in Amazon Linux 2023, you can now use HTTP/3.&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #EBDBB2; background-color: #282828;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;dnf&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; swap&lt;/span&gt;&lt;span style=&quot;color: #D3869B;&quot;&gt; -y&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; libcurl-minimal libcurl-full&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;dnf&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; swap&lt;/span&gt;&lt;span style=&quot;color: #D3869B;&quot;&gt; -y&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; curl-minimal curl-full&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;curl&lt;/span&gt;&lt;span style=&quot;color: #D3869B;&quot;&gt; --http3-only&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; https://example.com&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;(HTTP/3 is only enabled in the curl -full builds)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Or, if you would like to try it out in a container:&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #EBDBB2; background-color: #282828;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;podman&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; run amazonlinux:2023 /bin/sh&lt;/span&gt;&lt;span style=&quot;color: #D3869B;&quot;&gt; -c&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt; &amp;#39;&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt;dnf upgrade -y --releasever=latest &amp;amp;&amp;amp; dnf swap -y libcurl-minimal libcurl-full &amp;amp;&amp;amp; dnf swap -y curl-minimal curl-full &amp;amp;&amp;amp; curl --http3-only https://example.com&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For a list of test endpoints, you can refer to
+&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://bagder.github.io/HTTP3-test/&quot;&gt;https://bagder.github.io/HTTP3-test/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;the-upgrade-i-didn-t-have-to-make&quot;&gt;The Upgrade I Didn&#39;t Have to Make&lt;/h1&gt;
+&lt;p&gt;My teammate Steve Zarkos, who previously worked on upgrading OpenSSL in Amazon
+Linux from 3.0 to 3.2, spent the last few months on the complex task of bumping
+OpenSSL again, this time to 3.5. A bump like this only happens after extensive
+code analysis and testing, something that I didn&#39;t foresee happening when
+AL2023 was released but that was a notable request from users.&lt;/p&gt;
+&lt;p&gt;Having &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://samueloph.dev/blog/debian-curl-now-supports-http3/&quot;&gt;enabled HTTP/3 on
+Debian&lt;/a&gt;, I was
+always keeping an eye on when I would get to do the same for Amazon Linux (mind
+you, I work at AWS, in the Amazon Linux org). The bump to OpenSSL 3.5 was the
+perfect opportunity to do that, for the first time Amazon Linux is shipping an
+OpenSSL version that is supported by ngtcp2 for HTTP/3 support.&lt;/p&gt;
+&lt;h1 id=&quot;non-intrusive-change&quot;&gt;Non-Intrusive Change&lt;/h1&gt;
+&lt;p&gt;In order to avoid any intrusive changes to existing users of AL2023, I&#39;ve only
+enabled HTTP/3 in the full build of curl, not in the minimal one, this means
+there is no change for the minimal images.&lt;/p&gt;
+&lt;p&gt;The way curl handles HTTP/3 today also does not lead to any behavior changes
+for those who have the full variants of curl installed, this is due to the fact
+that HTTP/3 is only used if the user explicitly asks for it with the flags
+&lt;code&gt;--http3&lt;/code&gt; or &lt;code&gt;--http3-only&lt;/code&gt;.&lt;/p&gt;
+&lt;h1 id=&quot;side-quests&quot;&gt;Side Quests&lt;/h1&gt;
+&lt;p&gt;Supporting HTTP/3 on curl also requires building it with ngtcp2 and nghttp3,
+two packages which were not shipped in Amazon Linux, besides, my team doesn&#39;t
+even own the curl package, we are a security team so our packages are the
+security related stuff such as OpenSSL and GnuTLS. Our main focus is the
+services behind Amazon Linux&#39;s vulnerability handling, not package maintenance.&lt;/p&gt;
+&lt;p&gt;I worked with the owners of the curl package and got approvals on a plan to
+introduce the two new dependencies under their ownership and to enable the
+feature on curl, I appreciate their responsiveness.&lt;/p&gt;
+&lt;p&gt;Amazon Linux 2023 is forked from Fedora, so while introducing ngtcp2, I also
+sent a couple of Pull Requests upstream to keep things in sync:&lt;/p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://src.fedoraproject.org/rpms/ngtcp2/pull-request/9&quot;&gt;[ngtcp2] package latest release 1.21.0&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://src.fedoraproject.org/rpms/ngtcp2/pull-request/8&quot;&gt;[ngtcp2] do not skip tests&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;While building the curl package in Amazon Linux, I&#39;ve noticed the build was
+taking 1 hour from start to end, and the culprit was something well known to
+me; tests.&lt;/p&gt;
+&lt;p&gt;The curl test suite is quite extensive, with more than 1600 tests, all of that
+running without parallelization, running two times for each build of the
+package; once for the minimal build and again for the full build.&lt;/p&gt;
+&lt;p&gt;I had previously enabled parallel tests in Debian back in 2024 but never got
+around to submit the same improvements to Amazon Linux or Fedora, this is now
+fixed. The build times for Amazon Linux came down to 10 minutes under the same
+host (previously 1 hour), and Fedora promptly merged my PR to do the same
+there:&lt;/p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://src.fedoraproject.org/rpms/curl/pull-request/80&quot;&gt;[curl] run tests in parallel&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;All of this uncovered a test which is timing-dependent, meaning it&#39;s not
+supposed to be run with high levels of parallelism, so there goes another PR,
+this time to curl:&lt;/p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://github.com/curl/curl/pull/21155&quot;&gt;Flag test 766 as timing-dependent#21155&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;What started as enabling a single feature turned into improvements that landed
+in curl, Fedora, and Amazon Linux alike. I did this in a mix of work and
+volunteer time, mostly during work hours (work email address used when this was
+the case), but I&#39;m glad I put in the extra time for the sake of improving curl
+for everyone.&lt;/p&gt;
+&lt;h1 id=&quot;release-notes&quot;&gt;Release Notes&lt;/h1&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://docs.aws.amazon.com/linux/al2023/release-notes/relnotes-2023.10.20260330.html&quot;&gt;Amazon Linux 2023 release notes for 2023.10.20260330&lt;/a&gt;&lt;/p&gt;
+</content>
+        
+    </entry>
+</feed>

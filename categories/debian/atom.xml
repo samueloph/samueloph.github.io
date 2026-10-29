@@ -1,0 +1,1054 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Samuel Henrique (samueloph) - debian</title>
+    <subtitle>My personal website</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://samueloph.dev/categories/debian/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://samueloph.dev"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-03-29T00:00:00+00:00</updated>
+    <id>https://samueloph.dev/categories/debian/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Latest NVIDIA Drivers for Debian (Packaged with AI)</title>
+        <published>2026-03-29T00:00:00+00:00</published>
+        <updated>2026-03-29T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Unknown</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://samueloph.dev/blog/latest-nvidia-drivers-for-debian-packaged-with-ai/"/>
+        <id>https://samueloph.dev/blog/latest-nvidia-drivers-for-debian-packaged-with-ai/</id>
+        
+        <content type="html" xml:base="https://samueloph.dev/blog/latest-nvidia-drivers-for-debian-packaged-with-ai/">&lt;p&gt;&lt;img src=&quot;latest-nvidia-drivers-for-debian-packaged-with-ai.webp&quot; alt=&quot;Two
+terminal windows side-by-side, on the left there&#39;s the Debian logo in ASCII
+art, and on the right it&#39;s the output of nvidia-smi, showing the driver version
+595.58.03 running on a machine that has an NVIDIA RTS 5080&quot; width=&quot;1200&quot; height=&quot;483&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
+&lt;h4 id=&quot;tl-dr&quot;&gt;tl;dr&lt;/h4&gt;
+&lt;p&gt;This is not an official package, it&#39;s good enough for me and it might be good
+enough for you, confirmed as working in Debian Testing but I don&#39;t have a
+Stable machine to test there.&lt;/p&gt;
+&lt;p&gt;You can use my custom repo to install the latest NVIDIA drivers on Debian
+Stable, Testing or Unstable (install from Sid repository):&lt;/p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://deb.debusine.debian.net/debian/r-samueloph-nvidia-ai/&quot;&gt;https://deb.debusine.debian.net/debian/r-samueloph-nvidia-ai/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The page above contains the APT sources you need, just add the one for your
+release to &lt;code&gt;/etc/apt/sources.list.d/r-samueloph-nvidia-ai.sources&lt;/code&gt;, run &lt;code&gt;sudo apt update&lt;/code&gt; and install the packages, you might need to disable Secure Boot.&lt;/p&gt;
+&lt;h1 id=&quot;this-is-not-about-ai&quot;&gt;This is not about AI&lt;/h1&gt;
+&lt;p&gt;Discussions about AI are quite divisive in the Free Software communities, and
+there&#39;s so much to be said about it that I&#39;m not willing to go into in this
+blog post. This is rather just me telling people that if they need up-to-date
+NVIDIA packages for Debian, they could check if my custom repository gets the
+job done.&lt;/p&gt;
+&lt;p&gt;The AI part is a means to an end, I&#39;ve been careful to note in the repository
+names that the packages were produced with AI to respect people who do not want
+to run it for any reason.&lt;/p&gt;
+&lt;h1 id=&quot;rtx-5000-series-support&quot;&gt;RTX 5000 series support&lt;/h1&gt;
+&lt;p&gt;Back in May 2025 I &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1101072&quot;&gt;opened a bug
+report&lt;/a&gt; asking for
+the NVIDIA drivers on Debian to be updated to support the RTX 5000 series. The
+Nouveau drivers might be good enough for some people, but I need the NVIDIA
+drivers because I want to play games and do experiments with open weight
+models.&lt;/p&gt;
+&lt;p&gt;Opening a bug report doesn&#39;t guarantee anything, at the end of the day Debian
+Developers are volunteers, so if I really wanted the newer drivers, I would
+have to do something about it, ideally submitting a merge request.&lt;/p&gt;
+&lt;p&gt;I briefly looked into the NVIDIA packaging, which involves 3 source packages
+(and one extra git repo for tarballs), unfortunately this was going to take
+more time and effort than what I was willing to spend.&lt;/p&gt;
+&lt;h1 id=&quot;what-i-did&quot;&gt;What I Did&lt;/h1&gt;
+&lt;p&gt;After a few weeks of lamenting that I wasn&#39;t running the NVIDIA drivers, I
+figured I was willing to put in more effort than I originally thought, just
+enough to instruct the Claude Code agent to package the latest releases. I&#39;m
+skilled enough with agentic tools that I knew how to use it to save time;
+providing a clear instruction on how to build the package and explaining the
+packaging layout, then letting the agent iterate until it gets a working build.
+The agent was running inside a VM that didn&#39;t have any of my credentials.&lt;/p&gt;
+&lt;p&gt;After a little bit of back and forth, where I was reviewing the changes guiding
+the agent into how to fix certain issues, I ended up with a working set of
+packages.&lt;/p&gt;
+&lt;p&gt;Once I installed it on my machine and confirmed they worked, I set up a
+&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://debusine.debian.net/&quot;&gt;debusine&lt;/a&gt; repository to make it easier to
+install future updates, and let others test it out.&lt;/p&gt;
+&lt;p&gt;Debusine is analogous to Ubuntu&#39;s famous PPA, or Fedora&#39;s EPEL, it&#39;s a
+relatively new project but it has been working fine for this.&lt;/p&gt;
+&lt;p&gt;Matheus Polkorny helped me test the packages and did spot a few issues which
+are fixed now. The Debusine developers were also always quick to respond to my
+questions and &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://salsa.debian.org/freexian-team/debusine/-/issues?sort=created_date&amp;amp;state=opened&amp;amp;author_username=samueloph&amp;amp;first_page_size=20&quot;&gt;bug
+reports&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id=&quot;how-good-is-it&quot;&gt;How Good Is It?&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Short answer: good enough for daily use, but not a substitute for an official Debian package.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The whole point of doing this is because I don&#39;t have enough free time to
+maintain the package myself. All of this work was done as a volunteer, on my
+personal time.&lt;/p&gt;
+&lt;p&gt;This means I&#39;m trusting the agent to some degree; I review its commits but I
+don&#39;t go too deep into it, the quality will be dictated by the fact that I&#39;m
+a Debian Developer and so by how easily I can spot issues without double checking
+everything.&lt;/p&gt;
+&lt;p&gt;I only have a single machine with an NVIDIA GPU, this machine runs Debian
+Testing and so I don&#39;t have a way to test the Stable packages. I can do my best
+to address problems but at this point there is a risk that new updates break
+something.&lt;/p&gt;
+&lt;p&gt;Installing NVIDIA drivers has always been a bit risky regardless, if you&#39;re
+comfortable with reverting updates and handling a system without a graphical
+interface (in case you end up in a tty), you will be fine.&lt;/p&gt;
+&lt;p&gt;You will likely need to disable Secure Boot in order to use them, or set up your
+BIOS so that a MOK can be used to sign the DKMS modules.&lt;/p&gt;
+&lt;p&gt;When choosing the version strings for the packages, I was careful enough to
+pick something that would sort lower than an official Debian package, meaning
+that whenever that same version is packaged in Debian, your system will see it
+as an upgrade.&lt;/p&gt;
+&lt;p&gt;If you have any other methods of installing the NVIDIA drivers on your Debian
+system that is working for you, you should likely stick to that.&lt;/p&gt;
+&lt;p&gt;I have a strong preference for installing them through .deb packages, making
+the package sort out configuration changes and dependency updates, besides
+handling the DKMS modules.&lt;/p&gt;
+&lt;p&gt;Ultimately I&#39;m not happy with the amount of difficulty that Debian users have in
+installing up-to-date NVIDIA drivers, and I hope this makes it easier for some.&lt;/p&gt;
+&lt;h1 id=&quot;how-to-install&quot;&gt;How To Install&lt;/h1&gt;
+&lt;p&gt;Head over to the Debusine page that contains both repos for Trixie (Debian
+Stable) and Sid (for Debian Testing and Unstable):&lt;/p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://deb.debusine.debian.net/debian/r-samueloph-nvidia-ai/&quot;&gt;https://deb.debusine.debian.net/debian/r-samueloph-nvidia-ai/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;If you are running Debian Testing, then pick the Sid repository.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;That page contains the contents of the apt &lt;code&gt;.sources&lt;/code&gt; file you need, create the
+file &lt;code&gt;/etc/apt/sources.list.d/r-samueloph-nvidia-ai.sources&lt;/code&gt; with the sources for your release.&lt;/p&gt;
+&lt;p&gt;Run &lt;code&gt;sudo apt update&lt;/code&gt; and install the packages you need, if you already have a
+previous version installed, &lt;code&gt;sudo apt upgrade --update&lt;/code&gt; would update them.&lt;/p&gt;
+&lt;p&gt;If there are no upgrades, meaning you don&#39;t have a previous version installed,
+then you need to explicitly install them.&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #EBDBB2; background-color: #282828;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;sudo&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; apt install nvidia-open-kernel-dkms nvidia-driver&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you run into issues in Debian Stable, consider using the Linux kernel package
+from the backports repository, if you need an up-to-date NVIDIA driver, you
+likely should also be running the backports kernel package (if you can&#39;t
+upgrade to Debian Testing).&lt;/p&gt;
+&lt;h1 id=&quot;future-plans&quot;&gt;Future Plans&lt;/h1&gt;
+&lt;p&gt;I currently have no means of measuring how many people are using the debusine
+repositories, so if you do end up using it feel free to let me know somehow.&lt;/p&gt;
+&lt;p&gt;I don&#39;t know for how long I will keep managing this repository, and how much
+effort I will spend, but my machine needs it and for now I will keep it
+up-to-date with the latest production-grade NVIDIA drivers.&lt;/p&gt;
+&lt;h1 id=&quot;sources&quot;&gt;Sources&lt;/h1&gt;
+&lt;p&gt;The sources of the packages are available under a namespace in Salsa (Debian&#39;s
+GitLab instance):&lt;/p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://salsa.debian.org/samueloph-forks-team/nvidia-drivers-forks-with-ai&quot;&gt;https://salsa.debian.org/samueloph-forks-team/nvidia-drivers-forks-with-ai&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;You can also get the exact sources used in the repositories from debusine:&lt;/p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://debusine.debian.net/debian/r-samueloph-nvidia-ai/collection/debian:suite/sid-nvidia-ai/search/?category=debian:source-package&quot;&gt;https://debusine.debian.net/debian/r-samueloph-nvidia-ai/collection/debian:suite/sid-nvidia-ai/search/?category=debian:source-package&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://debusine.debian.net/debian/r-samueloph-nvidia-ai/collection/debian:suite/trixie-nvidia-ai/search/?category=debian:source-package&quot;&gt;https://debusine.debian.net/debian/r-samueloph-nvidia-ai/collection/debian:suite/trixie-nvidia-ai/search/?category=debian:source-package&lt;/a&gt;&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>I use curl with ECH btw (in Debian)</title>
+        <published>2026-03-27T00:00:00+00:00</published>
+        <updated>2026-03-27T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Unknown</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://samueloph.dev/blog/i-use-curl-with-ech-btw-in-debian/"/>
+        <id>https://samueloph.dev/blog/i-use-curl-with-ech-btw-in-debian/</id>
+        
+        <content type="html" xml:base="https://samueloph.dev/blog/i-use-curl-with-ech-btw-in-debian/">&lt;h4 id=&quot;tl-dr&quot;&gt;tl;dr&lt;/h4&gt;
+&lt;p&gt;This is an experimental feature that, for the first time, brings full ECH
+support to curl on Debian using OpenSSL.&lt;/p&gt;
+&lt;p&gt;Starting with &lt;strong&gt;curl 8.19.0-3+exp2&lt;/strong&gt; (Debian Experimental), you can now use
+ECH, with HTTPS-RR and DoH for maximum privacy.&lt;/p&gt;
+&lt;p&gt;curl 8.19.0-3+exp2 is quite fresh at the time of writing, bear in mind that your
+repository might not have synced the package yet, all mirrors should have it by
+March 27th 14:00 UTC.&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #EBDBB2; background-color: #282828;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #928374;font-style: italic;&quot;&gt;# defo.ie is a test server that confirms whether ECH was successfully used&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;curl&lt;/span&gt;&lt;span style=&quot;color: #D3869B;&quot;&gt; -v --ech&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; hard https://defo.ie/ech-check.php&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #928374;font-style: italic;&quot;&gt;# For Encrypted Client Hello (ECH) + DNS over HTTPS (DoH)&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;curl&lt;/span&gt;&lt;span style=&quot;color: #D3869B;&quot;&gt; -v --ech&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; hard&lt;/span&gt;&lt;span style=&quot;color: #D3869B;&quot;&gt; --doh-url&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; https://1.1.1.1/dns-query https://defo.ie/ech-check.php&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;&quot;--ech hard&quot; tells curl to refuse the connection entirely if ECH cannot be negotiated.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Or, if you would like to try it out in a container:&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #EBDBB2; background-color: #282828;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;podman&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; run debian:experimental /bin/bash&lt;/span&gt;&lt;span style=&quot;color: #D3869B;&quot;&gt; -c&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt; &amp;#39;&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt;apt install --update -t experimental -y curl &amp;amp;&amp;amp; curl -v --ech hard --doh-url https://1.1.1.1/dns-query https://defo.ie/ech-check.php&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;(in case you haven&#39;t noticed, apt now has the &lt;code&gt;--update&lt;/code&gt; option for the
+&lt;code&gt;upgrade&lt;/code&gt; and &lt;code&gt;install&lt;/code&gt; commands)&lt;/em&gt;&lt;/p&gt;
+&lt;h1 id=&quot;for-privacy&quot;&gt;For Privacy&lt;/h1&gt;
+&lt;p&gt;CloudFlare calls it &quot;the last puzzle piece to privacy&quot; in their must-read
+announcement: &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://blog.cloudflare.com/announcing-encrypted-client-hello/&quot;&gt;https://blog.cloudflare.com/announcing-encrypted-client-hello/&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://www.rfc-editor.org/rfc/rfc9849&quot;&gt;Encrypted Client Hello (rfc9849)&lt;/a&gt; encrypts the
+&quot;which website are you connecting to?&quot; part of the TLS handshake that was
+previously visible in plaintext.&lt;/p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://www.rfc-editor.org/rfc/rfc9460&quot;&gt;HTTPS-RR (rfc9460)&lt;/a&gt; is a DNS record type that
+publishes connection parameters for a service, including the public key clients
+need to perform ECH.&lt;/p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://www.rfc-editor.org/rfc/rfc8484&quot;&gt;DNS Over HTTPS (rfc8484)&lt;/a&gt; encrypts DNS queries
+by tunneling them over HTTPS, hiding what domains you&#39;re looking up from
+network observers.&lt;/p&gt;
+&lt;p&gt;When all three operate together over a CDN with shared IP space, the target
+domain name is hidden from passive observers; the HTTPS-RR record is queried
+over DoH in order to &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://www.rfc-editor.org/rfc/rfc9848&quot;&gt;retrieve the ECH key
+(rfc9848)&lt;/a&gt; for the TLS handshake.&lt;/p&gt;
+&lt;p&gt;Seems like quite an important feature, and in fact the major browsers have it
+enabled for some time now, the trick is that they do not use OpenSSL (Chrome
+uses BoringSSL and Firefox uses NSS).&lt;/p&gt;
+&lt;p&gt;For everyone else, the only option is to patch OpenSSL or wait until 4.0.0 is
+released, and so part of the reason Debian is the first distro to enable it
+(curl + OpenSSL + ECH) is that the OpenSSL maintainer (Sebastian Andrzej
+Siewior) packaged the alpha release just 3 days after it was published.&lt;/p&gt;
+&lt;p&gt;Do not forget that ECH support is experimental and currently relies on the
+alpha release of OpenSSL.&lt;/p&gt;
+&lt;h1 id=&quot;wcurl-gets-it-too&quot;&gt;wcurl Gets It Too&lt;/h1&gt;
+&lt;p&gt;Considering &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://curl.se/wcurl/&quot;&gt;wcurl&lt;/a&gt; is just a wrapper on curl, it gets
+the feature for free:&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #EBDBB2; background-color: #282828;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;wcurl&lt;/span&gt;&lt;span style=&quot;color: #D3869B;&quot;&gt; --curl-options=&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt;--ech hard --doh-url https://1.1.1.1/dns-query&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: #83A598;&quot;&gt; $URL&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you&#39;re using wcurl, you don&#39;t want to have to set parameters, this is just
+to show that the feature is there and if you have a &lt;code&gt;.curlrc&lt;/code&gt; file, it can
+enable the feature seamlessly.&lt;/p&gt;
+&lt;h1 id=&quot;other-debian-releases&quot;&gt;Other Debian Releases&lt;/h1&gt;
+&lt;p&gt;Given the ECH feature requires OpenSSL &amp;gt;= 4, it will not make it to Debian 13,
+having a small chance of going to Debian 13 Backports (emphasis on small).&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;It should get to Debian Unstable and Debian Testing within the next couple of
+months&lt;/strong&gt; as the OpenSSL GA release happens and gets packaged, but you should be
+able to install the package from Experimental in your Unstable and Testing
+systems without issues. It will also be in Debian 14 once it becomes the new Stable.&lt;/p&gt;
+&lt;h1 id=&quot;shoulders-of-giants&quot;&gt;Shoulders of Giants&lt;/h1&gt;
+&lt;p&gt;Stephen Farrell&#39;s presentation from OpenSSL Conference 2025 has a lot of
+background on the work involved:&lt;/p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=wYQq8ozP3uE&quot;&gt;Encrypted Client Hello – Lessons learned from trying to do something that was
+probably too complicated&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;They have been working on implementing ECH in open-source projects for years,
+something as big as this doesn&#39;t happen without lots of people dedicating both
+their paid and free times over it.&lt;/p&gt;
+&lt;p&gt;I ended up being the person who enabled it on Debian, which was pretty much the
+least amount of work between everyone involved, but hey it&#39;s fun flipping the
+switch and telling you about it.&lt;/p&gt;
+&lt;h1 id=&quot;background&quot;&gt;Background&lt;/h1&gt;
+&lt;p&gt;Since 2025, the curl developers started organizing an yearly meeting with all
+maintainers of curl in Operating Systems. The 2026 edition happened in March
+26th:
+&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://github.com/curl/curl/wiki/curl-distro-discussion-2026&quot;&gt;https://github.com/curl/curl/wiki/curl-distro-discussion-2026&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Attendance was really good, and as you can imagine one of the topics of
+discussion was ECH, in which it was pointed out that having OpenSSL 4 was
+the main requirement but besides it nothing unusual was needed.&lt;/p&gt;
+&lt;p&gt;In Debian Experimental, we have been enabling HTTPS-RR since March 2025, and
+OpenSSL 4.0.0 alpha was packaged just recently (2026-03-13) by Sebastian
+Andrzej Siewior, it&#39;s time for the next step.&lt;/p&gt;
+&lt;p&gt;The curl distro meeting was just the motivation I needed to go ahead and
+enable it in Debian Experimental, so as part of our Debian Brasil Weekly
+Meetings I&#39;ve prepared and uploaded the changes, while Carlos Henrique Lima
+Melara worked on addressing a recent test regression for Debian Unstable.
+Unfortunately sergiodj couldn&#39;t join and I&#39;m sure he&#39;s jealous of the hacking
+session now.&lt;/p&gt;
+&lt;h1 id=&quot;appendix&quot;&gt;Appendix&lt;/h1&gt;
+&lt;p&gt;While writing this, I&#39;ve noticed one of the authors of the CloudFlare blogpost
+is the previous curl maintainer on Debian; Alessandro Ghedini let me take over
+the maintenance back in 2021 and today curl is maintained by a team of 4
+people, it&#39;s nice to see Alessandro&#39;s involvement.&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Debian 13: My list of exciting new features</title>
+        <published>2025-08-28T17:30:00+00:00</published>
+        <updated>2025-08-28T17:30:00+00:00</updated>
+        
+        <author>
+          <name>Unknown</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://samueloph.dev/blog/debian-13-my-list-of-exciting-new-features/"/>
+        <id>https://samueloph.dev/blog/debian-13-my-list-of-exciting-new-features/</id>
+        
+        <content type="html" xml:base="https://samueloph.dev/blog/debian-13-my-list-of-exciting-new-features/">&lt;p&gt;&lt;img src=&quot;debian-13-my-list-of-exciting-new-features.webp&quot; alt=&quot;A bunch of
+screenshots overlaid on top of each other showing different tools: lazygit,
+gnome settings, gnome system monitor, powerline-go, and the wcurl logo, the
+text at the top says &#39;Debian 13: My list of exciting new features&#39;, and there&#39;s
+a Debian logo in the middle of image&quot; width=&quot;1200&quot; height=&quot;630&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
+&lt;h1 id=&quot;beyond-debian-useful-for-other-distros-too&quot;&gt;Beyond Debian: Useful for other distros too&lt;/h1&gt;
+&lt;p&gt;Every two years Debian releases a new major version of its Stable series,
+meaning the differences between consecutive Debian Stable releases represent
+two years of new developments both in Debian as an organization and its native
+packages, but also in all other packages which are also shipped by other
+distributions (which are getting into this new Stable release).&lt;/p&gt;
+&lt;p&gt;If you&#39;re not paying close attention to everything that&#39;s going on all the time
+in the Linux world, you miss a lot of the nice new features and tools. It&#39;s
+common for people to only realize there&#39;s a cool new trick available only years
+after it was first introduced.&lt;/p&gt;
+&lt;p&gt;Given these considerations, the tips that I&#39;m describing will eventually be
+available in whatever other distribution you use, be it because it&#39;s a Debian
+derivative or because it just got the same feature from the upstream project.&lt;/p&gt;
+&lt;p&gt;I&#39;m not going to list &quot;passive&quot; features (as good as they can be), the focus
+here is on new features that might change how you configure and use your
+machine, with a mix between productivity and performance.&lt;/p&gt;
+&lt;h1 id=&quot;debian-13-trixie&quot;&gt;Debian 13 - Trixie&lt;/h1&gt;
+&lt;p&gt;I have been a Debian Testing user for longer than 10 years now (and I recommend
+it for non-server users), so I&#39;m not usually keeping track of all the cool
+features arriving in the new Stable releases because I&#39;m continuously receiving
+them through the Debian Testing rolling release.&lt;/p&gt;
+&lt;p&gt;Nonetheless, as a Debian Developer I&#39;m in a good position to point out the ones
+I can remember. I would also like other Debian Developers to do the same as I&#39;m
+sure I would learn something new.&lt;/p&gt;
+&lt;p&gt;The Debian 13 release notes contain a &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://www.debian.org/releases/trixie/release-notes/whats-new.en.html&quot;&gt;&quot;What&#39;s new&quot; section
+&lt;/a&gt;, which
+lists the first two items here and a few other things, in other words, take my
+list as an addition to the release notes.&lt;/p&gt;
+&lt;p&gt;Debian 13 was released on 2025-08-09, and these are nice things you shouldn&#39;t
+miss in the new release, with a bonus one not tied to the Debian 13 release.&lt;/p&gt;
+&lt;h2 id=&quot;1-wcurl&quot;&gt;1) wcurl&lt;/h2&gt;
+ &lt;img src=&quot;wcurl-logo.svg&quot; alt=&quot;wcurl logo&quot; width=&quot;998&quot; height=&quot;250&quot; loading=&quot;lazy&quot; /&gt;
+&lt;p&gt;Have you ever had to download a file from your terminal using curl and didn&#39;t
+remember the parameters needed? I did.&lt;/p&gt;
+&lt;p&gt;Nowadays you can use &lt;code&gt;wcurl&lt;/code&gt;; &quot;a command line tool which lets you download URLs
+without having to remember any parameters.&quot;&lt;/p&gt;
+&lt;p&gt;Simply call &lt;code&gt;wcurl&lt;/code&gt; with one or more URLs as parameters and it will download
+all of them in parallel, performing retries, choosing the correct output file
+name, following redirects, and more.&lt;/p&gt;
+&lt;p&gt;Try it out:&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #EBDBB2; background-color: #282828;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;wcurl&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; example.com&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;wcurl&lt;/code&gt; comes installed as part of the curl package on Debian 13 and in any other
+distribution you can imagine, starting with curl 8.14.0.&lt;/p&gt;
+&lt;p&gt;I&#39;ve written more about wcurl in its &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://samueloph.dev/blog/announcing-wcurl-a-curl-wrapper-to-download-files/&quot;&gt;release
+announcement&lt;/a&gt;
+and I&#39;ve done a lightning talk presentation in DebConf24, which is linked in
+the release announcement.&lt;/p&gt;
+&lt;h2 id=&quot;2-http-3-support-in-curl&quot;&gt;2) HTTP/3 support in curl&lt;/h2&gt;
+&lt;p&gt;Debian has become the first stable Linux distribution to ship curl with support
+for HTTP/3. &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://samueloph.dev/blog/debian-curl-now-supports-http3/&quot;&gt;I&#39;ve written about this in July
+2024&lt;/a&gt;, when we
+first enabled it. Note that we first switched the curl CLI to GnuTLS, but then
+ended up releasing the curl CLI linked with OpenSSL (as support arrived later).&lt;/p&gt;
+&lt;p&gt;Debian was the first stable Linux distro to enable it, and within
+rolling-release-based distros; Gentoo enabled it first in their non-default
+flavor of the package and Arch Linux did it three months before we pushed it to
+Debian Unstable/Testing/Stable-backports, kudos to them!&lt;/p&gt;
+&lt;p&gt;HTTP/3 is not used by default by the curl CLI, you have to enable it with
+&lt;code&gt;--http3&lt;/code&gt; or &lt;code&gt;--http3-only&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Try it out:&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #EBDBB2; background-color: #282828;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;curl&lt;/span&gt;&lt;span style=&quot;color: #D3869B;&quot;&gt; --http3&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; https://www.example.org&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;curl&lt;/span&gt;&lt;span style=&quot;color: #D3869B;&quot;&gt; --http3-only&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; https://www.example.org&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;3-systemd-soft-reboot&quot;&gt;3) systemd soft-reboot&lt;/h2&gt;
+&lt;p&gt;Starting with systemd v254, there&#39;s a new &lt;code&gt;soft-reboot&lt;/code&gt; option, it&#39;s an
+userspace-only reboot, much faster than a full reboot if you don&#39;t need to
+reboot the kernel.&lt;/p&gt;
+&lt;p&gt;You can read the announcement from the &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://github.com/systemd/systemd/releases/tag/v254&quot;&gt;systemd v254 GitHub
+release&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Try it out:&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #EBDBB2; background-color: #282828;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #928374;font-style: italic;&quot;&gt;# This will reboot your machine!&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;systemctl&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; soft-reboot&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;4-apt-update&quot;&gt;4) apt --update&lt;/h2&gt;
+&lt;p&gt;Are you tired of being required to run &lt;code&gt;sudo apt update&lt;/code&gt; just before &lt;code&gt;sudo apt upgrade&lt;/code&gt; or &lt;code&gt;sudo apt install $PACKAGE&lt;/code&gt;? So am I!&lt;/p&gt;
+&lt;p&gt;The new &lt;code&gt;--update&lt;/code&gt; option lets you do both things in a single command:&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #EBDBB2; background-color: #282828;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;sudo&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; apt&lt;/span&gt;&lt;span style=&quot;color: #D3869B;&quot;&gt; --update&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; upgrade&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;sudo&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; apt&lt;/span&gt;&lt;span style=&quot;color: #D3869B;&quot;&gt; --update&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; install&lt;/span&gt;&lt;span style=&quot;color: #83A598;&quot;&gt; $PACKAGE&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I love this, but it&#39;s still not yet where it should be, fingers crossed for a
+simple &lt;code&gt;apt upgrade&lt;/code&gt; to behave like other package managers by updating its
+cache as part of the task, maybe in Debian 14?&lt;/p&gt;
+&lt;p&gt;Try it out:&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #EBDBB2; background-color: #282828;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;sudo&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; apt upgrade&lt;/span&gt;&lt;span style=&quot;color: #D3869B;&quot;&gt; --update&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #928374;font-style: italic;&quot;&gt;# The order doesn&amp;#39;t matter&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;sudo&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; apt&lt;/span&gt;&lt;span style=&quot;color: #D3869B;&quot;&gt; --update&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; upgrade&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This is especially handy for container usage, where you have to update the apt
+cache before installing anything, for example:&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #EBDBB2; background-color: #282828;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;podman&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; run debian:stable bin/bash&lt;/span&gt;&lt;span style=&quot;color: #D3869B;&quot;&gt; -c&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt; &amp;#39;&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt;apt install --update -y curl&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;5-powerline-go&quot;&gt;5) powerline-go&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;powerline-go&lt;/code&gt; is a powerline-style prompt written in Golang, so it&#39;s much more
+performant than its Python alternative &lt;code&gt;powerline&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;powerline-style prompts are quite useful to show things like the current status
+of the git repo in your working directory, exit code of the previous command,
+presence of jobs in the background, whether or not you&#39;re in an ssh session,
+and more.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;powerline-go.webp&quot; alt=&quot;A screenshot of a terminal with
+powerline-go enabled, showing how the PS1 changes inside a git repository and
+when the last command fails&quot; width=&quot;1929&quot; height=&quot;618&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Try it out:&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #EBDBB2; background-color: #282828;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;sudo&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; apt install powerline-go&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then add this to your &lt;code&gt;.bashrc&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #EBDBB2; background-color: #282828;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE8019;&quot;&gt;function&lt;/span&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt; _update_ps1&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt;() {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #83A598;&quot;&gt;    PS1&lt;/span&gt;&lt;span style=&quot;color: #8EC07C;&quot;&gt;=&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt;&amp;quot;$(&lt;/span&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;/usr/bin/powerline-go&lt;/span&gt;&lt;span style=&quot;color: #D3869B;&quot;&gt; -error&lt;/span&gt;&lt;span style=&quot;color: #83A598;&quot;&gt; $?&lt;/span&gt;&lt;span style=&quot;color: #D3869B;&quot;&gt; -jobs&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt; $(&lt;/span&gt;&lt;span style=&quot;color: #FE8019;&quot;&gt;jobs&lt;/span&gt;&lt;span style=&quot;color: #D3869B;&quot;&gt; -p&lt;/span&gt;&lt;span style=&quot;color: #8EC07C;&quot;&gt; |&lt;/span&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt; wc&lt;/span&gt;&lt;span style=&quot;color: #D3869B;&quot;&gt; -l&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt;))&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #928374;font-style: italic;&quot;&gt;    # Uncomment the following line to automatically clear errors after showing&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #928374;font-style: italic;&quot;&gt;    # them once. This not only clears the error for powerline-go, but also for&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #928374;font-style: italic;&quot;&gt;    # everything else you run in that shell. Don&amp;#39;t enable this if you&amp;#39;re not&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #928374;font-style: italic;&quot;&gt;    # sure this is what you want.&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #928374;font-style: italic;&quot;&gt;    #set &amp;quot;?&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #A89984;&quot;&gt;}&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FB4934;&quot;&gt;if&lt;/span&gt;&lt;span style=&quot;color: #FE8019;&quot;&gt; [&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: #83A598;&quot;&gt;$TERM&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: #FB4934;&quot;&gt; !=&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt;linux&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: #FE8019;&quot;&gt; ]&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt; &amp;amp;&amp;amp;&lt;/span&gt;&lt;span style=&quot;color: #FE8019;&quot;&gt; [&lt;/span&gt;&lt;span style=&quot;color: #FB4934;&quot;&gt; -f&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt; &amp;quot;&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt;/usr/bin/powerline-go&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: #FE8019;&quot;&gt; ]&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt;;&lt;/span&gt;&lt;span style=&quot;color: #FB4934;&quot;&gt; then&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #83A598;&quot;&gt;    PROMPT_COMMAND&lt;/span&gt;&lt;span style=&quot;color: #8EC07C;&quot;&gt;=&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt;_update_ps1; &lt;/span&gt;&lt;span style=&quot;color: #83A598;&quot;&gt;$PROMPT_COMMAND&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FB4934;&quot;&gt;fi&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Or this to &lt;code&gt;.zshrc&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #EBDBB2; background-color: #282828;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FE8019;&quot;&gt;function&lt;/span&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt; powerline_precmd&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt;() {&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #83A598;&quot;&gt;    PS1&lt;/span&gt;&lt;span style=&quot;color: #8EC07C;&quot;&gt;=&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt;&amp;quot;$(&lt;/span&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;/usr/bin/powerline-go&lt;/span&gt;&lt;span style=&quot;color: #D3869B;&quot;&gt; -error&lt;/span&gt;&lt;span style=&quot;color: #83A598;&quot;&gt; $?&lt;/span&gt;&lt;span style=&quot;color: #D3869B;&quot;&gt; -jobs&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt; ${${&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt;(&lt;/span&gt;&lt;span style=&quot;color: #8EC07C;&quot;&gt;%&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt;)&lt;/span&gt;&lt;span style=&quot;color: #8EC07C;&quot;&gt;:%&lt;/span&gt;&lt;span style=&quot;color: #83A598;&quot;&gt;j&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt;}&lt;/span&gt;&lt;span style=&quot;color: #8EC07C;&quot;&gt;:-&lt;/span&gt;&lt;span style=&quot;color: #83A598;&quot;&gt;0&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt;})&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #928374;font-style: italic;&quot;&gt;    # Uncomment the following line to automatically clear errors after showing&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #928374;font-style: italic;&quot;&gt;    # them once. This not only clears the error for powerline-go, but also for&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #928374;font-style: italic;&quot;&gt;    # everything else you run in that shell. Don&amp;#39;t enable this if you&amp;#39;re not&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #928374;font-style: italic;&quot;&gt;    # sure this is what you want.&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #928374;font-style: italic;&quot;&gt;    #set &amp;quot;?&amp;quot;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #A89984;&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you&#39;d like to have your prompt start in a newline, like I have in the
+screenshot above, you just need to set &lt;code&gt;-newline&lt;/code&gt; in the powerline-go
+invocation in your &lt;code&gt;.bashrc&lt;/code&gt;/&lt;code&gt;.zshrc&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;6-gnome-system-monitor-extension&quot;&gt;6) Gnome System Monitor Extension&lt;/h2&gt;
+&lt;p&gt;Tips number 6 and 7 are for Gnome users.&lt;/p&gt;
+&lt;p&gt;Gnome is now shipping a system monitor extension which lets you get a glance of
+the current load of your machine from the top bar.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;gnome_system_monitor_extension.webp&quot; alt=&quot;Screenshot of the top
+bar of Gnome with the system monitor extension enabled, showing the load of:
+CPU, memory, network and disk&quot; width=&quot;1537&quot; height=&quot;59&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;I&#39;ve found this quite useful for machines where I&#39;m required to install
+third-party monitoring software that tends to randomly consume more resources
+than it should. If I feel like my machine is struggling, I can quickly glance
+at its load to verify if it&#39;s getting overloaded by some process.&lt;/p&gt;
+&lt;p&gt;The extension is not as complete as
+&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://extensions.gnome.org/extension/3010/system-monitor-next/&quot;&gt;system-monitor-next&lt;/a&gt;,
+not showing temperatures or histograms, but at least it&#39;s officially part of
+Gnome, easy to install and supported by them.&lt;/p&gt;
+&lt;p&gt;Try it out:&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #EBDBB2; background-color: #282828;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;sudo&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; apt install gnome-system-monitor gnome-shell-extension-manager&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And then enable the extension from the &quot;Extension Manager&quot; application.&lt;/p&gt;
+&lt;h2 id=&quot;7-gnome-setting-for-battery-charging-profile&quot;&gt;7) Gnome setting for battery charging profile&lt;/h2&gt;
+&lt;p&gt;After having to learn more about batteries in order to get into FPV drones,
+I&#39;ve come to have a bigger appreciation for solutions that minimize the
+inevitable loss of capacity that accrues over time.&lt;/p&gt;
+&lt;p&gt;There&#39;s now a &quot;Battery Charging&quot; setting (under the &quot;Power&quot;) section which lets
+you choose between two different profiles: &quot;Maximize Charge&quot; and &quot;Preserve
+Battery Health&quot;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;gnome_battery_charging.png&quot; alt=&quot;A screenshot of the Gnome
+settings for Power showing the options for Battery Charging&quot; width=&quot;1648&quot; height=&quot;1104&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;On supported laptops, this setting is an easy way to set thresholds for when
+charging should start and stop, just like you could do it with the &lt;code&gt;tlp&lt;/code&gt; package,
+but now from the Gnome settings.&lt;/p&gt;
+&lt;p&gt;To increase the longevity of my laptop battery, I always keep it at &quot;Preserve
+Battery Health&quot; unless I&#39;m traveling.&lt;/p&gt;
+&lt;p&gt;What I would like to see next is support for choosing different &quot;Power Modes&quot;
+based on whether the laptop is plugged-in, and based on the battery
+charge percentage.&lt;/p&gt;
+&lt;p&gt;There&#39;s a &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://gitlab.gnome.org/GNOME/gnome-settings-daemon/-/issues/715&quot;&gt;GNOME
+issue&lt;/a&gt;
+tracking this feature, but there&#39;s some pushback on whether this is the right
+thing to expose to users.&lt;/p&gt;
+&lt;p&gt;In the meantime, there are some workarounds mentioned in that issue which
+people who really want this feature can follow.&lt;/p&gt;
+&lt;p&gt;If you would like to learn more about batteries; &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://batteryuniversity.com&quot;&gt;Battery
+University&lt;/a&gt; is a great starting point, besides
+getting into FPV drones and being forced to handle batteries without a Battery
+Management System (BMS).&lt;/p&gt;
+&lt;p&gt;And if by any chance this sparks your interest in FPV drones, Joshua Bardwell&#39;s
+YouTube channel is a great resource:
+&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://www.youtube.com/@JoshuaBardwell&quot;&gt;@JoshuaBardwell&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;8-lazygit&quot;&gt;8) Lazygit&lt;/h2&gt;
+&lt;p&gt;Emacs users are already familiar with the legendary &lt;code&gt;magit&lt;/code&gt;; a terminal-based
+UI for git.&lt;/p&gt;
+&lt;p&gt;Lazygit is an alternative for non-emacs users, you can integrate it with neovim
+or just use it directly.&lt;/p&gt;
+&lt;p&gt;I&#39;m still playing with &lt;code&gt;lazygit&lt;/code&gt; and haven&#39;t integrated it into my workflows,
+but so far it has been a pleasant experience.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;lazygit.webp&quot; alt=&quot;Screenshot of lazygit from the Debian curl
+repository, showing a selected commit and its diff, besides the other things
+from the lazygit UI&quot; width=&quot;1000&quot; height=&quot;634&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;You should check out the demos from the &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://github.com/jesseduffield/lazygit&quot;&gt;lazygit GitHub
+page&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Try it out:&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #EBDBB2; background-color: #282828;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;sudo&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; apt install lazygit&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And then call &lt;code&gt;lazygit&lt;/code&gt; from within a git repository.&lt;/p&gt;
+&lt;h2 id=&quot;9-neovim&quot;&gt;9) neovim&lt;/h2&gt;
+&lt;p&gt;neovim has been shipped in Debian since 2016, but upstream has been doing a lot of
+work to improve the experience out-of-the-box in the last couple of years.&lt;/p&gt;
+&lt;p&gt;If you&#39;re a neovim poweruser, you&#39;re likely not installing it from the official
+repositories, but for those that are, Debian 13 comes with version 0.10.4,
+which brings the following improvements compared to the version in Debian 12:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Treesitter support for C, Lua, Markdown, with the possibility of adding any
+other languages as needed;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Better spellchecking due to treesitter integration (spellsitter);&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mouse support enabled by default;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Commenting support out-of-the-box;&lt;/p&gt;
+&lt;p&gt;Check &lt;code&gt;:h commenting&lt;/code&gt; for details, but the
+tl;dr is that you can use &lt;code&gt;gcc&lt;/code&gt; to comment the current line and &lt;code&gt;gc&lt;/code&gt; to comment
+the current selection.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;OSC52 support.&lt;/p&gt;
+&lt;p&gt;Especially handy for those using neovim over an ssh
+connection, this protocol lets you copy something from within the neovim
+process into the clipboard of the machine you&#39;re using to connect through ssh.
+In other words, you can copy from neovim running in a host over ssh and paste
+it in the &quot;outside&quot; machine.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;10-bonus-running-old-debian-releases&quot;&gt;10) [Bonus] Running old Debian releases&lt;/h2&gt;
+&lt;p&gt;The bonus tip is not specific to the Debian 13 release, but something I&#39;ve
+recently learned in the &lt;code&gt;#debian-devel&lt;/code&gt; IRC channel.&lt;/p&gt;
+&lt;p&gt;Did you know there are usable container images for all past Debian releases?
+I&#39;m not talking &quot;past&quot; as in &quot;some of the older releases&quot;, I&#39;m talking past as
+in &quot;literally every Debian release, including the very first one&quot;.&lt;/p&gt;
+&lt;p&gt;Tianon Gravi &quot;tianon&quot; is the Debian Developer responsible for making this
+happen, kudos to him!&lt;/p&gt;
+&lt;p&gt;There&#39;s a small gotcha that the releases Buzz (1.1) and Rex (1.2) require a
+32-bit host, otherwise you will get the error &lt;code&gt;Out of virtual memory!&lt;/code&gt;, but
+starting with Bo (1.3) all should work in amd64/arm64.&lt;/p&gt;
+&lt;p&gt;Try it out:&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #EBDBB2; background-color: #282828;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;sudo&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; apt install podman&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;podman&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; run&lt;/span&gt;&lt;span style=&quot;color: #D3869B;&quot;&gt; -it&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; docker.io/debian/eol:bo&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Don&#39;t be surprised when noticing that &lt;code&gt;apt/apt-get&lt;/code&gt; is not available inside the
+container, that&#39;s because &lt;code&gt;apt&lt;/code&gt; first appeared in Debian Slink (2.1).&lt;/p&gt;
+&lt;h1 id=&quot;changes-since-publication&quot;&gt;Changes since publication&lt;/h1&gt;
+&lt;h2 id=&quot;2025-08-30&quot;&gt;2025-08-30&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Mention that Arch also enabled HTTP/3.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>DebConf24 was fun! Security, curl, wcurl, Debian&#39;s quality</title>
+        <published>2024-09-04T00:00:00+00:00</published>
+        <updated>2024-09-04T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Unknown</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://samueloph.dev/blog/debconf24-was-fun/"/>
+        <id>https://samueloph.dev/blog/debconf24-was-fun/</id>
+        
+        <content type="html" xml:base="https://samueloph.dev/blog/debconf24-was-fun/">&lt;p&gt;&lt;img src=&quot;debconf24_was_fun.webp&quot; alt=&quot;A picture of a badger2040w with
+Samuel&#39;s badge and the curl manpage PCB on the side&quot; width=&quot;1200&quot; height=&quot;630&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
+&lt;h4 id=&quot;tl-dr&quot;&gt;tl;dr&lt;/h4&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://debconf24.debconf.org/&quot;&gt;DebConf24&lt;/a&gt; was fun!&lt;/p&gt;
+&lt;p&gt;A playlist of all of my talks, with subtitles (en, pt-br) and chapters is
+available on &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://youtube.com/playlist?list=PLKGG29PjeLnYeao03jWWH0eaRC5htIg1E&amp;amp;si=3Hwrl5WHFFM2IaSO&quot;&gt;YouTube&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id=&quot;overview&quot;&gt;Overview&lt;/h1&gt;
+&lt;p&gt;DebConf24 was held in Busan, South Korea, between Sunday July 28th to Sunday August 4th 2024.&lt;/p&gt;
+&lt;p&gt;As usual for DebConfs, I had a great time meeting my friends, but also met new
+people and got to learn a bit about the interesting things they&#39;re working on.&lt;/p&gt;
+&lt;p&gt;I ended up getting too excited during the talk submission stage of the
+conference and as a result I presented 5 different activities (3 talks, 1 BoF
+and 1 lightning talk).&lt;/p&gt;
+&lt;p&gt;Since I was too busy with the presentations, I did not have a lot of time to
+actually hang out with folks, or even to go out in the city, I guess I&#39;ve
+learned my lesson for next time.&lt;/p&gt;
+&lt;p&gt;The main purpose of this post is to write about all of the things I presented
+at the conference. I did want to list some of the interesting talks I&#39;ve
+watched, but that I would not be able to be fair as I&#39;m sure I would miss some.&lt;/p&gt;
+&lt;p&gt;You can get the schedule and the recordings of any talks from the conference&#39;s website:
+&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://debconf24.debconf.org/schedule/&quot;&gt;https://debconf24.debconf.org/schedule/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;wcurl-lightning-talk&quot;&gt;wcurl Lightning Talk&lt;/h1&gt;
+&lt;p&gt;The most fun of my presentations, during the second-to-last day of the
+conference, I&#39;ve asked for help from Sergio Durigan Junior &amp;lt;sergiodj&amp;gt; to
+setup an URL containing a whitespace and redirecting that to &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://curl.se/wcurl/&quot;&gt;wcurl&lt;/a&gt;&#39;s
+manpage.&lt;/p&gt;
+&lt;p&gt;I then did a little demo to showcase why me (and a lot others) struggle
+with downloading things with curl, and how &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://curl.se/wcurl/&quot;&gt;wcurl&lt;/a&gt; solves that.&lt;/p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=eM8M5qa4pPM&quot;&gt;https://www.youtube.com/watch?v=eM8M5qa4pPM&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;yv yv-youtube&quot;&gt;
+    &lt;lite-youtube videoid=&quot;eM8M5qa4pPM&quot; videotitle=&quot;YouTube&quot; nocookie disablenoscript&gt;
+        &lt;img slot=&quot;image&quot; src=&quot;https://samueloph.dev/img/embed/youtube/eM8M5qa4pPM-1280.webp?h=331480c681a8eab87ebb&quot; alt=&quot;&quot; loading=&quot;lazy&quot;&gt;
+    &lt;/lite-youtube&gt;
+&lt;/div&gt;
+&lt;h1 id=&quot;fixing-cves-on-debian-everything-you-probably-know-already&quot;&gt;Fixing CVEs on Debian: Everything you probably know already&lt;/h1&gt;
+&lt;p&gt;I&#39;ve always felt like DebConf was missing security-related talks, so I decided
+to do something about it and presented a few of the things I&#39;ve learned when
+fixing CVEs for Debian.&lt;/p&gt;
+&lt;p&gt;This is an area where we don&#39;t get a lot of new contributors, I&#39;m trying to
+change that, and this talk can be used to introduce newcomers to it.&lt;/p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=XzNVVILVyUM&quot;&gt;https://www.youtube.com/watch?v=XzNVVILVyUM&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;yv yv-youtube&quot;&gt;
+    &lt;lite-youtube videoid=&quot;XzNVVILVyUM&quot; videotitle=&quot;YouTube&quot; nocookie disablenoscript&gt;
+        &lt;img slot=&quot;image&quot; src=&quot;https://samueloph.dev/img/embed/youtube/XzNVVILVyUM-1280.webp?h=fd1c8c80d744aef2ec67&quot; alt=&quot;&quot; loading=&quot;lazy&quot;&gt;
+    &lt;/lite-youtube&gt;
+&lt;/div&gt;
+&lt;h1 id=&quot;the-secret-sauce-of-debian&quot;&gt;The secret sauce of Debian&lt;/h1&gt;
+&lt;p&gt;Debian is not very vocal about all of the nice things it has regarding
+quality-assurance, testing, or CI, even though it&#39;s at the state-of-the-art for
+a lot of things.&lt;/p&gt;
+&lt;p&gt;This talk is an initial step towards making people aware of the cool
+things happening behind the scenes. Ideally we should have it
+well-documented somewhere.&lt;/p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=x_X2IBnpjic&quot;&gt;https://www.youtube.com/watch?v=x_X2IBnpjic&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;yv yv-youtube&quot;&gt;
+    &lt;lite-youtube videoid=&quot;x_X2IBnpjic&quot; videotitle=&quot;YouTube&quot; nocookie disablenoscript&gt;
+        &lt;img slot=&quot;image&quot; src=&quot;https://samueloph.dev/img/embed/youtube/x_X2IBnpjic-1280.webp?h=4f8935ddef58535af07e&quot; alt=&quot;&quot; loading=&quot;lazy&quot;&gt;
+    &lt;/lite-youtube&gt;
+&lt;/div&gt;
+&lt;h1 id=&quot;i-use-debian-btw-fzf-tmux-zoxide-and-friends&quot;&gt;&quot;I use Debian BTW&quot;: fzf, tmux, zoxide and friends&lt;/h1&gt;
+&lt;p&gt;One of my earliest good memories of Debian was when it started coming with a
+colored PS1 by default, I still remember the feeling of relief whenever I
+jumped into a Debian server and didn&#39;t have to deal with a black and white PS1.&lt;/p&gt;
+&lt;p&gt;There&#39;s still a lot of room for Debian to ship better defaults, and I think
+some of them can actually happen.&lt;/p&gt;
+&lt;p&gt;This talk is a bit of a silly one where I&#39;m just making people aware of the
+existence of a few Golang/Rust CLI tools, and also some dotfiles configurations
+that should probably be the default.&lt;/p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=tfto3Seokn4&quot;&gt;https://www.youtube.com/watch?v=tfto3Seokn4&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;yv yv-youtube&quot;&gt;
+    &lt;lite-youtube videoid=&quot;tfto3Seokn4&quot; videotitle=&quot;YouTube&quot; nocookie disablenoscript&gt;
+        &lt;img slot=&quot;image&quot; src=&quot;https://samueloph.dev/img/embed/youtube/tfto3Seokn4-1280.webp?h=986f0de21e1a154f66f5&quot; alt=&quot;&quot; loading=&quot;lazy&quot;&gt;
+    &lt;/lite-youtube&gt;
+&lt;/div&gt;
+&lt;h1 id=&quot;curl&quot;&gt;curl&lt;/h1&gt;
+&lt;p&gt;The curl project does such a great job with their security advisories that it
+will likely never receive the amount of praise it deserves, but I did my best
+at mentioning it throughout my &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=XzNVVILVyUM&quot;&gt;CVEs talk&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Maybe I will write more extensively about this someday, but in case I don&#39;t:&lt;/strong&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;There&#39;s no other project which always consistently mentions the exact range of
+commits that are affected by a given CVE.&lt;/p&gt;
+&lt;p&gt;Forget about whether the versions are EOL, curl doesn&#39;t have LTS releases, yet
+they do such a great job at clearly documenting their CVEs that I would take
+that over having LTS releases anytime (that&#39;s for curl at least, I
+acknowledge some types of projects have a different need for LTS
+releases).&lt;/p&gt;
+&lt;p&gt;Not only that, but they are also always careful about explaining alternative
+mitigations such as configuration changes, build flags that defuse the
+exploitation, or parameters that you should not use.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Just like we tend to do every time we meet, me and the other Debian curl
+maintainers spent the first 2 or 3 days of the conference talking about how we
+wanted to eventually meet up to discuss the package.&lt;/p&gt;
+&lt;p&gt;It was going to be informal, maybe during the &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://debconf24.debconf.org/about/cheese-and-wine-party/&quot;&gt;Cheese and Wine
+party&lt;/a&gt;, but then
+I&#39;ve realized we should make it part of the official schedule, which would
+also give us the recordings for later.&lt;/p&gt;
+&lt;p&gt;And so the &quot;curl maintainers BoF&quot; happened, where we spoke about HTTP3,
+GnutTLS, &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://curl.se/wcurl/&quot;&gt;wcurl&lt;/a&gt; and other things.&lt;/p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://www.youtube.com/watch?v=fL7hSypUTdM&quot;&gt;https://www.youtube.com/watch?v=fL7hSypUTdM&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;yv yv-youtube&quot;&gt;
+    &lt;lite-youtube videoid=&quot;fL7hSypUTdM&quot; videotitle=&quot;YouTube&quot; nocookie disablenoscript&gt;
+        &lt;img slot=&quot;image&quot; src=&quot;https://samueloph.dev/img/embed/youtube/fL7hSypUTdM-1280.webp?h=634845e82451104540ac&quot; alt=&quot;&quot; loading=&quot;lazy&quot;&gt;
+    &lt;/lite-youtube&gt;
+&lt;/div&gt;
+&lt;h1 id=&quot;wcurl&quot;&gt;wcurl&lt;/h1&gt;
+&lt;p&gt;Right after that BoF, Daniel Stenberg
+&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://curl.se/mail/archive-2024-08/0000.html&quot;&gt;asked&lt;/a&gt; if we were interested
+in having &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://curl.se/wcurl/&quot;&gt;wcurl&lt;/a&gt; adopted into curl, which we
+definitely were, so &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://daniel.haxx.se/blog/2024/08/08/curl-welcomes-wcurl-to-the-team/&quot;&gt;wcurl is now part of the curl
+project&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Daniel was also kind enough to design a logo for the project, which makes me
+especially happy because I can stop with my own approach at a logo (which I had
+to redo every few days):&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;wcurl_draft_logo.webp&quot; alt=&quot;A laptop with a curl and a GoHorse
+sticker, there&#39;s a &#39;w&#39; handwritten with a marker on the right side of the curl
+sticker, making it &#39;wcurl&#39;&quot; width=&quot;700&quot; height=&quot;699&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;And here is the new logo:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;wcurl_logo.svg&quot; alt=&quot;&#39;wcurl&#39; written with the same font and
+colors as the curl logo, with the &#39;w&#39; being green instead of blue, and a
+download icon at the end&quot; width=&quot;998&quot; height=&quot;250&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Much better, I would say :)&lt;/p&gt;
+&lt;h1 id=&quot;curl-swag&quot;&gt;curl Swag&lt;/h1&gt;
+&lt;p&gt;DebConf24 was my chance at forwarding some curl swag items to the other
+curl maintainers, so both Sergio Durigan Junior &amp;lt;sergiodj&amp;gt; and Carlos
+Henrique Lima Melara &amp;lt;charles&amp;gt; got the &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://daniel.haxx.se/blog/2024/05/06/i-survived-curl-up-2024&quot;&gt;curl-up
+t-shirt&lt;/a&gt;
+and the very cool &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://daniel.haxx.se/blog/2023/11/03/curl-coasters/&quot;&gt;curl PCB
+coaster&lt;/a&gt;, both gifted
+by Daniel Stenberg.&lt;/p&gt;
+&lt;p&gt;Unfortunately I didn&#39;t have any of that for DebConf attendees, but I did drop
+loads of curl stickers at the stickers table, they were gone very quickly.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;debconf24_curl_stickers.webp&quot; alt=&quot;A table full of different
+stickers, curl stickers can be seen over the whole table&quot; width=&quot;450&quot; height=&quot;800&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
+&lt;h1 id=&quot;for-the-future&quot;&gt;For the future&lt;/h1&gt;
+&lt;p&gt;I used to think the most humbling experience you could have as someone who presented
+a talk was to have to watch it yourself, you notice a lot of mistakes and
+you instantly think about things that should be done differently.&lt;/p&gt;
+&lt;p&gt;It turns out the most humbling thing to do is actually to write subtitles for
+your talks, I noticed every single mistake, often multiple times.&lt;/p&gt;
+&lt;p&gt;So after spending more than 30 hours writing the subtitles for both English and
+Brazilian Portuguese for my talks, I feel like it&#39;s going to be much easier to
+avoid committing the same mistakes again. After some time you stop feeling shame
+about those mistakes and you&#39;re just left with feelings of annoyance, and at
+that point it becomes easier to consciously avoid them.&lt;/p&gt;
+&lt;p&gt;I am collecting a list of things I wish I had done differently on all of those
+talks, so if I end up presenting any one of them again, it will be an improved
+version.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;debconf24_group_photo.webp&quot; alt=&quot;A picture from the top of a
+group of conference attendees, there&#39;s about 150 people in the picture&quot; width=&quot;1484&quot; height=&quot;1024&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Photography: Aigars Mahinovs &amp;lt;aigaruius@debian.org&amp;gt;&lt;br /&gt;
+License: CC-BYv3+ or GPLv2+&lt;/p&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Debian&#39;s curl now supports HTTP/3</title>
+        <published>2024-07-04T00:00:00+00:00</published>
+        <updated>2024-07-04T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Unknown</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://samueloph.dev/blog/debian-curl-now-supports-http3/"/>
+        <id>https://samueloph.dev/blog/debian-curl-now-supports-http3/</id>
+        
+        <content type="html" xml:base="https://samueloph.dev/blog/debian-curl-now-supports-http3/">&lt;h4 id=&quot;tl-dr&quot;&gt;tl;dr&lt;/h4&gt;
+&lt;p&gt;Starting with &lt;strong&gt;curl 8.0.0-2&lt;/strong&gt;, you can now use HTTP/3.&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #EBDBB2; background-color: #282828;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;curl&lt;/span&gt;&lt;span style=&quot;color: #D3869B;&quot;&gt; --http3-only&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; https://example.com&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Or, if you would like to try it out in a container:&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #EBDBB2; background-color: #282828;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;podman&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; run debian:testing /bin/bash&lt;/span&gt;&lt;span style=&quot;color: #D3869B;&quot;&gt; -c&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt; &amp;#39;&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt;apt install --update -y curl &amp;amp;&amp;amp; curl --http3-only https://example.com&lt;/span&gt;&lt;span style=&quot;color: #A89984;&quot;&gt;&amp;#39;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;em&gt;(in case you haven&#39;t noticed, apt now has the &lt;code&gt;--update&lt;/code&gt; option for the
+&lt;code&gt;upgrade&lt;/code&gt; and &lt;code&gt;install&lt;/code&gt; commands)&lt;/em&gt;&lt;/p&gt;
+&lt;h5 id=&quot;availability&quot;&gt;Availability&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;Debian unstable - Since 2024-07-02&lt;/li&gt;
+&lt;li&gt;Debian testing - Since 2024-07-18&lt;/li&gt;
+&lt;li&gt;Debian 13 - Since its initial release.&lt;/li&gt;
+&lt;li&gt;Debian 12/bookworm-backports - Since 2024-08-25&lt;/li&gt;
+&lt;li&gt;Debian 12/bookworm - Due to the mechanisms we have in place to make sure
+Debian stable is in fact stable, we will never be able to ship this in the
+regular repository. Users can make use of the
+&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://backports.debian.org/&quot;&gt;backports&lt;/a&gt; repositories instead.&lt;/li&gt;
+&lt;li&gt;Debian derivatives - Rolling releases will get it by the time it&#39;s on Debian
+testing (e.g.: Kali Linux). Stable derivatives only in their next major release.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;the-challenge&quot;&gt;The challenge&lt;/h1&gt;
+&lt;p&gt;HTTP/3 is fresh new, well... not really, but at least fresh enough that I&#39;m not
+aware of any other Linux distribution supporting it on curl, the reason is
+likely two-fold:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;h3 id=&quot;openssl-is-not-there-yet&quot;&gt;OpenSSL is not there yet&lt;/h3&gt;
+&lt;p&gt;OpenSSL still doesn&#39;t have proper HTTP/3 support, and given that OpenSSL is so
+widely used, almost every curl distributor/packager will build curl with it
+and thus changing the TLS backend to something else is risky.&lt;/p&gt;
+&lt;p&gt;Unfortunately, proper support for the OpenSSL libcurl is unlikely to come anytime
+before the end of this year, the OpenSSL performance is &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://curl.se/mail/distros-2024-04/0001.html&quot;&gt;not good enough
+yet as of version 3.3&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Daniel Stenberg has written about the state of this multiple times, most
+recently at &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://daniel.haxx.se/blog/2024/06/10/http-3-in-curl-mid-2024/&quot;&gt;HTTP/3 in curl mid
+2024&lt;/a&gt;, if
+you&#39;re interested, I suggest reading through his other posts as well.&lt;/p&gt;
+&lt;p&gt;Some might have noticed that nginx &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;http://nginx.org/en/docs/quic.html&quot;&gt;does support HTTP/3 through OpenSSL&lt;/a&gt;,
+although when you look closely, it&#39;s not exactly perfect:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;An SSL library that provides QUIC support is recommended to build nginx, such as BoringSSL, LibreSSL, or QuicTLS. Otherwise, the OpenSSL compatibility layer will be used that does not support early data.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;As you can see, they don&#39;t recommend using OpenSSL, and when doing so, you don&#39;t get complete support.&lt;/p&gt;
+&lt;p&gt;Update (October 2025): OpenSSL&#39;s HTTP/3 support has since matured enough
+that curl 8.16.0-2 switched the Debian curl CLI back to the OpenSSL backend,
+before the Debian 13/trixie freeze.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;h3 id=&quot;http-3-support-for-gnutls-nghttp3-ngtcp2-is-recent&quot;&gt;HTTP/3 support for GnuTLS/nghttp3/ngtcp2 is recent&lt;/h3&gt;
+&lt;p&gt;The non-experimental support arrived &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://github.com/curl/curl/commit/5f78cf503c786a1d48d13528dde038bccfa6c67c&quot;&gt;back in October
+2023&lt;/a&gt;,
+and so that&#39;s when I started seriously planning for this.&lt;/p&gt;
+&lt;p&gt;curl has been working on HTTP/3 support for years, and so it did support other
+TLS backends before that, but out of them, the one most feasible for a
+distribution to ship would be GnuTLS, which gets HTTP/3 support &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://daniel.haxx.se/blog/2024/06/10/http-3-in-curl-mid-2024/&quot;&gt;through ngctp2 and
+nghttp3&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&quot;how-it-was-done&quot;&gt;How it was done&lt;/h1&gt;
+&lt;p&gt;The Debian curl package has historically shipped at least two variants of libcurl, an
+OpenSSL and a GnuTLS one.&lt;/p&gt;
+&lt;p&gt;The OpenSSL libcurl couldn&#39;t support HTTP/3 at the time for the reasons
+explained above, but the GnuTLS libcurl can (with ngtcp2 and nghttp3).&lt;/p&gt;
+&lt;p&gt;Debian packages can choose which version of libcurl to link against (without
+having to modify any upstream source code). Debian&#39;s &quot;git&quot; package being a famous
+example of a package that links against the GnuTLS libcurl.&lt;/p&gt;
+&lt;p&gt;Enabling HTTP/3 on curl was done in three steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Make sure all required dependencies fulfill the minimum requirements.&lt;/li&gt;
+&lt;li&gt;Enable HTTP/3 for GnuTLS libcurl.&lt;/li&gt;
+&lt;li&gt;Change the libcurl used by the curl CLI, from OpenSSL to GnuTLS.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;curl&#39;s HTTP/3 support requires a somewhat recent version of nghttp3 and
+updating that required a &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://wiki.debian.org/Teams/ReleaseTeam/Transitions&quot;&gt;transition&lt;/a&gt; (due to the SONAME bump), while we&#39;ve also
+had months of freeze for transitions due to the &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://lists.debian.org/debian-devel-announce/2024/02/msg00000.html&quot;&gt;time_t
+transition&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;After the dependencies were in place, enabling HTTP/3 for the GnuTLS libcurl was
+&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://salsa.debian.org/debian/curl/-/commit/51df321b0165e5164a0d898d23a64ca3bbd553c0&quot;&gt;straightforward&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Then, for the last part, we had to switch the TLS backend used by the curl CLI.
+Doing the swap is also &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://salsa.debian.org/debian/curl/-/commit/37820dad3612d1b13a9fb9550b1726b998c80cfc&quot;&gt;quite
+easy&lt;/a&gt;
+on the packaging level, but we have to consider the chances of this change
+breaking our users&#39; environments.&lt;/p&gt;
+&lt;h4 id=&quot;update-october-2025-switching-back-to-openssl&quot;&gt;Update (October 2025): Switching back to OpenSSL&lt;/h4&gt;
+&lt;p&gt;Once OpenSSL&#39;s HTTP/3 support was stable and performant enough, the temporary
+arrangement with the GnuTLS backend had served its purpose. In October 2025,
+before the freeze for Debian 13/trixie, curl 8.16.0-2 switched the curl CLI
+back to the OpenSSL backend, now built with HTTP/3 support enabled directly.&lt;/p&gt;
+&lt;p&gt;The GnuTLS libcurl continues to be shipped and supports HTTP/3 as before; this
+change only affects which backend the curl CLI binary itself links against.&lt;/p&gt;
+&lt;h1 id=&quot;ensuring-there-are-no-breakages&quot;&gt;Ensuring there are no breakages&lt;/h1&gt;
+&lt;p&gt;The first thing to consider regarding breakages is that this change is not
+going to be pushed directly to the current Debian stable releases, it will be
+present in the next stable release (13/trixie) but the current one will stick to the
+version that&#39;s already shipped.&lt;/p&gt;
+&lt;p&gt;Secondly, we have to consider the risk of losing the ability to use certain
+parameters from the curl CLI which could be limited to the OpenSSL backend.
+During &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://daniel.haxx.se/blog/2024/05/06/i-survived-curl-up-2024/&quot;&gt;curl-up 2024&lt;/a&gt;, the curl developers pointed out the existence of a page
+that lists the &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://curl.se/libcurl/c/tls-options.html&quot;&gt;TLS related options and the backends they work
+with&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Analysing that page, ignoring all of the options that are suffixed with &quot;BLOB&quot;
+(only pertinent to the library, not the CLI), the only one left which is
+attention worthy is &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://curl.se/libcurl/c/CURLOPT_ECH.html&quot;&gt;CURLOPT_ECH&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;This experimental feature requires a special build of OpenSSL, as ECH is not
+yet supported in OpenSSL releases. In contrast ECH is supported by the latest
+BoringSSL and wolfSSL releases.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;As it turns out, &lt;code&gt;Encrypted Client Hello&lt;/code&gt; is experimental and it&#39;s not
+supported by the vanilla OpenSSL.&lt;/p&gt;
+&lt;p&gt;This was enough of an investigation for me to go ahead with the change. Noting
+that even in the worst case scenario (we find a horrible regression), we can
+rollback without having affected a single stable release.&lt;/p&gt;
+&lt;p&gt;Now that the package is on Debian unstable, the CI tests (autopkgtest) of every
+package that depends on curl is currently running, the results are compared
+against the migration-reference (in this case, the curl CLI with OpenSSL,
+before the change).&lt;/p&gt;
+&lt;p&gt;If everything goes right, curl with HTTP/3 support will migrate to Debian
+testing in around 5 days. If we spot any issues, we&#39;ll have to solve them
+first and it&#39;s going to be hard to predict how long it takes, although it&#39;s
+fair to expect less than a month.&lt;/p&gt;
+&lt;p&gt;Update (October 2025): Debian 13/trixie ultimately shipped with the OpenSSL
+backend instead, following the switch in curl 8.16.0-2 before the freeze.&lt;/p&gt;
+&lt;h1 id=&quot;feedback&quot;&gt;Feedback&lt;/h1&gt;
+&lt;p&gt;Feel free to join the Matrix room for the Debian curl maintainers:&lt;br /&gt;
+&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://matrix.to/#/#debian-curl-maintainers:matrix.org&quot;&gt;https://matrix.to/#/#debian-curl-maintainers:matrix.org&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;acknowledgements&quot;&gt;Acknowledgements&lt;/h1&gt;
+&lt;p&gt;It took us a bit longer than expected to be able to enable HTTP/3, nonetheless it&#39;s
+still early enough to be excited about.&lt;/p&gt;
+&lt;p&gt;A lot of people were crucial to make this happen.&lt;/p&gt;
+&lt;p&gt;I should recognize in the first place, obviously, the curl developers and the
+developers of the supporting libraries: GnuTLS, nghttp3, ngtcp2. Participating
+in the &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://daniel.haxx.se/blog/2024/05/06/i-survived-curl-up-2024/&quot;&gt;curl-up
+2024&lt;/a&gt;
+conference helped me get motivated to push this through, besides becoming aware
+of the right documentation to research for impact.&lt;/p&gt;
+&lt;p&gt;On the Debian side, Sakirnth Nagarasa &amp;lt;sakirnth&amp;gt; was responsible for updating
+and taking care of the transition for nghttp3 and ngtcp2.&lt;/p&gt;
+&lt;p&gt;Also on the Debian side, I&#39;ve got loads of help and support from the
+co-maintainers of the curl package: Sergio Durigan Junior &amp;lt;sergiodj&amp;gt; and Carlos
+Henrique Lima Melara &amp;lt;charles&amp;gt;.&lt;/p&gt;
+&lt;h1 id=&quot;changes-since-publication&quot;&gt;Changes since publication&lt;/h1&gt;
+&lt;h2 id=&quot;2026-04-02&quot;&gt;2026-04-02&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Correct spelling of HTTP/3.&lt;/li&gt;
+&lt;li&gt;Add note to explain that curl is back to using OpenSSL: OpenSSL&#39;s HTTP/3
+support matured sufficiently by October 2025, and curl 8.16.0-2 switched
+the Debian curl CLI back to the OpenSSL backend before the Trixie freeze.
+Updated the OpenSSL challenge section, the &quot;How it was done&quot; section, and
+the breakages section to reflect this.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;2025-03-08&quot;&gt;2025-03-08&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Fix podman command, the previous one was not running all commands inside the container.&lt;/li&gt;
+&lt;li&gt;Change the podman command to use Debian testing instead of unstable.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;2024-08-28&quot;&gt;2024-08-28&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Mention availability in bookworm-backports.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;2024-07-18&quot;&gt;2024-07-18&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Update date of availability for Debian testing and expected date for bookworm-backports.&lt;/li&gt;
+&lt;li&gt;Remove mention of language spoken in the Matrix room, we are using English now.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Announcing wcurl: a curl wrapper to download files</title>
+        <published>2024-07-03T00:00:00+00:00</published>
+        <updated>2024-07-03T00:00:00+00:00</updated>
+        
+        <author>
+          <name>Unknown</name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://samueloph.dev/blog/announcing-wcurl-a-curl-wrapper-to-download-files/"/>
+        <id>https://samueloph.dev/blog/announcing-wcurl-a-curl-wrapper-to-download-files/</id>
+        
+        <content type="html" xml:base="https://samueloph.dev/blog/announcing-wcurl-a-curl-wrapper-to-download-files/">&lt;div class=&quot;yv yv-youtube&quot;&gt;
+    &lt;lite-youtube videoid=&quot;eM8M5qa4pPM&quot; videotitle=&quot;YouTube&quot; nocookie disablenoscript&gt;
+        &lt;img slot=&quot;image&quot; src=&quot;https://samueloph.dev/img/embed/youtube/eM8M5qa4pPM-1280.webp?h=331480c681a8eab87ebb&quot; alt=&quot;&quot; loading=&quot;lazy&quot;&gt;
+    &lt;/lite-youtube&gt;
+&lt;/div&gt;
+&lt;h4 id=&quot;tl-dr&quot;&gt;tl;dr&lt;/h4&gt;
+&lt;p&gt;Whenever you need to download files through the terminal and don&#39;t feel like using wget:&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #EBDBB2; background-color: #282828;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;wcurl&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; example.com/filename.txt&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Manpage:&lt;br /&gt;
+&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://curl.se/wcurl/manual.html&quot;&gt;https://curl.se/wcurl/manual.html&lt;/a&gt;&lt;/p&gt;
+&lt;h5 id=&quot;availability-comes-installed-with-the-curl-package&quot;&gt;Availability (comes installed with the curl package):&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;Debian unstable - Since 2024-07-02&lt;/li&gt;
+&lt;li&gt;Debian testing - Since 2024-07-18&lt;/li&gt;
+&lt;li&gt;Debian 12/bookworm-backports - Since 2024-08-25&lt;/li&gt;
+&lt;li&gt;Debian 12/bookworm - Due to the way changes are planned for Debian Stable,
+wcurl will not be present in bookworm. Users are recommended to either manually
+download wcurl or use the bookworm-backports repository. wcurl will be present
+in Debian 13/trixie.&lt;/li&gt;
+&lt;li&gt;Debian derivatives - Rolling releases will get it by the time it&#39;s on Debian
+testing (e.g.: Kali Linux). Stable derivatives only in their next major release.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you don&#39;t want to wait for the package update to arrive, you can always copy
+the script and place it in your &lt;code&gt;/usr/bin&lt;/code&gt;:&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #EBDBB2; background-color: #282828;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;curl&lt;/span&gt;&lt;span style=&quot;color: #D3869B;&quot;&gt; -fLO&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; https://github.com/curl/wcurl/releases/latest/download/wcurl&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;chmod&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; +x wcurl&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;sudo&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; mv wcurl /usr/bin/wcurl&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;After this announcement, wcurl has joined the curl organization:&lt;br /&gt;
+&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://daniel.haxx.se/blog/2024/08/08/curl-welcomes-wcurl-to-the-team/&quot;&gt;https://daniel.haxx.se/blog/2024/08/08/curl-welcomes-wcurl-to-the-team/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Project homepage:&lt;br /&gt;
+&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://curl.se/wcurl/&quot;&gt;https://curl.se/wcurl/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;smoother-cli-experience&quot;&gt;Smoother CLI experience&lt;/h1&gt;
+&lt;p&gt;Starting with &lt;strong&gt;curl version 8.8.0-2&lt;/strong&gt;, the Debian&#39;s curl package now ships a wcurl
+executable.&lt;/p&gt;
+&lt;p&gt;wcurl is the solution for those who just need to download files without having
+to remember curl&#39;s parameters for things like automatically naming the files.&lt;/p&gt;
+&lt;p&gt;Some people, myself included, would fall back to using wget whenever there was a
+need to download a file. Sometimes even installing wget just for that usecase.
+After all, it&#39;s easier to remember &quot;apt install wget&quot; rather than &quot;curl -L -O -C - ...&quot;.&lt;/p&gt;
+&lt;p&gt;wcurl consists of a simple shell script that provides sane defaults for the curl
+invocation, for when the use case is to just download files.&lt;/p&gt;
+&lt;p&gt;By default, wcurl will:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Percent-encode whitespaces in URLs;&lt;/li&gt;
+&lt;li&gt;Download multiple URLs in parallel if the installed curl&#39;s version is &amp;gt;= 7.66.0;&lt;/li&gt;
+&lt;li&gt;Follow redirects;&lt;/li&gt;
+&lt;li&gt;Automatically choose a filename as output;&lt;/li&gt;
+&lt;li&gt;Avoid overwriting files if the installed curl&#39;s version is &amp;gt;= 7.83.0 (--no-clobber);&lt;/li&gt;
+&lt;li&gt;Perform retries;&lt;/li&gt;
+&lt;li&gt;Set the downloaded file timestamp to the value provided by the server, if available;&lt;/li&gt;
+&lt;li&gt;Disable curl&#39;s URL globbing parser so {} and [] characters in URLs are not treated specially;&lt;/li&gt;
+&lt;li&gt;Percent-decode the resulting filename;&lt;/li&gt;
+&lt;li&gt;Use &quot;index.html&quot; as default filename if there&#39;s none in the URL.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Example to download a single file:&lt;/p&gt;
+&lt;pre class=&quot;giallo&quot; style=&quot;color: #EBDBB2; background-color: #282828;&quot; &gt;&lt;code data-lang=&quot;shellscript&quot;&gt;&lt;span class=&quot;giallo-l&quot;&gt;&lt;span style=&quot;color: #FABD2F;&quot;&gt;wcurl&lt;/span&gt;&lt;span style=&quot;color: #B8BB26;&quot;&gt; example.com/filename.txt&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If you ever need to set a custom flag, you can make use of the &lt;code&gt;--curl-options&lt;/code&gt;
+wcurl option, anything set there will be passed to the curl invocation.
+Just beware that if you need to set any custom flags, it&#39;s likely you will be
+better served by calling curl directly. The &lt;code&gt;--curl-options&lt;/code&gt; option is there to
+allow for some flexibility in unforeseen circumstances.&lt;/p&gt;
+&lt;h1 id=&quot;the-need-for-wcurl&quot;&gt;The need for wcurl&lt;/h1&gt;
+&lt;p&gt;I&#39;ve always felt a bit ashamed of not remembering curl&#39;s parameters for
+downloading a file and automatically naming it, having resorted to wget most of
+the times this was needed (even installing wget when it wasn&#39;t there, just for
+this). I&#39;ve spoken to a few other experienced people I know and confirmed what
+could be obvious to others: a lot of people struggle with this.&lt;/p&gt;
+&lt;p&gt;Recently, the curl project released the results of &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://daniel.haxx.se/media/curl-user-survey-2024-analysis.pdf&quot;&gt;2024&#39;s curl
+survey&lt;/a&gt;, which
+also showed this is as a much needed feature, just look at some of the answers:&lt;/p&gt;
+&lt;h4 id=&quot;q-which-curl-command-line-option-do-you-think-needs-improvement-and-how&quot;&gt;Q: Which curl command line option do you think needs improvement and how?&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;-O, I really want wget like functionality where I don&#39;t have to specify the name&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Downloading a file (like wget) could be improved - with automatic naming of the file&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;downloading files - wget is much cleaner&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I wish the default behaviour when GETting a binary was to drop it on disk. That&#39;s the only
+reason &#39;wget foo.tgz&quot; is still ingrained in my muscle memory .&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Maybe have a way to download without specifying something in -o (the only reason i used wget
+still)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;--remote-time should be default&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;--remote-name-all could really use a short flag&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;q-if-you-miss-support-for-something-tell-us-what&quot;&gt;Q: If you miss support for something, tell us what!&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&quot;Write the data to the file named in the URL (or in redirects if I&#39;m feeling daring), and
+timestamp the file to the last-modified-date&quot;. This is the main reason I&#39;m still using wget.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I can finally feel less bad about falling back to wget due to not remembering the
+parameters I want.&lt;/p&gt;
+&lt;h1 id=&quot;idealization-vs-reality&quot;&gt;Idealization vs. reality&lt;/h1&gt;
+&lt;p&gt;I don&#39;t believe curl will ever change its default behavior in such a way that
+would accommodate this need, as that would have a side-effect of breaking things
+which expect the current behavior (the blast radius is literally the
+&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://daniel.haxx.se/blog/2021/12/03/why-curl-is-used-everywhere-even-on-mars/&quot;&gt;solar system&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;This means a new executable needs to be shipped side-by-side with curl, an
+opportunity to start fresh and work with a more focused use case (to download
+files).&lt;/p&gt;
+&lt;p&gt;Ideally, this new executable would be maintained by the curl project, make use
+of libcurl under-the-hood, and be available everywhere. Nobody wants to worry
+if their systems have the tool or not, it should always be there.&lt;/p&gt;
+&lt;p&gt;Given I&#39;m just a Debian Developer, with not as much free time as I wish, I&#39;ve
+decided to write a simple shell script wrapper calling the curl CLI
+under-the-hood.&lt;/p&gt;
+&lt;p&gt;wcurl will come installed with the curl package from now on, and I will check
+with the release team about shipping it on the current Debian stable as well.
+Shipping wcurl in other distros will be up to them (Debian-derivatives should
+pick it up automatically, though).&lt;/p&gt;
+&lt;p&gt;We&#39;ve tried to make it easy for anyone to ship this by using the curl license,
+keeping the script POSIX-compliant, and shipping a &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://manpages.debian.org/unstable/curl/wcurl.1.en.html&quot;&gt;manpage&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Maybe if there&#39;s enough interest across distributions, someone might sign up
+for implementing this in upstream curl and increase its reach. I would be happy
+with the curl project reusing the wcurl name when that happens. It&#39;s unlikely
+that wcurl would be shipped by curl upstream as it is, assuming they would
+prefer a solution that uses libcurl direclty (more similar to curl the CLI, to
+maintain).&lt;/p&gt;
+&lt;p&gt;In the worst case, wcurl becomes a Debian-specific tool that only a few people
+are aware of, in the best case, it becomes the new go-to CLI tool for simply
+downloading files. I would be happy if at least someone other than me finds
+it useful.&lt;/p&gt;
+&lt;h1 id=&quot;naming-is-hard&quot;&gt;Naming is hard&lt;/h1&gt;
+&lt;p&gt;When I started working on it, I was calling the new executable &quot;curld&quot;
+(stands for &quot;curl download&quot;), but then when discussing this in one of our
+weekly calls in the Debian Brasília community, it was mentioned that this could
+be confused for a daemon.&lt;/p&gt;
+&lt;p&gt;We then settled for the name &quot;wcurl&quot;, suggested by Carlos Henrique Lima
+Melara &amp;lt;charles&amp;gt;. It doesn&#39;t really stand for anything,
+but it&#39;s very easy to remember.&lt;/p&gt;
+&lt;p&gt;You know... &quot;it&#39;s that wget alternative for when you want to use curl instead&quot;
+:)&lt;/p&gt;
+&lt;h1 id=&quot;feedback&quot;&gt;Feedback&lt;/h1&gt;
+&lt;p&gt;The code is hosted in GitHub, feel free to open an issue to provide feedback.&lt;br /&gt;
+&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://github.com/curl/wcurl&quot;&gt;https://github.com/curl/wcurl&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;We also have a Matrix room for the Debian curl maintainers:&lt;br /&gt;
+&lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://matrix.to/#/#debian-curl-maintainers:matrix.org&quot;&gt;https://matrix.to/#/#debian-curl-maintainers:matrix.org&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;acknowledgments&quot;&gt;Acknowledgments&lt;/h1&gt;
+&lt;p&gt;The idea for wcurl came a few days before the &lt;a rel=&quot;noopener external&quot; target=&quot;_blank&quot; href=&quot;https://daniel.haxx.se/blog/2024/05/06/i-survived-curl-up-2024/&quot;&gt;curl-up conference
+2024&lt;/a&gt;.
+I&#39;ve been thinking a lot about developer productivity in the terminal lately,
+different tools and better defaults. Before curl-up, I was also thinking about
+packaging improvements for the curl package. I don&#39;t remember what exactly
+happened, but I likely had to download something and felt a bit ashamed of
+maintaining curl and not remembering the parameters to download files the way I
+wanted.&lt;/p&gt;
+&lt;p&gt;I first discussed this idea in the conference, where I asked the
+participants about it and there were no concerns raised, and some people said I should give it a go.
+Participating in curl-up was a really great experience and I&#39;m thankful for the
+interactions I&#39;ve had there.&lt;/p&gt;
+&lt;p&gt;On the Debian side, I&#39;ve got reviews of the code and manpage by Sergio Durigan
+Junior &amp;lt;sergiodj&amp;gt;, Guilherme Puida Moreira &amp;lt;puida&amp;gt; and Carlos Henrique Lima
+Melara &amp;lt;charles&amp;gt;. Sergio ended up rewriting the tool to be POSIX-compliant (my
+version was written in bash), so he takes all the credit for the portability.&lt;/p&gt;
+&lt;h1 id=&quot;changes-since-publication&quot;&gt;Changes since publication&lt;/h1&gt;
+&lt;h2 id=&quot;2025-01-19&quot;&gt;2025-01-19&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Mention that wcurl will not be added to Debian 12/bookworm, it will be
+present in Debian 13/trixie.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;2024-12-14&quot;&gt;2024-12-14&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Update list of wcurl features.&lt;/li&gt;
+&lt;li&gt;Point out to wcurl homepage and mention that it&#39;s now part of curl.&lt;/li&gt;
+&lt;li&gt;Reorder this changelog to have latest changes on top.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;2024-08-28&quot;&gt;2024-08-28&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Mention availability in bookworm-backports.&lt;/li&gt;
+&lt;li&gt;Link to wcurl lightning talk from DebConf24.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;2024-07-18&quot;&gt;2024-07-18&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Update date of availability for Debian testing and expected date for bookworm backports.&lt;/li&gt;
+&lt;li&gt;Mention charles as the person who suggested &quot;wcurl&quot; as a name.&lt;/li&gt;
+&lt;li&gt;Update wcurl&#39;s -o/--opts options, it&#39;s now just --curl-options.&lt;/li&gt;
+&lt;li&gt;Remove mention of language spoken in the Matrix room, we are using English now.&lt;/li&gt;
+&lt;li&gt;Update list of features of wcurl.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+        
+    </entry>
+</feed>
