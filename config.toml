@@ -71,6 +71,19 @@ theme = "gruvbox-dark-medium"
 # ]
 
 [extra]
+# pages on samueloph.dev that other GitHub Pages sites serve: the sitemap
+# (templates/sitemap.xml) lists them after the pages Zola builds
+sitemap_extra = [
+    "https://samueloph.dev/debian-distributary-theme/",
+    "https://samueloph.dev/debian-distributary-theme/editor/",
+    "https://samueloph.dev/personal_website_files/samuel_henrique_samueloph_cv_2025_06.pdf",
+    "https://samueloph.dev/personal_website_files/slides/samueloph_slides_2025_07_the_security_of_debian.pdf",
+    "https://samueloph.dev/personal_website_files/slides/samueloph_slides_2025_07_wcurl_one_year_later.pdf",
+    "https://samueloph.dev/personal_website_files/slides/samueloph_slides_2024_08_the_secret_sauce_of_debian.pdf",
+    "https://samueloph.dev/personal_website_files/slides/samueloph_slides_2024_08_i_use_debian_btw.pdf",
+    "https://samueloph.dev/personal_website_files/slides/samueloph_slides_2024_07_fixing_cves_on_debian.pdf",
+]
+
 ###############################################################################
 ### Layout & Format
 ### position: top, bottom, both, false(hidden)
