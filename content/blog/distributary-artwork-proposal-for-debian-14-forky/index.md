@@ -1,6 +1,6 @@
 +++
 title = 'Distributary: my artwork proposal for Debian 14 "forky"'
-date = 2026-10-31
+date = 2026-10-31T17:22:00Z
 draft = false
 description = "Distributary, my artwork proposal for Debian 14 forky: a river that forks into a delta, grown by a program, in any resolution and colour, with a live palette editor."
 
