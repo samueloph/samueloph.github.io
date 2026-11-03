@@ -1,3 +1,6 @@
+# the author the Atom feeds name for every post (extra.author below is the
+# theme's, for bylines; the feeds don't read it)
+author = "Samuel Henrique (samueloph)"
 # do NOT include a trailing slash on the base URL
 base_url = "https://samueloph.dev"
 # Usable site directly from disk, Including Search: "/home/jieiku/.dev/abridge/public"
